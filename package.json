@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js --progress",
     "build:dev": "webpack --config webpack.dev.js --progress",
+    "build:prod": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
