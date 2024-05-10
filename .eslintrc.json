@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  }, // 소스 코드가 실행되는 환경 및 기준 문법
+  "extends": [
+    "eslint:recommended", // eslint에서 추천하는 config 모음
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime", // react 17부터 각 파일에서 react를 import하는 것이 불필요하다는 것을 알려줌
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier" // eslint-config-prettier (prettier가 formatting을 전담하게끔 해줌. extends의 마지막에 작성함으로써 다른 configs들을 덮어쓰게끔 해야함.)
+  ],
+  "parser": "@typescript-eslint/parser", // 소스파일을 파싱하는데 쓰임. 이게 없으면 ESLint는 타입스크립트를 일반 자바스크립트인 것처럼 파싱하기에 에러가 남.
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true // jsx support
+    }
+  },
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "rules": {
+    "no-unused-vars": "off", // 기본 룰을 지우고, typescript-eslint/no-unused-vars가 행하도록 함
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-var-requires": "off", // off함으로써 requires를 사용할 수 있게 해줌
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn" // 좀 더 강력한 lint by eslint-plugin-react-hooks
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
