@@ -3,10 +3,10 @@ import { fn } from '@storybook/test';
 import Button from './Button';
 
 /**
- * `MyButton` 컴포넌트는 공용 버튼 컴포넌트입니다.
+ * `Button` 컴포넌트는 공용 버튼 컴포넌트입니다.
  */
 const meta = {
-  title: 'Common/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     layout: 'centered',
@@ -19,5 +19,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    children: 'Button',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    children: 'Button',
+    size: 'small',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    children: 'Button',
+    size: 'large',
+  },
 };
