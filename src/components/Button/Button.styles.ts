@@ -1,7 +1,7 @@
 import { styled, css } from 'styled-components';
 import { ButtonProps } from './Button';
 
-export const Button = styled.button<ButtonProps>`
+export const ButtonWrapper = styled.button<ButtonProps>`
   font-family: 'Inter', sans-serif;
   color: ${(props) => props.theme.color.orange400};
   background-color: transparent;

@@ -10,9 +10,9 @@ export interface ButtonProps {
 
 function Button({ size, onClick, css, children }: ButtonProps) {
   return (
-    <Styles.Button size={size} onClick={onClick} css={css}>
+    <Styles.ButtonWrapper size={size} onClick={onClick} css={css}>
       {children}
-    </Styles.Button>
+    </Styles.ButtonWrapper>
   );
 }
 
