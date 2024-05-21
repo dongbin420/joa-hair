@@ -1,24 +1,24 @@
-import * as Styles from './Header.styles';
+import * as S from './Header.styles';
 import Button from '@/components/Button/Button';
 import instagram from '@/assets/imgs/instagram.png';
 import facebook from '@/assets/imgs/facebook.png';
 
 function Header() {
   return (
-    <Styles.HeaderContainer>
-      <Styles.HeaderFirst>
-        <Styles.Logo>JOA HAIR</Styles.Logo>
-        <Styles.NavLink>ABOUT</Styles.NavLink>
-        <Styles.NavLink>MENU</Styles.NavLink>
-        <Styles.NavLink>PHOTO</Styles.NavLink>
-        <Styles.NavLink>CONTACT</Styles.NavLink>
-      </Styles.HeaderFirst>
-      <Styles.HeaderSecond>
-        <Styles.IconWrapper src={instagram} alt="Instagram" />
-        <Styles.IconWrapper src={facebook} alt="Facebook" />
+    <S.HeaderContainer>
+      <S.HeaderFirst>
+        <S.Logo>JOA HAIR</S.Logo>
+        <S.NavLink>ABOUT</S.NavLink>
+        <S.NavLink>MENU</S.NavLink>
+        <S.NavLink>PHOTO</S.NavLink>
+        <S.NavLink>CONTACT</S.NavLink>
+      </S.HeaderFirst>
+      <S.HeaderSecond>
+        <S.IconWrapper src={instagram} alt="Instagram" />
+        <S.IconWrapper src={facebook} alt="Facebook" />
         <Button>BOOK NOW</Button>
-      </Styles.HeaderSecond>
-    </Styles.HeaderContainer>
+      </S.HeaderSecond>
+    </S.HeaderContainer>
   );
 }
 

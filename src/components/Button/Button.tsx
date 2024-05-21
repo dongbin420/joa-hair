@@ -1,4 +1,4 @@
-import * as Styles from './Button.styles';
+import * as S from './Button.styles';
 import type { CSSProp } from 'styled-components';
 
 export interface ButtonProps {
@@ -10,9 +10,9 @@ export interface ButtonProps {
 
 function Button({ size, onClick, css, children }: ButtonProps) {
   return (
-    <Styles.ButtonWrapper size={size} onClick={onClick} css={css}>
+    <S.ButtonWrapper size={size} onClick={onClick} css={css}>
       {children}
-    </Styles.ButtonWrapper>
+    </S.ButtonWrapper>
   );
 }
 
