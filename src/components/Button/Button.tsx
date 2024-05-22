@@ -5,12 +5,12 @@ export interface ButtonProps {
   children: string;
   size?: 'small' | 'medium' | 'large';
   onClick?: () => void;
-  css?: CSSProp;
+  customCss?: CSSProp;
 }
 
-function Button({ size, onClick, css, children }: ButtonProps) {
+function Button({ size, onClick, customCss, children }: ButtonProps) {
   return (
-    <S.ButtonWrapper size={size} onClick={onClick} css={css}>
+    <S.ButtonWrapper size={size} onClick={onClick} customCss={customCss}>
       {children}
     </S.ButtonWrapper>
   );

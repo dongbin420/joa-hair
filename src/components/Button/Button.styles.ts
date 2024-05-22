@@ -37,5 +37,5 @@ export const ButtonWrapper = styled.button<ButtonProps>`
     }
   }};
 
-  ${(props) => props.css}
+  ${(props) => props.customCss}
 `;

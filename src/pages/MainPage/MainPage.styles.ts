@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 export const MainPageContainer = styled.div`
   max-width: 1600px;
@@ -37,26 +37,20 @@ export const MainTextWrapper = styled.div`
 
 export const MainText = styled.p``;
 
-export const MainImgWrapper = styled.div`
-  width: 625px;
-  height: 750px;
-  margin-left: auto;
-  position: relative;
-`;
+export const ImgWrapperCumstomCss = {
+  wrapper: css`
+    margin-left: auto;
+  `,
 
-export const MainImg = styled.img`
-  width: inherit;
-  height: inherit;
-  border-radius: 20px;
-`;
+  img: css`
+    border-radius: 20px;
+  `,
 
-export const GradientBox = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
-  opacity: 0.2;
-  border-radius: 20px;
-`;
+  gradient: css`
+    border-radius: 20px;
+  `,
+};
+
+export const SecondSection = styled.section``;
+
+export const IntroContentWrapper = styled.div``;

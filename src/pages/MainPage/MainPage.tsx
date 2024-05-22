@@ -1,4 +1,5 @@
 import * as S from './MainPage.styles';
+import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import mainImg from '@/assets/imgs/jpg/mainImg.jpg';
 
 function MainPage() {
@@ -15,11 +16,17 @@ function MainPage() {
             <S.MainText>salon designed for your unique style</S.MainText>
           </S.MainTextWrapper>
         </S.MainContentWrapper>
-        <S.MainImgWrapper>
-          <S.GradientBox />
-          <S.MainImg src={mainImg}></S.MainImg>
-        </S.MainImgWrapper>
+        <ImgWrapper
+          img={mainImg}
+          width={625}
+          height={750}
+          showGradient={true}
+          customCss={S.ImgWrapperCumstomCss}
+        />
       </S.FirstSection>
+      <S.SecondSection>
+        <S.IntroContentWrapper></S.IntroContentWrapper>
+      </S.SecondSection>
     </S.MainPageContainer>
   );
 }
