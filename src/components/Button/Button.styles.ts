@@ -3,16 +3,16 @@ import { ButtonProps } from './Button';
 
 export const ButtonWrapper = styled.button<ButtonProps>`
   font-family: 'Inter', sans-serif;
-  color: ${(props) => props.theme.color.orange400};
+  color: ${(props) => props.theme.color.orange500};
   background-color: transparent;
   font-size: ${(props) => props.theme.text.xl.fontSize};
-  border: 2px solid ${(props) => props.theme.color.orange400};
+  border: 2px solid ${(props) => props.theme.color.orange500};
   letter-spacing: -0.8px;
   font-weight: 400;
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => props.theme.color.orange400};
+    background-color: ${(props) => props.theme.color.orange500};
     color: ${(props) => props.theme.color.white};
   }
 

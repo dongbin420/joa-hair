@@ -21,7 +21,7 @@ export const ContactTitle = styled.p`
 `;
 
 export const ContactContents = styled.a`
-  font-size: ${({ theme }) => `${theme.text.lg.fontSize}`};
+  font-size: ${({ theme }) => `${theme.text.md.fontSize}`};
 `;
 
 export const IconLink = styled.a``;
@@ -29,7 +29,7 @@ export const IconLink = styled.a``;
 export const IconWrapper = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.spacing3};
-  margin-top: ${(props) => props.theme.spacing.spacing6};
+  margin-top: ${(props) => props.theme.spacing.spacing2};
 `;
 
 export const Icon = styled.img`

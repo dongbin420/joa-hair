@@ -5,9 +5,12 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@/styles/GlobalStyle';
 import theme from '@/styles/theme';
 import App from '@/App';
-import MainPage from '@/pages/MainPage';
-import ErrorPage from '@/pages/ErrorPage';
-import AboutPage from '@/pages/AboutPage';
+import MainPage from '@/pages/MainPage/MainPage';
+import ErrorPage from '@/pages/ErrorPage/ErrorPage';
+import AboutPage from '@/pages/AboutPage/AboutPage';
+import ServicesPage from '@/pages/ServicesPage/ServicesPage';
+import GalleryPage from '@/pages/GalleryPage/GalleryPage';
+import ContactPage from '@/pages/ContactPage/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,18 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <AboutPage />,
+      },
+      {
+        path: 'services',
+        element: <ServicesPage />,
+      },
+      {
+        path: 'gallery',
+        element: <GalleryPage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
       },
     ],
   },

@@ -1,19 +1,20 @@
 import * as S from './Footer.styles';
-import instagram from '@/assets/imgs/instagram.png';
-import facebook from '@/assets/imgs/facebook.png';
+import instagram from '@/assets/imgs/png/instagram.png';
+import facebook from '@/assets/imgs/png/facebook.png';
+import { INSTAGRAM_URL, FACEBOOK_URL } from '@/constants/url';
 
 function Footer() {
   return (
     <S.FooterContainer>
       <S.FooterSection>
         <S.ContactTitle>CONTACT</S.ContactTitle>
-        <S.ContactContents href="tel:+1234567890">0494 112 551</S.ContactContents>
-        <S.ContactContents href="mailto:example@example.com">email@gmail.com</S.ContactContents>
+        <S.ContactContents href="tel:+610494112551">0494 112 551</S.ContactContents>
+        <S.ContactContents href="mailto:Joahair@hotmail.com">Joahair@hotmail.com</S.ContactContents>
         <S.IconWrapper>
-          <S.IconLink href="">
+          <S.IconLink href={INSTAGRAM_URL} target="_blank">
             <S.Icon src={instagram} />
           </S.IconLink>
-          <S.IconLink href="">
+          <S.IconLink href={FACEBOOK_URL} target="_blank">
             <S.Icon src={facebook} />
           </S.IconLink>
         </S.IconWrapper>
@@ -26,8 +27,12 @@ function Footer() {
       <S.FooterSection>
         <S.HoursTitle>HOURS</S.HoursTitle>
         <S.DayWrapper>
-          <S.Day>Monday - Saturday</S.Day>
+          <S.Day>Monday - Friday</S.Day>
           <S.Time>9am - 5:30pm</S.Time>
+        </S.DayWrapper>
+        <S.DayWrapper>
+          <S.Day>Saturday</S.Day>
+          <S.Time>9am - 5pm</S.Time>
         </S.DayWrapper>
         <S.DayWrapper>
           <S.Day>Sunday</S.Day>
