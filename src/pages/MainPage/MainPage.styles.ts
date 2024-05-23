@@ -9,7 +9,10 @@ interface IntroTextContent extends IntroTextTitle {}
 export const MainPageContainer = styled.div`
   max-width: 1600px;
   padding: 0 ${(props) => props.theme.spacing.spacing8};
+  padding-bottom: ${(props) => props.theme.spacing.spacing10};
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const FirstSection = styled.section`
@@ -112,3 +115,7 @@ export const IntroImgCustomCss = {
     margin-top: ${({ theme }) => `${theme.spacing.spacing4}`};
   `,
 };
+
+export const ButtonCustomCss = css`
+  align-self: center;
+`;

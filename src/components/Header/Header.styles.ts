@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -9,12 +9,21 @@ export const HeaderContainer = styled.header`
   padding: ${({ theme }) =>
     `${theme.spacing.spacing7} ${theme.spacing.spacing8} ${theme.spacing.spacing6}`};
   margin: 0 auto;
+
+  // prettier-ignore
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: ${(props) => props.theme.spacing.spacing8} ${(props) => props.theme.spacing.spacing8};
+  }
 `;
 
 export const HeaderFirst = styled.nav`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.spacing.spacing9};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    margin: 0 auto;
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -26,6 +35,13 @@ export const LogoWrapper = styled.div`
   font-weight: 600;
   cursor: pointer;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    font-size: ${(props) => props.theme.heading.xl.fontSize};
+    overflow: visible;
+    line-height: ${(props) => props.theme.heading.sm.lineHeight};
+    margin-left: ${(props) => props.theme.spacing.spacing8};
+  }
 `;
 
 export const LogoTop = styled.p`
@@ -43,11 +59,20 @@ export const NavElement = styled.div`
   &:hover {
     color: ${(props) => props.theme.color.black};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    display: none;
+  }
 `;
 
 export const HeaderSecond = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.spacing6};
+  align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    display: none;
+  }
 `;
 
 export const IconLink = styled.a``;
@@ -58,4 +83,19 @@ export const Icon = styled.img`
   height: 50px;
 `;
 
-export const ButtonLink = styled.a``;
+export const ButtonLink = styled.a`
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    display: none;
+  }
+`;
+
+export const HamburgerCustomCss = {
+  wrapper: css`
+    display: none;
+    cursor: pointer;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+      display: block;
+    }
+  `,
+};

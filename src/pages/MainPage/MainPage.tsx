@@ -1,5 +1,6 @@
 import * as S from './MainPage.styles';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
+import Button from '@/components/Button/Button';
 import mainImg from '@/assets/imgs/jpg/mainImg.jpg';
 import introImg from '@/assets/imgs/jpg/introImg.jpg';
 import { INTRO_TEXT } from '@/constants/text';
@@ -46,6 +47,9 @@ function MainPage() {
           />
         </S.IntroContentWrapper>
       </S.SecondSection>
+      <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
+        BOOK NOW
+      </Button>
     </S.MainPageContainer>
   );
 }

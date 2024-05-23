@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 import Footer from './Footer';
 
 /**
@@ -9,7 +8,6 @@ const meta = {
   title: 'Components/Footer',
   component: Footer,
   tags: ['autodocs'],
-  args: { onClick: fn() },
 } satisfies Meta<typeof Footer>;
 
 export default meta;

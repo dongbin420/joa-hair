@@ -3,7 +3,7 @@ import type { CSSProp } from 'styled-components';
 
 export interface ButtonProps {
   children: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge';
   onClick?: () => void;
   customCss?: CSSProp;
 }

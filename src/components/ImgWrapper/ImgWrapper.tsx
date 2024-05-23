@@ -6,6 +6,8 @@ export interface ImgWrapperProps {
   width?: string;
   height?: string;
   borderRadius?: number;
+  showGradient?: boolean;
+  onClick?: () => void;
   /**
    * wrapper: wrapper를 위한 css룰(div)
    *
@@ -18,7 +20,6 @@ export interface ImgWrapperProps {
     img?: CSSProp;
     gradient?: CSSProp;
   };
-  showGradient?: boolean;
 }
 
 function ImgWrapper({
@@ -28,9 +29,10 @@ function ImgWrapper({
   borderRadius,
   customCss,
   showGradient,
+  onClick,
 }: ImgWrapperProps) {
   return (
-    <S.Wrapper width={width} height={height} customCss={customCss?.wrapper}>
+    <S.Wrapper width={width} height={height} customCss={customCss?.wrapper} onClick={onClick}>
       {showGradient && (
         <S.GradientBox borderRadius={borderRadius} customCss={customCss?.gradient} />
       )}

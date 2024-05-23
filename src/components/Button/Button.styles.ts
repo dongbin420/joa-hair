@@ -30,6 +30,14 @@ export const ButtonWrapper = styled.button<ButtonProps>`
         return css`
           padding: 16px 45px;
         `;
+      case 'xLarge':
+        return css`
+          padding: 20px 55px;
+        `;
+      case 'xxLarge':
+        return css`
+          padding: 25px 70px;
+        `;
       default:
         return css`
           padding: 12px 35px;

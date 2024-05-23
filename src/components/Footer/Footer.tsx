@@ -22,7 +22,7 @@ function Footer() {
       <S.FooterSection>
         <S.Logo>JOA HAIR</S.Logo>
         <S.Address>Shop 15/803 Stanley St, Woolloongabba QLD 4102</S.Address>
-        <S.Copyright>© 2024 JOA HAIR. All rights reserved.</S.Copyright>
+        <S.Copyright>© 2024 Joa hair. All rights reserved.</S.Copyright>
       </S.FooterSection>
       <S.FooterSection>
         <S.HoursTitle>HOURS</S.HoursTitle>
