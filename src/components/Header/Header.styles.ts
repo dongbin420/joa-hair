@@ -37,8 +37,9 @@ export const LogoBottom = styled.p`
 `;
 
 export const NavElement = styled.div`
-  color: ${(props) => props.theme.color.orange500};
+  color: ${({ theme }) => `${theme.color.orange600}`};
   font-size: ${(props) => props.theme.text.lg.fontSize};
+
   &:hover {
     color: ${(props) => props.theme.color.black};
   }

@@ -3,7 +3,7 @@ import ImgWrapper from './ImgWrapper';
 import mainImg from '@/assets/imgs/jpg/mainImg.jpg';
 
 /**
- * `ImgWrapper` 컴포넌트는 모든 이미지를 래핑하는데 사용되는 컴포넌트 입니다.
+ * `ImgWrapper` 컴포넌트는 일반 이미지를 래핑하는데 사용되는 컴포넌트 입니다.
  */
 const meta = {
   title: 'Components/ImgWrapper',

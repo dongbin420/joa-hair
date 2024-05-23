@@ -4,7 +4,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-evenly;
   padding: ${({ theme }) =>
-    `${theme.spacing.spacing8} ${theme.spacing.spacing10} ${theme.spacing.spacing13}`};
+    `${theme.spacing.spacing8} ${theme.spacing.spacing10} ${theme.spacing.spacing10}`};
   background-color: ${(props) => props.theme.color.white};
 `;
 
@@ -17,11 +17,15 @@ export const FooterSection = styled.div`
 
 export const ContactTitle = styled.p`
   font-size: ${({ theme }) => `${theme.heading.sm.fontSize}`};
-  margin-bottom: ${({ theme }) => `${theme.spacing.spacing6}`};
+  margin-bottom: ${({ theme }) => `${theme.spacing.spacing4}`};
 `;
 
 export const ContactContents = styled.a`
   font-size: ${({ theme }) => `${theme.text.md.fontSize}`};
+
+  &:hover {
+    color: ${({ theme }) => `${theme.color.orange600}`};
+  }
 `;
 
 export const IconLink = styled.a``;
@@ -51,7 +55,7 @@ export const Copyright = styled.p``;
 
 export const HoursTitle = styled.p`
   font-size: ${({ theme }) => `${theme.heading.sm.fontSize}`};
-  margin-bottom: ${(props) => props.theme.spacing.spacing6};
+  margin-bottom: ${(props) => props.theme.spacing.spacing4};
 `;
 
 export const DayWrapper = styled.p`
