@@ -2,23 +2,25 @@ import { styled } from 'styled-components';
 import type { CSSProp } from 'styled-components';
 
 interface WrapperProps {
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   customCss?: CSSProp;
 }
 
 interface ImgProps {
+  borderRadius?: number;
   customCss?: CSSProp;
 }
 
 interface GradientProps {
+  borderRadius?: number;
   customCss?: CSSProp;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => `${width}`};
+  height: ${({ height }) => `${height}`};
 
   ${({ customCss }) => customCss && customCss};
 `;
@@ -31,11 +33,15 @@ export const GradientBox = styled.div<GradientProps>`
   left: 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
   opacity: 0.2;
+  border-radius: ${({ borderRadius }) => `${borderRadius}px`};
+
   ${({ customCss }) => customCss && customCss};
 `;
 
 export const Img = styled.img<ImgProps>`
-  width: 100%;
-  height: 100%;
+  width: inherit;
+  height: inherit;
+  border-radius: ${({ borderRadius }) => `${borderRadius}px`};
+
   ${({ customCss }) => customCss && customCss};
 `;

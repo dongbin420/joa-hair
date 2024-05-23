@@ -3,8 +3,9 @@ import type { CSSProp } from 'styled-components';
 
 export interface ImgWrapperProps {
   img: string;
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
+  borderRadius?: number;
   /**
    * wrapper: wrapper를 위한 css룰(div)
    *
@@ -20,11 +21,20 @@ export interface ImgWrapperProps {
   showGradient?: boolean;
 }
 
-function ImgWrapper({ img, width, height, customCss, showGradient }: ImgWrapperProps) {
+function ImgWrapper({
+  img,
+  width,
+  height,
+  borderRadius,
+  customCss,
+  showGradient,
+}: ImgWrapperProps) {
   return (
     <S.Wrapper width={width} height={height} customCss={customCss?.wrapper}>
-      {showGradient && <S.GradientBox customCss={customCss?.gradient} />}
-      <S.Img src={img} customCss={customCss?.img} />
+      {showGradient && (
+        <S.GradientBox borderRadius={borderRadius} customCss={customCss?.gradient} />
+      )}
+      <S.Img src={img} borderRadius={borderRadius} customCss={customCss?.img} />
     </S.Wrapper>
   );
 }

@@ -20,7 +20,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     img: mainImg,
-    width: 350,
-    height: 500,
+    width: '350px',
+    height: '500px',
+    borderRadius: 20,
   },
 };
