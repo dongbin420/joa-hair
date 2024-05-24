@@ -13,7 +13,6 @@ export const MainPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
 `;
 
 export const FirstSection = styled.section`
@@ -55,18 +54,21 @@ export const MainTitleWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-top: ${({ theme }) => `${theme.spacing.spacing8}`};
+    margin-bottom: 125px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 140px;
     line-height: 140px;
     margin-top: ${({ theme }) => `${theme.spacing.spacing12}`};
+    margin-bottom: 155px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 115px;
     line-height: 115px;
     margin-top: ${({ theme }) => `${theme.spacing.spacing13}`};
+    margin-bottom: 198px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
@@ -95,11 +97,12 @@ export const MainTextWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
     font-size: ${({ theme }) => `${theme.heading.lg.fontSize}`};
-    line-height: ${({ theme }) => `${theme.heading.xl.lineHeight}`};
+    line-height: ${({ theme }) => `${theme.heading.lg.lineHeight}`};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => `${theme.heading.md.fontSize}`};
+    line-height: ${({ theme }) => `${theme.heading.md.lineHeight}`};
   }
 `;
 
@@ -129,6 +132,10 @@ export const MainImgCustomCss = {
 
 export const SecondSection = styled.section`
   padding-top: ${(props) => props.theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: ${({ theme }) => theme.spacing.spacing14};
+  }
 `;
 
 export const IntroContentWrapper = styled.div`
@@ -139,10 +146,16 @@ export const IntroContentWrapper = styled.div`
   padding: ${(props) => props.theme.spacing.spacing7};
   padding-bottom: ${(props) => props.theme.spacing.spacing2};
   margin-bottom: ${({ theme }) => `${theme.spacing.spacing12}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-direction: column;
+    gap: ${(props) => props.theme.spacing.spacing5};
+  }
 `;
 
 export const IntroTextWrapper = styled.div`
   color: ${({ theme }) => `${theme.color.orange600}`};
+  flex: 1;
 `;
 
 export const IntroTextHeading = styled.h4`
@@ -188,6 +201,13 @@ export const IntroTextContent = styled.p<IntroTextContent>`
 export const IntroImgCustomCss = {
   wrapper: css`
     margin-top: ${({ theme }) => `${theme.spacing.spacing4}`};
+    flex: 1;
+  `,
+
+  img: css`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   `,
 };
 

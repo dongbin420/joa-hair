@@ -41,13 +41,7 @@ function MainPage() {
             <S.IntroTextContent margin={'bottom'}>{INTRO_TEXT.SECOND}</S.IntroTextContent>
             <S.IntroTextContent>{INTRO_TEXT.THIRD}</S.IntroTextContent>
           </S.IntroTextWrapper>
-          <ImgWrapper
-            img={introImg}
-            width={'650px'}
-            height={'450px'}
-            borderRadius={15}
-            customCss={S.IntroImgCustomCss}
-          />
+          <ImgWrapper img={introImg} borderRadius={15} customCss={S.IntroImgCustomCss} />
         </S.IntroContentWrapper>
       </S.SecondSection>
       <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
