@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
 
   // prettier-ignore
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: ${(props) => props.theme.spacing.spacing8} ${(props) => props.theme.spacing.spacing8};
   }
 `;
@@ -22,6 +22,10 @@ export const HeaderFirst = styled.nav`
   gap: ${(props) => props.theme.spacing.spacing9};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    gap: ${(props) => props.theme.spacing.spacing7};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin: 0 auto;
   }
 `;
@@ -36,7 +40,7 @@ export const LogoWrapper = styled.div`
   cursor: pointer;
   overflow: hidden;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: ${(props) => props.theme.heading.xl.fontSize};
     overflow: visible;
     line-height: ${(props) => props.theme.heading.sm.lineHeight};
@@ -65,7 +69,7 @@ export const NavElement = styled.div`
     color: ${(props) => props.theme.color.black};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
 `;
@@ -76,6 +80,10 @@ export const HeaderSecond = styled.div`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    gap: ${(props) => props.theme.spacing.spacing3};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
 `;
@@ -86,11 +94,23 @@ export const Icon = styled.img`
   cursor: pointer;
   width: 50px;
   height: 50px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const ButtonLink = styled.a`
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
+  }
+`;
+
+export const ButtonCustomCss = css`
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 8px 25px;
+    font-size: ${(props) => props.theme.text.md.fontSize};
   }
 `;
 
@@ -99,7 +119,7 @@ export const HamburgerCustomCss = {
     display: none;
     cursor: pointer;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
       display: block;
     }
   `,

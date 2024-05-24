@@ -37,7 +37,9 @@ function Header() {
             <S.Icon src={facebook} alt="Facebook" />
           </S.IconLink>
           <S.ButtonLink href={RESERVATION_URL} target="_blank">
-            <Button size={'large'}>BOOK NOW</Button>
+            <Button size={'large'} customCss={S.ButtonCustomCss}>
+              BOOK NOW
+            </Button>
           </S.ButtonLink>
         </S.HeaderSecond>
         <ImgWrapper
