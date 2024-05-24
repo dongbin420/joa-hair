@@ -19,12 +19,12 @@ function Footer() {
           </S.IconLink>
         </S.IconWrapper>
       </S.FooterSection>
-      <S.FooterSection>
+      <S.FooterSection move={true}>
         <S.Logo>JOA HAIR</S.Logo>
         <S.Address>Shop 15/803 Stanley St, Woolloongabba QLD 4102</S.Address>
         <S.Copyright>© 2024 Joa hair. All rights reserved.</S.Copyright>
       </S.FooterSection>
-      <S.FooterSection>
+      <S.FooterSection move={true}>
         <S.HoursTitle>HOURS</S.HoursTitle>
         <S.DayWrapper>
           <S.Day>Monday - Friday</S.Day>

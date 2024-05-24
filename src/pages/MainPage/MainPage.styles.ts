@@ -13,12 +13,17 @@ export const MainPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  /* min-height: 100vh; */
 `;
 
 export const FirstSection = styled.section`
   display: flex;
   position: relative;
   padding-bottom: ${(props) => props.theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    justify-content: center;
+  }
 `;
 
 export const MainContentWrapper = styled.div`
@@ -27,21 +32,75 @@ export const MainContentWrapper = styled.div`
   padding: ${({ theme }) => `${theme.spacing.spacing10} 0`};
   color: ${({ theme }) => `${theme.color.orange600}`};
   z-index: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    margin-top: ${({ theme }) => theme.spacing.spacing5};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    text-align: center;
+    margin-top: 0;
+  }
 `;
 
 export const MainTitleWrapper = styled.div`
   font-size: 200px;
   line-height: 200px;
   margin-bottom: ${({ theme }) => `${theme.spacing.spacing7}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    font-size: 170px;
+    line-height: 170px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: ${({ theme }) => `${theme.spacing.spacing8}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 140px;
+    line-height: 140px;
+    margin-top: ${({ theme }) => `${theme.spacing.spacing12}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 115px;
+    line-height: 115px;
+    margin-top: ${({ theme }) => `${theme.spacing.spacing13}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    font-size: 100px;
+    line-height: 100px;
+    margin-top: ${({ theme }) => `${theme.spacing.spacing14}`};
+  }
 `;
 
-export const MainTitle = styled.p`
+export const MainTitleInlineWrapper = styled.div`
+  display: flex;
+  gap: ${({ theme }) => `${theme.spacing.spacing9}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: block;
+  }
+`;
+
+export const MainTitle = styled.p<{ inlineBlock?: boolean }>`
   overflow: hidden;
 `;
 
 export const MainTextWrapper = styled.div`
   font-size: ${({ theme }) => `${theme.heading.xl.fontSize}`};
   line-height: ${({ theme }) => `${theme.heading.xxl.lineHeight}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    font-size: ${({ theme }) => `${theme.heading.lg.fontSize}`};
+    line-height: ${({ theme }) => `${theme.heading.xl.lineHeight}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: none;
+  }
 `;
 
 export const MainText = styled.p``;
@@ -49,6 +108,22 @@ export const MainText = styled.p``;
 export const MainImgCustomCss = {
   wrapper: css`
     margin-left: auto;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+      width: 500px;
+      height: 700px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+      margin-left: 0;
+      width: 100%;
+      max-width: 550px;
+    }
+  `,
+  gradient: css`
+    @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+      opacity: 0.4;
+    }
   `,
 };
 

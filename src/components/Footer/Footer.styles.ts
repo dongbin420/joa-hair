@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -8,11 +8,17 @@ export const FooterContainer = styled.footer`
   background-color: ${(props) => props.theme.color.white};
 `;
 
-export const FooterSection = styled.div`
+export const FooterSection = styled.div<{ move?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: ${(props) => props.theme.spacing.spacing7};
+
+  ${({ move }) =>
+    move &&
+    css`
+      margin-right: ${({ theme }) => `${theme.spacing.spacing7}`};
+    `};
 `;
 
 export const ContactTitle = styled.p`

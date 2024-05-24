@@ -42,6 +42,11 @@ export const LogoWrapper = styled.div`
     line-height: ${(props) => props.theme.heading.sm.lineHeight};
     margin-left: ${(props) => props.theme.spacing.spacing8};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    font-size: ${(props) => props.theme.heading.lg.fontSize};
+    line-height: ${(props) => props.theme.text.lg.lineHeight};
+  }
 `;
 
 export const LogoTop = styled.p`

@@ -12,7 +12,10 @@ function MainPage() {
         <S.MainContentWrapper>
           <S.MainTitleWrapper>
             <S.MainTitle>JOA</S.MainTitle>
-            <S.MainTitle>HAIR SALON</S.MainTitle>
+            <S.MainTitleInlineWrapper>
+              <S.MainTitle>HAIR</S.MainTitle>
+              <S.MainTitle>SALON</S.MainTitle>
+            </S.MainTitleInlineWrapper>
           </S.MainTitleWrapper>
           <S.MainTextWrapper>
             <S.MainText>A beautiful, relaxing</S.MainText>

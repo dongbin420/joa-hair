@@ -5,7 +5,7 @@ const theme = {
     lg: '992px',
     md: '768px',
     sm: '576px',
-    xs: '300px',
+    xs: '400px',
   },
   color: {
     black: '#000000',
