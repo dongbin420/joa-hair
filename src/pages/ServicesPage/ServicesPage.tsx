@@ -1,5 +1,11 @@
+import * as S from './ServicesPage.styles';
+
 function ServicesPage() {
-  return <div>ServicesPage!</div>;
+  return (
+    <S.Container>
+      <S.Text>Coming Soon!</S.Text>
+    </S.Container>
+  );
 }
 
 export default ServicesPage;

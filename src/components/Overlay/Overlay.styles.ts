@@ -29,9 +29,9 @@ export const OverlayContainer = styled.div<{ isClosing: boolean }>`
   top: 0;
   left: 0;
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
   padding: 0 ${({ theme }) => theme.spacing.spacing8};
   padding-top: ${({ theme }) => theme.spacing.spacing10};
   font-size: ${({ theme }) => theme.heading.lg.fontSize};

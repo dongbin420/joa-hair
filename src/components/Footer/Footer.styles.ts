@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components';
+import { styled } from 'styled-components';
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -6,24 +6,40 @@ export const FooterContainer = styled.footer`
   padding: ${({ theme }) =>
     `${theme.spacing.spacing8} ${theme.spacing.spacing10} ${theme.spacing.spacing10}`};
   background-color: ${(props) => props.theme.color.white};
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    gap: ${(props) => props.theme.spacing.spacing9};
+    padding-top: ${({ theme }) => theme.spacing.spacing9};
+  }
 `;
 
-export const FooterSection = styled.div<{ move?: boolean }>`
+export const FooterSection = styled.div<{ order: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: ${(props) => props.theme.spacing.spacing7};
+  margin-right: ${({ theme }) => `${theme.spacing.spacing10}`};
 
-  ${({ move }) =>
-    move &&
-    css`
-      margin-right: ${({ theme }) => `${theme.spacing.spacing7}`};
-    `};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-right: 0;
+    order: ${({ order }) => order};
+    gap: ${(props) => props.theme.spacing.spacing2};
+  }
 `;
 
 export const ContactTitle = styled.p`
   font-size: ${({ theme }) => `${theme.heading.sm.fontSize}`};
   margin-bottom: ${({ theme }) => `${theme.spacing.spacing4}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: ${({ theme }) => `${theme.text.xl.fontSize}`};
+  }
 `;
 
 export const ContactContents = styled.a`
@@ -31,6 +47,10 @@ export const ContactContents = styled.a`
 
   &:hover {
     color: ${({ theme }) => `${theme.color.orange600}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: ${({ theme }) => `${theme.text.sm.fontSize}`};
   }
 `;
 
@@ -53,6 +73,15 @@ export const Logo = styled.p`
   font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
   line-height: ${({ theme }) => `${theme.heading.xxl.lineHeight}`};
   margin-top: ${(props) => props.theme.spacing.spacing6};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: ${({ theme }) => `${theme.heading.xl.fontSize}`};
+    line-height: ${({ theme }) => `${theme.heading.md.lineHeight}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: ${({ theme }) => `${theme.spacing.spacing4}`};
+  }
 `;
 
 export const Address = styled.p``;
@@ -62,6 +91,10 @@ export const Copyright = styled.p``;
 export const HoursTitle = styled.p`
   font-size: ${({ theme }) => `${theme.heading.sm.fontSize}`};
   margin-bottom: ${(props) => props.theme.spacing.spacing4};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: ${({ theme }) => `${theme.text.xl.fontSize}`};
+  }
 `;
 
 export const DayWrapper = styled.p`

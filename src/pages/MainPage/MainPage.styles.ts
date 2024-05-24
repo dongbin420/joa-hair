@@ -151,6 +151,11 @@ export const IntroContentWrapper = styled.div`
     flex-direction: column;
     gap: ${(props) => props.theme.spacing.spacing5};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: ${(props) => props.theme.spacing.spacing2};
+  }
 `;
 
 export const IntroTextWrapper = styled.div`

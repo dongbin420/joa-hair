@@ -6,7 +6,7 @@ import { INSTAGRAM_URL, FACEBOOK_URL } from '@/constants/url';
 function Footer() {
   return (
     <S.FooterContainer>
-      <S.FooterSection>
+      <S.FooterSection order={'1'}>
         <S.ContactTitle>CONTACT</S.ContactTitle>
         <S.ContactContents href="tel:+610494112551">0494 112 551</S.ContactContents>
         <S.ContactContents href="mailto:Joahair@hotmail.com">Joahair@hotmail.com</S.ContactContents>
@@ -19,12 +19,12 @@ function Footer() {
           </S.IconLink>
         </S.IconWrapper>
       </S.FooterSection>
-      <S.FooterSection move={true}>
+      <S.FooterSection order={'3'}>
         <S.Logo>JOA HAIR</S.Logo>
         <S.Address>Shop 15/803 Stanley St, Woolloongabba QLD 4102</S.Address>
         <S.Copyright>© 2024 Joa hair. All rights reserved.</S.Copyright>
       </S.FooterSection>
-      <S.FooterSection move={true}>
+      <S.FooterSection order={'2'}>
         <S.HoursTitle>HOURS</S.HoursTitle>
         <S.DayWrapper>
           <S.Day>Monday - Friday</S.Day>
