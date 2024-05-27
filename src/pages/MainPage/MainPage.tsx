@@ -1,8 +1,8 @@
 import * as S from './MainPage.styles';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import Button from '@/components/Button/Button';
-import mainImg from '@/assets/imgs/jpg/mainImg.jpg';
-import introImg from '@/assets/imgs/jpg/introImg.jpg';
+import mainImg from '@/assets/imgs/jpg/mainImg.webp';
+import introImg from '@/assets/imgs/jpg/introImg.webp';
 import { INTRO_TEXT } from '@/constants/text';
 import { RESERVATION_URL } from './../../constants/url';
 

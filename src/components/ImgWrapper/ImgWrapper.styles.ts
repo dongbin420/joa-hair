@@ -10,11 +10,13 @@ interface WrapperProps {
 interface ImgProps {
   borderRadius?: number;
   customCss?: CSSProp;
+  loaded: boolean;
 }
 
-interface GradientProps {
+export interface GradientProps {
   borderRadius?: number;
   customCss?: CSSProp;
+  loaded: boolean;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -32,7 +34,7 @@ export const GradientBox = styled.div<GradientProps>`
   bottom: 0;
   left: 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
-  opacity: 0.2;
+  opacity: ${({ loaded }) => (loaded ? 0.2 : 0)};
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};
 
   ${({ customCss }) => customCss && customCss};
@@ -42,6 +44,7 @@ export const Img = styled.img<ImgProps>`
   width: inherit;
   height: inherit;
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};
+  opacity: ${({ loaded }) => (loaded ? 1 : 0)};
 
   ${({ customCss }) => customCss && customCss};
 `;

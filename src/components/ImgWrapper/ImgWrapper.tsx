@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import * as S from './ImgWrapper.styles';
 import type { CSSProp } from 'styled-components';
 
@@ -31,12 +32,24 @@ function ImgWrapper({
   showGradient,
   onClick,
 }: ImgWrapperProps) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <S.Wrapper width={width} height={height} customCss={customCss?.wrapper} onClick={onClick}>
       {showGradient && (
-        <S.GradientBox borderRadius={borderRadius} customCss={customCss?.gradient} />
+        <S.GradientBox
+          borderRadius={borderRadius}
+          customCss={customCss?.gradient}
+          loaded={loaded}
+        />
       )}
-      <S.Img src={img} borderRadius={borderRadius} customCss={customCss?.img} />
+      <S.Img
+        src={img}
+        borderRadius={borderRadius}
+        customCss={customCss?.img}
+        onLoad={() => setLoaded(true)}
+        loaded={loaded}
+      />
     </S.Wrapper>
   );
 }

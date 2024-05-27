@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components';
+import { GradientProps } from '@/components/ImgWrapper/ImgWrapper.styles';
 
 interface IntroTextTitle {
   margin?: string;
@@ -124,9 +125,9 @@ export const MainImgCustomCss = {
       max-width: 550px;
     }
   `,
-  gradient: css`
+  gradient: css<GradientProps>`
     @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-      opacity: 0.3;
+      opacity: ${({ loaded }) => (loaded ? 0.3 : 0)};
     }
   `,
 };
