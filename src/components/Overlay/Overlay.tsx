@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import * as S from './Overlay.styles';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
@@ -14,7 +13,6 @@ interface OverlayProps {
 }
 
 function Overlay({ toggleOverlay }: OverlayProps) {
-  const [isClosing, setIsClosing] = useState(false);
   const location = useLocation();
 
   const handleClose = (path?: string) => {
@@ -22,16 +20,11 @@ function Overlay({ toggleOverlay }: OverlayProps) {
       return;
     }
 
-    setIsClosing(true);
-
-    setTimeout(() => {
-      toggleOverlay();
-      setIsClosing(false);
-    }, 500);
+    toggleOverlay();
   };
 
   return (
-    <S.OverlayContainer isClosing={isClosing}>
+    <S.OverlayContainer>
       <S.OverlayContentContainer>
         <S.OverlayLinkContainer>
           {ROUTES.map((route) => (
@@ -51,13 +44,16 @@ function Overlay({ toggleOverlay }: OverlayProps) {
           </S.IconLink>
         </S.IconWrapper>
         <S.ButtonLink href={RESERVATION_URL} target="_blank">
-          <Button size={'xLarge'}>BOOK NOW</Button>
+          <Button size={'xLarge'} customCss={S.ButtonCustomCss}>
+            BOOK NOW
+          </Button>
         </S.ButtonLink>
       </S.OverlayContentContainer>
       <ImgWrapper
         onClick={handleClose}
         img={closeIcon}
         width={'50px'}
+        height={'50px'}
         customCss={S.CloseCustomCss}
       />
     </S.OverlayContainer>
