@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -39,7 +40,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      hash: true,
       favicon: './public/favicon.ico',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: './public/og', to: './og' }],
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
