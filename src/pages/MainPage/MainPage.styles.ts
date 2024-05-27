@@ -22,6 +22,7 @@ export const FirstSection = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     justify-content: center;
+    order: 1;
   }
 `;
 
@@ -125,7 +126,7 @@ export const MainImgCustomCss = {
   `,
   gradient: css`
     @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-      opacity: 0.4;
+      opacity: 0.3;
     }
   `,
 };
@@ -134,7 +135,8 @@ export const SecondSection = styled.section`
   padding-top: ${(props) => props.theme.spacing.spacing10};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    margin-top: ${({ theme }) => theme.spacing.spacing14};
+    margin-top: ${({ theme }) => theme.spacing.spacing7};
+    order: 3;
   }
 `;
 
@@ -217,5 +219,20 @@ export const IntroImgCustomCss = {
 };
 
 export const ButtonCustomCss = css`
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: ${({ theme }) => theme.spacing.spacing15};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding: 16px 45px;
+    margin-top: ${({ theme }) => theme.spacing.spacing17};
+  }
+`;
+
+export const ButtonLink = styled.a`
   align-self: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    order: 2;
+  }
 `;

@@ -4,6 +4,7 @@ import Button from '@/components/Button/Button';
 import mainImg from '@/assets/imgs/jpg/mainImg.jpg';
 import introImg from '@/assets/imgs/jpg/introImg.jpg';
 import { INTRO_TEXT } from '@/constants/text';
+import { RESERVATION_URL } from './../../constants/url';
 
 function MainPage() {
   return (
@@ -44,9 +45,11 @@ function MainPage() {
           <ImgWrapper img={introImg} borderRadius={15} customCss={S.IntroImgCustomCss} />
         </S.IntroContentWrapper>
       </S.SecondSection>
-      <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
-        BOOK NOW
-      </Button>
+      <S.ButtonLink href={RESERVATION_URL} target="_blank">
+        <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
+          BOOK NOW
+        </Button>
+      </S.ButtonLink>
     </S.MainPageContainer>
   );
 }
