@@ -1,10 +1,14 @@
 import * as S from './ContactPage.styles';
+import PageBanner from '@/components/PageBanner/PageBanner';
+import bannerImg4 from '@/assets/imgs/webp/bannerImg4.webp';
+import { CONTACT_CONTENT } from '@/constants/bannerContent';
 
 function ContactPage() {
   return (
-    <S.Container>
-      <S.Text>Coming Soon!</S.Text>
-    </S.Container>
+    <>
+      <PageBanner img={bannerImg4} content={CONTACT_CONTENT} />
+      <S.ContactPageContainer></S.ContactPageContainer>
+    </>
   );
 }
 

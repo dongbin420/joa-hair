@@ -8,7 +8,7 @@ interface IntroTextTitle {
 interface IntroTextContent extends IntroTextTitle {}
 
 export const MainPageContainer = styled.div`
-  max-width: 1600px;
+  max-width: 1440px;
   padding: 0 ${(props) => props.theme.spacing.spacing8};
   padding-bottom: ${(props) => props.theme.spacing.spacing10};
   margin: 0 auto;

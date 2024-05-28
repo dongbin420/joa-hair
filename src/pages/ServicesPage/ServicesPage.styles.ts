@@ -1,14 +1,8 @@
 import { styled } from 'styled-components';
 
-export const Container = styled.div`
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Text = styled.div`
-  font-size: ${({ theme }) => theme.heading.xxl.fontSize};
-  text-align: center;
+export const ServicesPageContainer = styled.div`
+  max-width: 1440px;
+  padding: 0 ${(props) => props.theme.spacing.spacing8};
+  padding-bottom: ${(props) => props.theme.spacing.spacing10};
+  margin: 0 auto;
 `;
