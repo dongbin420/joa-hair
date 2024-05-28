@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import * as S from './Overlay.styles';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
@@ -13,6 +14,7 @@ interface OverlayProps {
 }
 
 function Overlay({ toggleOverlay }: OverlayProps) {
+  const [isClosing, setIsClosing] = useState(false);
   const location = useLocation();
 
   const handleClose = (path?: string) => {
@@ -20,11 +22,16 @@ function Overlay({ toggleOverlay }: OverlayProps) {
       return;
     }
 
-    toggleOverlay();
+    setIsClosing(true);
+
+    setTimeout(() => {
+      toggleOverlay();
+      setIsClosing(false);
+    }, 500);
   };
 
   return (
-    <S.OverlayContainer>
+    <S.OverlayContainer isClosing={isClosing}>
       <S.OverlayContentContainer>
         <S.OverlayLinkContainer>
           {ROUTES.map((route) => (

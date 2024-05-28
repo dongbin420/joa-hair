@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useOverlayToggle } from '@/hooks/useOverlayToggle';
 import * as S from './Header.styles';
 import Button from '@/components/Button/Button';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
+import Overlay from '@/components/Overlay/Overlay';
 import instagram from '@/assets/imgs/png/instagram.png';
 import facebook from '@/assets/imgs/png/facebook.png';
 import hamburgerIcon from '@/assets/imgs/svg/hamburger.svg';
 import { INSTAGRAM_URL, FACEBOOK_URL, RESERVATION_URL } from '@/constants/url';
 import { ROUTES } from '@/constants/routes';
 
-interface HeaderProps {
-  toggleOverlay: () => void;
-}
-
-function Header({ toggleOverlay }: HeaderProps) {
+function Header() {
+  const { isOverlayOpen, toggleOverlay } = useOverlayToggle();
   return (
     <>
       <S.HeaderContainer>
@@ -49,6 +48,7 @@ function Header({ toggleOverlay }: HeaderProps) {
           customCss={S.HamburgerCustomCss}
         />
       </S.HeaderContainer>
+      {isOverlayOpen && <Overlay toggleOverlay={toggleOverlay} />}
     </>
   );
 }

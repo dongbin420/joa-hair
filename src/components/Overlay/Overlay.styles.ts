@@ -12,7 +12,21 @@ const unfold = keyframes`
   }
 `;
 
-export const OverlayContainer = styled.div`
+const fold = keyframes`
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+`;
+
+export const OverlayContainer = styled.div<{ isClosing: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   width: 100%;
   height: 100%;
@@ -20,9 +34,11 @@ export const OverlayContainer = styled.div`
   padding: 0 ${({ theme }) => theme.spacing.spacing8};
   padding-top: ${({ theme }) => theme.spacing.spacing10};
   font-size: ${({ theme }) => theme.heading.lg.fontSize};
-  animation: ${unfold} 0.5s ease forwards;
+  animation: ${({ isClosing }) => (isClosing ? fold : unfold)} 0.5s ease forwards;
+  z-index: 10;
   background-color: ${({ theme }) => theme.color.orange50};
   font-weight: 600;
+  overflow: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     font-size: ${({ theme }) => theme.heading.md.fontSize};
