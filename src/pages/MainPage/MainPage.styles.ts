@@ -126,9 +126,14 @@ export const MainImgCustomCss = {
     }
   `,
   gradient: css<GradientProps>`
+    transition: none;
+
     @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
       opacity: ${({ loaded }) => (loaded ? 0.3 : 0)};
     }
+  `,
+  img: css`
+    transition: none;
   `,
 };
 
