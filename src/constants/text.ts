@@ -9,3 +9,14 @@ export const INTRO_TEXT = {
   individual needs. We take pride in offering excellent customer service and a wide
   array of beauty options.`,
 } as const;
+
+export const SERVICES_NOTE_TEXT = [
+  'All prices depends on length and thickness of the hair.',
+
+  'To avoid cancellation, please notify us if you are running more than 10 minutes late.',
+
+  `We do not offer refunds for salon services and products. However, if you are not
+  satisfied with the salon service results, please notify us within 7 business days.`,
+
+  'We offer a one-time adjustment with the same stylist at no additional cost.',
+];

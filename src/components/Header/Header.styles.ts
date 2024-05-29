@@ -5,7 +5,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${(props) => props.theme.color.orange50};
-  max-width: 1600px;
+  max-width: 1440px;
   padding: ${({ theme }) =>
     `${theme.spacing.spacing7} ${theme.spacing.spacing8} ${theme.spacing.spacing6}`};
   margin: 0 auto;

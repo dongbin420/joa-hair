@@ -1,7 +1,7 @@
 import * as S from './Footer.styles';
 import instagram from '@/assets/imgs/png/instagram.png';
 import facebook from '@/assets/imgs/png/facebook.png';
-import { INSTAGRAM_URL, FACEBOOK_URL } from '@/constants/url';
+import { INSTAGRAM_URL, FACEBOOK_URL, GOOGLE_MAP_URL } from '@/constants/url';
 
 function Footer() {
   return (
@@ -21,7 +21,11 @@ function Footer() {
       </S.FooterSection>
       <S.FooterSection order={'3'}>
         <S.Logo>JOA HAIR</S.Logo>
-        <S.Address>Shop 15/803 Stanley St, Woolloongabba QLD 4102</S.Address>
+        <S.Address>
+          <S.AddressLink href={GOOGLE_MAP_URL} target="_blank">
+            Shop 15/803 Stanley St, Woolloongabba QLD 4102
+          </S.AddressLink>
+        </S.Address>
         <S.Copyright>© 2024 Joa hair. All rights reserved.</S.Copyright>
       </S.FooterSection>
       <S.FooterSection order={'2'}>
