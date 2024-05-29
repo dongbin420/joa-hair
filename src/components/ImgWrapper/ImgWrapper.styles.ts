@@ -36,6 +36,7 @@ export const GradientBox = styled.div<GradientProps>`
   background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
   opacity: ${({ loaded }) => (loaded ? 0.2 : 0)};
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};
+  transition: opacity 0.5s ease-in-out;
 
   ${({ customCss }) => customCss && customCss};
 `;
@@ -45,6 +46,7 @@ export const Img = styled.img<ImgProps>`
   height: inherit;
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};
   opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
 
   ${({ customCss }) => customCss && customCss};
 `;
