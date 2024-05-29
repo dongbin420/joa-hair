@@ -7,7 +7,7 @@ function AboutPage() {
   return (
     <>
       <PageBanner img={bannerImg1} content={ABOUT_CONTENT} />
-      <S.AboutPageContainer></S.AboutPageContainer>
+      <S.AboutPageContainer>Coming Soon!</S.AboutPageContainer>
     </>
   );
 }

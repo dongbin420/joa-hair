@@ -7,7 +7,7 @@ function GalleryPage() {
   return (
     <>
       <PageBanner img={bannerImg3} content={GALLERY_CONTENT} />
-      <S.GalleryPageContainer></S.GalleryPageContainer>
+      <S.GalleryPageContainer>Coming Soon!</S.GalleryPageContainer>
     </>
   );
 }

@@ -84,7 +84,15 @@ export const Logo = styled.p`
   }
 `;
 
-export const Address = styled.p``;
+export const Address = styled.p`
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => `${theme.color.orange600}`};
+  }
+`;
+
+export const AddressLink = styled.a``;
 
 export const Copyright = styled.p``;
 

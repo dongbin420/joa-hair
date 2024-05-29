@@ -3,7 +3,7 @@ import { GradientProps } from '@/components/ImgWrapper/ImgWrapper.styles';
 
 export const PageBannerContainer = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 370px;
   position: relative;
 `;
 
@@ -31,11 +31,23 @@ export const TextWrapper = styled.div`
 `;
 
 export const PageTitle = styled.h3`
-  font-size: ${({ theme }) => theme.heading.xl.fontSize};
+  font-size: ${({ theme }) => theme.heading.xxl.fontSize};
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.heading.xl.fontSize};
+  }
 `;
 
 export const PageText = styled.p`
   font-size: ${({ theme }) => theme.text.xl.fontSize};
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.text.lg.fontSize};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.text.md.fontSize};
+  }
 `;

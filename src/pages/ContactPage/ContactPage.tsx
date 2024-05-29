@@ -7,7 +7,7 @@ function ContactPage() {
   return (
     <>
       <PageBanner img={bannerImg4} content={CONTACT_CONTENT} />
-      <S.ContactPageContainer></S.ContactPageContainer>
+      <S.ContactPageContainer>Coming Soon!</S.ContactPageContainer>
     </>
   );
 }
