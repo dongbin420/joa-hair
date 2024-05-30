@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 interface InformationTextProps {
   title?: boolean;
   lastText?: boolean;
+  link?: boolean;
 }
 
 export const ContactBoxContainer = styled.div`
@@ -34,6 +35,25 @@ export const InformationTitle = styled.p`
 export const InformationText = styled.p<InformationTextProps>`
   font-weight: ${({ title }) => (title ? 700 : 400)};
   margin-bottom: ${({ lastText, theme }) => (lastText ? 0 : theme.spacing.spacing2)};
+  text-decoration: ${({ link }) => (link ? 'underline' : 'none')};
+
+  &:hover {
+    color: ${({ theme, link }) => (link ? theme.color.orange600 : 'black')};
+  }
+`;
+
+export const IconLink = styled.a``;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  gap: ${(props) => props.theme.spacing.spacing3};
+  margin-top: ${(props) => props.theme.spacing.spacing2};
+`;
+
+export const Icon = styled.img`
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 `;
 
 export const InformationLink = styled.a`
