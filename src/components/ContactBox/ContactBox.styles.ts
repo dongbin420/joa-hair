@@ -11,10 +11,11 @@ export const ContactBoxContainer = styled.div`
   display: flex;
   padding: ${(props) => props.theme.spacing.spacing11} ${(props) => props.theme.spacing.spacing9};
   gap: ${({ theme }) => theme.spacing.spacing4};
+  margin-bottom: ${({ theme }) => theme.spacing.spacing6};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.spacing10};
+    gap: ${({ theme }) => theme.spacing.spacing11};
     padding: ${(props) => props.theme.spacing.spacing11} 0;
   }
 `;
@@ -47,7 +48,7 @@ export const IconLink = styled.a``;
 export const IconWrapper = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.spacing3};
-  margin-top: ${(props) => props.theme.spacing.spacing2};
+  margin-top: ${(props) => props.theme.spacing.spacing5};
 `;
 
 export const Icon = styled.img`
