@@ -30,7 +30,12 @@ export const CONTACT_QUESTIONS = [
   {
     question: 'WHERE SHOULD I PARK?',
     answer:
-      'In the shopping complex where our salon is located, there is a large supermarket, and there is an underground parking lot on the lower floor. Free parking for up to 3 hours is available.',
+      "In the shopping complex where our salon is located, there is a large supermarket Coles, and there is an underground parking lot on the lower floor. Free parking for up to 3 hours is available. The entrance to the parking lot is located at the back on Gibbon St. Please don't take the main road. Instead, enter from the side road and park in the Coles underground parking.",
+  },
+  {
+    question: 'HOW DO I GET THERE BY WALKING?',
+    answer:
+      'Walk from Coles towards the woollongabba Hotel, and you will see Joa Hair on the right-hand side.',
   },
   {
     question: 'WHAT IF I AM UNHAPPY WITH MY HAIR SERVICE?',
