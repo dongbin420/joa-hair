@@ -20,3 +20,26 @@ export const SERVICES_NOTE_TEXT = [
 
   'We offer a one-time adjustment with the same stylist at no additional cost.',
 ];
+
+export const CONTACT_QUESTIONS = [
+  {
+    question: 'DO YOU ACCEPT WALK-IN APPOINTMENTS?',
+    answer:
+      'While we prefer appointments, walk-ins are also welcome. However, if we have a high volume of appointments(if the salon is busy), we may not be able to accommodate walk-in customers. Therefore, we recommend making an appointment',
+  },
+  {
+    question: 'WHERE SHOULD I PARK?',
+    answer:
+      "In the shopping complex where our salon is located, there is a large supermarket Coles, and there is an underground parking lot on the lower floor. Free parking for up to 3 hours is available. The entrance to the parking lot is located at the back on Gibbon St. Please don't take the main road. Instead, enter from the side road and park in the Coles underground parking.",
+  },
+  {
+    question: 'HOW DO I GET THERE BY WALKING?',
+    answer:
+      'Walk from Coles towards the woollongabba Hotel, and you will see Joa Hair on the right-hand side.',
+  },
+  {
+    question: 'WHAT IF I AM UNHAPPY WITH MY HAIR SERVICE?',
+    answer:
+      'At Joa Hair Salon we strive for top-notch service, and we always guarantee our work. If you are not completely satisfied with your hair, please contact our guest services team within 7 days of your appointment by calling us at 0494 112 551 or emailing Joahair@hotmail.com with photos explaining the issue and our salon manager will be happy to schedule you in for a fix.',
+  },
+];
