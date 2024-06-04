@@ -30,6 +30,7 @@ export const ClickAreaButton = styled.button<{ isOpen: boolean }>`
   padding: 15px 0;
   font-size: ${({ theme }) => theme.text.md.fontSize};
   cursor: pointer;
+  color: black;
 
   ${({ isOpen, theme }) => {
     if (isOpen) {
