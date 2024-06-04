@@ -25,7 +25,7 @@ export const CONTACT_QUESTIONS = [
   {
     question: 'DO YOU ACCEPT WALK-IN APPOINTMENTS?',
     answer:
-      'While we prefer appointments, walk-ins are also welcome. However, if we have a high volume of appointments(if the salon is busy), we may not be able to accommodate walk-in customers. Therefore, we recommend making an appointment',
+      'While we prefer appointments, walk-ins are also welcome. However, if we have a high volume of appointments(if the salon is busy), we may not be able to accommodate walk-in customers. Therefore, we recommend making an appointment.',
   },
   {
     question: 'WHERE SHOULD I PARK?',
