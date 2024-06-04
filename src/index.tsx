@@ -11,6 +11,7 @@ import AboutPage from '@/pages/AboutPage/AboutPage';
 import ServicesPage from '@/pages/ServicesPage/ServicesPage';
 import GalleryPage from '@/pages/GalleryPage/GalleryPage';
 import ContactPage from '@/pages/ContactPage/ContactPage';
+import InstagramAuth from './pages/InstagramAuth/InstagramAuth';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactPage />,
+      },
+      {
+        path: 'instagram-auth',
+        element: <InstagramAuth />,
       },
     ],
   },
