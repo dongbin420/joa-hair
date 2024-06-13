@@ -19,7 +19,9 @@ export interface GradientProps {
   loaded: boolean;
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'customCss',
+})<WrapperProps>`
   position: relative;
   width: ${({ width }) => `${width}`};
   height: ${({ height }) => `${height}`};
@@ -27,7 +29,9 @@ export const Wrapper = styled.div<WrapperProps>`
   ${({ customCss }) => customCss && customCss};
 `;
 
-export const GradientBox = styled.div<GradientProps>`
+export const GradientBox = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'customCss' && prop !== 'loaded' && prop !== 'borderRadius',
+})<GradientProps>`
   position: absolute;
   top: 0;
   right: 0;
@@ -41,7 +45,9 @@ export const GradientBox = styled.div<GradientProps>`
   ${({ customCss }) => customCss && customCss};
 `;
 
-export const Img = styled.img<ImgProps>`
+export const Img = styled.img.withConfig({
+  shouldForwardProp: (prop) => prop !== 'customCss' && prop !== 'loaded' && prop !== 'borderRadius',
+})<ImgProps>`
   width: inherit;
   height: inherit;
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};

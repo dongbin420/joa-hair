@@ -10,7 +10,7 @@ module.exports = merge(common, {
     port: 3000,
     compress: true,
   },
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     new webpack.DefinePlugin({
       DEVELOPMENT: JSON.stringify(true),

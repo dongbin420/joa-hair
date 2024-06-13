@@ -23,7 +23,9 @@ const fold = keyframes`
   }
 `;
 
-export const OverlayContainer = styled.div<{ isClosing: boolean }>`
+export const OverlayContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isClosing',
+})<{ isClosing: boolean }>`
   position: fixed;
   top: 0;
   left: 0;

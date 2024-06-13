@@ -178,7 +178,9 @@ export const IntroTextHeading = styled.h4`
   margin-bottom: ${({ theme }) => `${theme.spacing.spacing4}`};
 `;
 
-export const IntroTextTitle = styled.h3<IntroTextTitle>`
+export const IntroTextTitle = styled.h3.withConfig({
+  shouldForwardProp: (prop) => prop !== 'margin',
+})<IntroTextTitle>`
   font-weight: 100;
   font-family: 'Themunday', sans-serif;
   font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
@@ -198,7 +200,9 @@ export const IntroTextTitle = styled.h3<IntroTextTitle>`
   }};
 `;
 
-export const IntroTextContent = styled.p<IntroTextContent>`
+export const IntroTextContent = styled.p.withConfig({
+  shouldForwardProp: (prop) => prop !== 'margin',
+})<IntroTextContent>`
   font-size: ${({ theme }) => `${theme.text.xl.fontSize}`};
   font-weight: 300;
 

@@ -1,7 +1,9 @@
 import { styled, css } from 'styled-components';
 import { ButtonProps } from './Button';
 
-export const ButtonWrapper = styled.button<ButtonProps>`
+export const ButtonWrapper = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'customCss',
+})<ButtonProps>`
   font-family: 'Inter', sans-serif;
   color: ${(props) => props.theme.color.orange600};
   background-color: transparent;

@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { onSchedule } = require('firebase-functions/v2/scheduler');
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 const { onRequest } = require('firebase-functions/v2/https');
@@ -7,63 +6,13 @@ const { onRequest } = require('firebase-functions/v2/https');
 
 initializeApp();
 const db = getFirestore();
-const batch = db.batch();
 const MAIN_API_URL = `${process.env.INSTAGRAM_API_BASE_URL}/v20.0/${process.env.INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,permalink,timestamp,thumbnail_url,username,caption,is_shared_to_feed,children{id,media_type,media_url,thumbnail_url}&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&pretty=1&limit=10000`;
 
-// 인스타그램 api이용해서 모든 post 가져와 firestore에 저장하는 함수(매일 1번)
-exports.scheduledFetchInstaPosts = onSchedule(
-  {
-    schedule: '0 0 * * *',
-    timeZone: 'UTC',
-    region: 'australia-southeast1',
-  },
-  async () => {
-    try {
-      const instagramData = await axios.get(MAIN_API_URL);
-      const instagramPosts = instagramData.data.data;
-
-      for (const post of instagramPosts) {
-        const postRef = db.collection('instagram_all_posts').doc(post.id);
-        const currentPostDoc = await postRef.get();
-
-        // 새로운 게시물이나, 변경된 게시물만 업데이트
-        if (
-          !currentPostDoc.exists ||
-          JSON.stringify(currentPostDoc.data()) !== JSON.stringify(post)
-        ) {
-          batch.set(postRef, post);
-        }
-      }
-
-      await batch.commit();
-
-      console.log('Instagram posts updated successfully');
-    } catch (error) {
-      console.error('Error fetching Instagram data:', error);
-    }
-  },
-);
-
-// 인스타그램 api이용해서 모든 post 가져와 firestore에 저장하는 함수(요청시)
+// 수동으로 인스타그램 api에서 인스타그램 posts들 가져와서, 데이터베이스에 저장하는 함수
 exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, async (req, res) => {
   try {
-    const instagramData = await axios.get(MAIN_API_URL);
-    const instagramPosts = instagramData.data.data;
-
-    for (const post of instagramPosts) {
-      const postRef = db.collection('instagram_all_posts').doc(post.id);
-      const currentPostDoc = await postRef.get();
-
-      // 새로운 게시물이나, 변경된 게시물만 업데이트
-      if (
-        !currentPostDoc.exists ||
-        JSON.stringify(currentPostDoc.data()) !== JSON.stringify(post)
-      ) {
-        batch.set(postRef, post);
-      }
-    }
-
-    await batch.commit();
+    const { data } = await axios.get(MAIN_API_URL);
+    await db.collection('instagram_all_posts').doc('latest').set(data);
 
     console.log('Instagram posts updated successfully');
     res.send('Manual trigger executed successfully!');
@@ -72,98 +21,78 @@ exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, as
   }
 });
 
-// document들 내림차순으로 정렬 후 전달.(클라이언트에서 fetch할 때 마다.)(모든 docs)
-// exports.getSortedInstagramData = onRequest(
-//   { region: 'australia-southeast1' },
-//   { cors: [/joahair\.com$/] },
-//   async (req, res) => {
-//     try {
-//       const instagramDataRef = db.collection('instagram_all_posts');
-//       const querySnapshot = await instagramDataRef.orderBy('timestamp', 'desc').get();
-
-//       const data = [];
-//       querySnapshot.forEach((doc) => {
-//         data.push(doc.data());
-//       });
-
-//       res.status(200).json(data);
-//     } catch (error) {
-//       console.error('Error fetching sorted data:', error);
-//     }
-//   },
-// );
-
-// document들 내림차순으로 정렬 후 개수 맞춰서 전달. (클라이언트 http 요청에 따라 8개 16개)
+// 인스타그램 모든 포스트들 8개, 16개로 나눠서 클라이언트 요청시 보내주는 함수.
 exports.getSortedInstagramPosts = onRequest(
-  { region: 'australia-southeast1' },
-  { cors: [/joahair\.com$/] },
+  { region: 'australia-southeast1', cors: 'http://localhost:3000' },
+  // [/joahair\.com$/]
   async (req, res) => {
-    try {
-      const postSize = Number(req.query.postSize) || 16;
-      const lastVisiblePost = req.query.lastVisiblePost || null;
-      console.log('postSize:', postSize);
-      console.log('lastVisiblePost:', lastVisiblePost);
-      let query = db.collection('instagram_all_posts').orderBy('timestamp', 'desc').limit(postSize);
+    console.log(req.query.postSize);
+    console.log(req.query.startPost);
+    const postSize = Number(req.query.postSize) || 16;
+    const startPost = Number(req.query.startPost) || 1;
 
-      if (lastVisiblePost) {
-        const lastDoc = await db.collection('instagram_all_posts').doc(lastVisiblePost).get();
-        if (lastDoc.exists) {
-          query = query.startAfter(lastDoc);
-        } else {
-          console.error('Last visible post does not exist:', lastVisiblePost);
-          res.status(404).json({ error: 'Last visible post not found' });
-          return;
-        }
+    try {
+      const doc = await db.collection('instagram_all_posts').doc('latest').get();
+
+      if (!doc.exists) {
+        return res.status(404).send('No posts found');
       }
 
-      const querySnapshot = await query.get();
-      const data = [];
+      const postsData = doc.data().data.map((post, idx) => ({ databaseId: idx, ...post }));
+      const startIndex = startPost - 1;
+      const endIndex = startIndex + postSize;
+      const sortedPosts = postsData.slice(startIndex, endIndex);
 
-      querySnapshot.forEach((doc) => {
-        data.push(doc.data());
-      });
-
-      res.status(200).json(data);
+      res.status(200).json(sortedPosts);
     } catch (error) {
       console.error('Error fetching sorted posts:', error);
+      res.status(500).send('Error fetching Instagram posts');
     }
   },
 );
 
-// instagram_all_posts 컬렉션에서 특정 post만 선택해서 selected_instagram_posts컬렉션에 추가하는 함수(수동 호출)
-exports.copySelectedInstagramPosts = onRequest(
-  { region: 'australia-southeast1' },
+// instagram_all_posts 데이터베이스에서 selectedPost에 해당하는 id만 검색해서, 클라이언트 요청시 보내주는 함수
+exports.getSelectedInstagramPosts = onRequest(
+  { region: 'australia-southeast1', cors: 'http://localhost:3000' },
+  // [/joahair\.com$/]
   async (req, res) => {
-    const postIds = [
-      '18027365918493604',
-      '17991085172648305',
-      '18017946779338179',
-      '18010264298227357',
-      '18435528307019745',
-      '17969291120610239',
-      '18051885811630862',
-      '18057197821592914',
-    ];
+    try {
+      const postIds = [
+        '18027365918493604',
+        '17991085172648305',
+        '18017946779338179',
+        '18010264298227357',
+        '18435528307019745',
+        '17969291120610239',
+        '18051885811630862',
+        '18057197821592914',
+      ];
 
-    const allPostsRef = db.collection('instagram_all_posts');
-    const selectedPostRef = db.collection('selected_instagram_posts');
-    const batch = db.batch();
+      const cacheDurationMilliseconds = 24 * 60 * 60 * 1000;
+      const cacheDoc = await db.collection('cache').doc('selectedPosts').get();
+      const cachedData = cacheDoc.exists ? cacheDoc.data() : null;
 
-    for (const postId of postIds) {
-      const docRef = allPostsRef.doc(postId);
-      const doc = await docRef.get();
-
-      if (doc.exists) {
-        const newDocRef = selectedPostRef.doc(doc.id);
-        batch.set(newDocRef, doc.data());
-      } else {
-        console.log(`Document with ID ${postId} does not exist.`);
+      if (
+        cachedData &&
+        cachedData.timestamp &&
+        Date.now() - cachedData.cachedtimestamp < cacheDurationMilliseconds
+      ) {
+        // Return cached data if it's not older than a day
+        return res.status(200).json(cachedData.data);
       }
+
+      const doc = await db.collection('instagram_all_posts').doc('latest').get();
+      const postsData = doc.data().data;
+      const selectedData = postsData.filter((post) => postIds.includes(post.id));
+
+      await db.collection('cache').doc('selectedPosts').set({
+        data: selectedData,
+        cachedtimestamp: Date.now(),
+      });
+
+      res.status(200).json(selectedData);
+    } catch (error) {
+      console.error('Error fetching selected data:', error);
     }
-
-    await batch.commit();
-
-    console.log('Selected posts copied successfully.');
-    res.status(200).json({ message: 'Selected posts copied successfully.' });
   },
 );

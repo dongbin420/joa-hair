@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 
-export const AccordionBodyContainer = styled.div<{ isOpen: boolean; height: number }>`
+export const AccordionBodyContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean; height: number }>`
   overflow: hidden;
   height: ${({ isOpen, height }) => (isOpen ? height + 22 : 0)}px;
   transition: height 0.4s ease;
