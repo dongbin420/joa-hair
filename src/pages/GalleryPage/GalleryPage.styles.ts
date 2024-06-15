@@ -1,15 +1,7 @@
 import { styled } from 'styled-components';
 
 export const GalleryPageContainer = styled.div`
-  max-width: 1440px;
-  padding: 0 ${(props) => props.theme.spacing.spacing8};
-  padding-bottom: ${(props) => props.theme.spacing.spacing10};
+  max-width: 1280px;
+  padding: ${(props) => props.theme.spacing.spacing10} ${(props) => props.theme.spacing.spacing6};
   margin: 0 auto;
-
-  // 작업 완료 후 삭제
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: ${({ theme }) => theme.heading.xxl.fontSize};
 `;

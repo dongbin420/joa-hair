@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useCallback } from 'react';
-import { fetchGalleryPosts } from '@/apis/instagramPosts';
-import { InstagramPosts } from '@/types/InstagramPosts';
+import { fetchGalleryPosts } from '@/apis/instagramPostsApi';
+import { InstagramPosts } from '@/types/InstagramPostsType';
 
 export interface UseFetchPostsReturn {
   data: InstagramPosts[] | null;

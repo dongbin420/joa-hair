@@ -1,5 +1,7 @@
+import * as S from './InstagramGrid.styles';
 import { useEffect, useState, useRef } from 'react';
 import { UseFetchPostsReturn } from '@/hooks/useFetchGalleryPosts';
+import InstagramPost from './InstagramPost/InstagramPost';
 
 export interface InstagramGridProps {
   useFetch: () => UseFetchPostsReturn;
@@ -30,19 +32,14 @@ function InstagramGrid({ useFetch, isGalleryPage }: InstagramGridProps) {
   };
 
   return (
-    <div>
-      <div>
+    <>
+      <S.GridWrapper>
         {data &&
           data.length > 0 &&
-          data.map((post, idx) => (
-            <div key={idx}>
-              {post.id} : {post.caption}
-              <div>{idx}</div>
-            </div>
-          ))}
-      </div>
+          data.map((post, idx) => <InstagramPost key={idx} post={post} />)}
+      </S.GridWrapper>
       {isGalleryPage && <button onClick={loadMore}>load more</button>}
-    </div>
+    </>
   );
 }
 

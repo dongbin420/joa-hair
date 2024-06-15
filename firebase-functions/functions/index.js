@@ -24,10 +24,8 @@ exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, as
 // 인스타그램 모든 포스트들 8개, 16개로 나눠서 클라이언트 요청시 보내주는 함수.
 exports.getSortedInstagramPosts = onRequest(
   { region: 'australia-southeast1', cors: 'http://localhost:3000' },
-  // [/joahair\.com$/]
+  // 프로덕션시 cors 대상 오리진 변경 [/joahair\.com$/]
   async (req, res) => {
-    console.log(req.query.postSize);
-    console.log(req.query.startPost);
     const postSize = Number(req.query.postSize) || 16;
     const startPost = Number(req.query.startPost) || 1;
 
@@ -54,7 +52,7 @@ exports.getSortedInstagramPosts = onRequest(
 // instagram_all_posts 데이터베이스에서 selectedPost에 해당하는 id만 검색해서, 클라이언트 요청시 보내주는 함수
 exports.getSelectedInstagramPosts = onRequest(
   { region: 'australia-southeast1', cors: 'http://localhost:3000' },
-  // [/joahair\.com$/]
+  // 프로덕션시 cors 대상 오리진 변경 [/joahair\.com$/]
   async (req, res) => {
     try {
       const postIds = [

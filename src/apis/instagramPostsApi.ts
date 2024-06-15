@@ -1,5 +1,5 @@
 import { http } from './http';
-import { InstagramPosts } from '@/types/InstagramPosts';
+import { InstagramPosts } from '@/types/InstagramPostsType';
 
 export const fetchGalleryPosts = (postSizeCount?: number, startPost?: number) => {
   return http.get<InstagramPosts[]>(

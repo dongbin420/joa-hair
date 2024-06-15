@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useCallback } from 'react';
-import { fetchSelectedPosts } from '@/apis/instagramPosts';
-import { InstagramPosts } from '@/types/InstagramPosts';
+import { fetchSelectedPosts } from '@/apis/instagramPostsApi';
+import { InstagramPosts } from '@/types/InstagramPostsType';
 import { UseFetchPostsReturn } from '@/hooks/useFetchGalleryPosts';
 
 export const useFetchSelectedPosts = (): UseFetchPostsReturn => {
