@@ -7,6 +7,7 @@ export const thumbnailImg = styled.img`
   object-fit: cover;
   object-position: center; // 필요한지 여부 확인
   position: relative;
+  transition: transform 0.5s ease;
 `;
 
 export const InstagramIcon = styled.img`
@@ -24,7 +25,7 @@ export const SlideIcon = styled.img`
   position: absolute;
   z-index: 1;
   width: 25px;
-  height: 25px;
+  height: 20px;
   top: 10px;
   right: 10px;
 `;
@@ -42,8 +43,7 @@ export const PlayIcon = styled.img`
 export const VideoIcon = styled.img`
   position: absolute;
   z-index: 1;
-  width: 25px;
-  height: 25px;
+  height: 20px;
   top: 10px;
   right: 10px;
 `;
@@ -136,5 +136,9 @@ export const PostWrapper = styled.div`
 
   &:hover::after {
     opacity: 0.5;
+  }
+
+  &:hover ${thumbnailImg} {
+    transform: scale(1.06);
   }
 `;
