@@ -21,6 +21,13 @@ export const useFetchGalleryPosts = (): UseFetchPostsReturn => {
 
     try {
       const response = await fetchGalleryPosts(postSizeCount, startPost);
+
+      if (response.data.length === 0) {
+        alert('No more posts to load.');
+
+        return;
+      }
+
       setData((prevData) => [...prevData, ...response.data]);
     } catch (err) {
       if (axios.isAxiosError(err)) {

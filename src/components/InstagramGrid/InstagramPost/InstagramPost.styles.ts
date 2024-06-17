@@ -106,7 +106,10 @@ export const PostWrapper = styled.div`
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  max-height: 400px;
+  aspect-ratio: 2 / 3;
+
+  /* aspect-ratio대신 쓸 수도 있음 */
+  /* max-height: 400px; */
 
   &:hover
     ${InstagramIcon},

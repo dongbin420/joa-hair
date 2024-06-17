@@ -14,7 +14,7 @@ export interface InstagramGridProps {
 
 function InstagramGrid({ useFetch, isGalleryPage, isMainPage }: InstagramGridProps) {
   const initialStartPost = 17;
-  const loadMorePostSize = 8;
+  const loadMorePostSize = 16;
   const { data, loading, error, fetchData } = useFetch();
   const [startPost, setStartPost] = useState<number>(initialStartPost);
   const hasFetchedInitialData = useRef(false);
@@ -27,8 +27,8 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage }: InstagramGridPro
   }, [fetchData]);
 
   const loadMore = async () => {
-    if (data && data.length + 1 >= startPost) {
-      fetchData(8, startPost);
+    if (data && data.length + 1 === startPost) {
+      fetchData(loadMorePostSize, startPost);
       setStartPost((prevStartPost) => prevStartPost + loadMorePostSize);
     } else {
       alert('No more posts to load.');

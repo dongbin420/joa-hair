@@ -14,8 +14,8 @@ export const Container = styled.div`
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 10px;
+  grid-auto-rows: 1fr;
+  gap: 8px;
   margin-bottom: ${({ theme }) => theme.spacing.spacing8};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
