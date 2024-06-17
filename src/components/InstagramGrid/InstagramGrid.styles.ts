@@ -1,4 +1,5 @@
 import { styled, keyframes } from 'styled-components';
+import type { CSSProp } from 'styled-components';
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -11,7 +12,7 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const GridWrapper = styled.div`
+export const GridWrapper = styled.div<{ customCss: CSSProp }>`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
@@ -21,6 +22,8 @@ export const GridWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  ${({ customCss }) => customCss && customCss};
 `;
 
 export const ButtonContainer = styled.div`
@@ -89,18 +92,18 @@ export const InstagramButtonContentWrapper = styled.div`
 export const SeeMoreButton = styled.button`
   font-family: 'Inter', sans-serif;
   padding: ${({ theme }) => theme.spacing.spacing3} ${({ theme }) => theme.spacing.spacing5};
-  background-color: ${({ theme }) => theme.color.orange600};
+  background-color: ${({ theme }) => theme.color.gray800};
   border: none;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.orange400};
+    background-color: ${({ theme }) => theme.color.gray600};
   }
 
   &:active {
-    background-color: ${({ theme }) => theme.color.orange500};
+    background-color: ${({ theme }) => theme.color.gray700};
   }
 `;
 

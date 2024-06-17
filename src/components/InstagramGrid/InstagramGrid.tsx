@@ -5,16 +5,22 @@ import { UseFetchPostsReturn } from '@/hooks/useFetchGalleryPosts';
 import InstagramPost from './InstagramPost/InstagramPost';
 import { INSTAGRAM_URL } from '@/constants/url';
 import instagramIcon from '@/assets/imgs/svg/instagram.svg';
+import type { CSSProp } from 'styled-components';
 
 export interface InstagramGridProps {
   useFetch: () => UseFetchPostsReturn;
   isGalleryPage?: boolean;
   isMainPage?: boolean;
+  customCss?: {
+    post?: CSSProp;
+    grid?: CSSProp;
+  };
 }
 
-function InstagramGrid({ useFetch, isGalleryPage, isMainPage }: InstagramGridProps) {
+function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: InstagramGridProps) {
   const initialStartPost = 17;
   const loadMorePostSize = 16;
+
   const { data, loading, error, fetchData } = useFetch();
   const [startPost, setStartPost] = useState<number>(initialStartPost);
   const hasFetchedInitialData = useRef(false);
@@ -37,10 +43,10 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage }: InstagramGridPro
 
   return (
     <S.Container>
-      <S.GridWrapper>
+      <S.GridWrapper customCss={customCss?.grid}>
         {data &&
           data.length > 0 &&
-          data.map((post, idx) => <InstagramPost key={idx} post={post} />)}
+          data.map((post, idx) => <InstagramPost key={idx} post={post} customCss={customCss} />)}
       </S.GridWrapper>
       <S.ButtonContainer>
         {isGalleryPage && (
@@ -59,9 +65,19 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage }: InstagramGridPro
           </>
         )}
         {isMainPage && (
-          <S.SeeMoreButton>
-            <Link to="/gallery">See More...</Link>
-          </S.SeeMoreButton>
+          <>
+            <Link to="/gallery">
+              <S.SeeMoreButton>See More...</S.SeeMoreButton>
+            </Link>
+            <S.InstagramButton>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+                <S.InstagramButtonContentWrapper>
+                  <img src={instagramIcon} />
+                  Follow on Instagram
+                </S.InstagramButtonContentWrapper>
+              </a>
+            </S.InstagramButton>
+          </>
         )}
       </S.ButtonContainer>
     </S.Container>

@@ -1,10 +1,12 @@
 import * as S from './MainPage.styles';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import Button from '@/components/Button/Button';
+import InstagramGrid from '@/components/InstagramGrid/InstagramGrid';
 import mainImg from '@/assets/imgs/webp/mainImg.webp';
 import introImg from '@/assets/imgs/webp/introImg.webp';
 import { INTRO_TEXT } from '@/constants/text';
 import { RESERVATION_URL } from './../../constants/url';
+import { useFetchSelectedPosts } from '@/hooks/useFetchSelectedPosts';
 
 function MainPage() {
   return (
@@ -45,6 +47,18 @@ function MainPage() {
           <ImgWrapper img={introImg} borderRadius={15} customCss={S.IntroImgCustomCss} />
         </S.IntroContentWrapper>
       </S.SecondSection>
+      <S.ThirdSection>
+        <S.InstagramGridContainer>
+          <S.InstagramGridWrapper>
+            <S.InstagramGridTitle>Style Spotlights</S.InstagramGridTitle>
+            <InstagramGrid
+              isMainPage={true}
+              useFetch={useFetchSelectedPosts}
+              customCss={S.InstagramGridCustomCss}
+            />
+          </S.InstagramGridWrapper>
+        </S.InstagramGridContainer>
+      </S.ThirdSection>
       <S.ButtonLink href={RESERVATION_URL} target="_blank">
         <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
           BOOK NOW
