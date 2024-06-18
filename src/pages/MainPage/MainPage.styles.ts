@@ -14,6 +14,11 @@ export const MainPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding: 0 ${(props) => props.theme.spacing.spacing4};
+    padding-bottom: ${(props) => props.theme.spacing.spacing10};
+  }
 `;
 
 export const FirstSection = styled.section`
@@ -23,7 +28,7 @@ export const FirstSection = styled.section`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     justify-content: center;
-    order: 1;
+    order: 0;
   }
 `;
 
@@ -139,10 +144,11 @@ export const MainImgCustomCss = {
 
 export const SecondSection = styled.section`
   padding-top: ${(props) => props.theme.spacing.spacing10};
+  margin-bottom: ${({ theme }) => `${theme.spacing.spacing10}`};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-top: ${({ theme }) => theme.spacing.spacing7};
-    order: 3;
+    order: 2;
   }
 `;
 
@@ -178,7 +184,9 @@ export const IntroTextHeading = styled.h4`
   margin-bottom: ${({ theme }) => `${theme.spacing.spacing4}`};
 `;
 
-export const IntroTextTitle = styled.h3<IntroTextTitle>`
+export const IntroTextTitle = styled.h3.withConfig({
+  shouldForwardProp: (prop) => prop !== 'margin',
+})<IntroTextTitle>`
   font-weight: 100;
   font-family: 'Themunday', sans-serif;
   font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
@@ -198,7 +206,9 @@ export const IntroTextTitle = styled.h3<IntroTextTitle>`
   }};
 `;
 
-export const IntroTextContent = styled.p<IntroTextContent>`
+export const IntroTextContent = styled.p.withConfig({
+  shouldForwardProp: (prop) => prop !== 'margin',
+})<IntroTextContent>`
   font-size: ${({ theme }) => `${theme.text.xl.fontSize}`};
   font-weight: 300;
 
@@ -239,6 +249,61 @@ export const ButtonLink = styled.a`
   align-self: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    order: 2;
+    order: 1;
   }
 `;
+
+export const ThirdSection = styled.section`
+  margin-bottom: ${({ theme }) => `${theme.spacing.spacing12}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    justify-content: center;
+    order: 3;
+  }
+`;
+
+export const InstagramGridContainer = styled.div``;
+
+export const InstagramGridWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid ${({ theme }) => `${theme.color.orange500}`};
+  border-bottom: none;
+  padding: ${(props) => props.theme.spacing.spacing7} ${(props) => props.theme.spacing.spacing10};
+  padding-bottom: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: ${(props) => props.theme.spacing.spacing7} ${(props) => props.theme.spacing.spacing5};
+    padding-bottom: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${(props) => props.theme.spacing.spacing7} ${(props) => props.theme.spacing.spacing3};
+    padding-bottom: 0;
+  }
+`;
+
+export const InstagramGridTitle = styled.h3`
+  font-weight: 400;
+  color: ${({ theme }) => `${theme.color.orange600}`};
+  font-size: ${({ theme }) => `${theme.heading.xl.fontSize}`};
+  margin-bottom: ${(props) => props.theme.spacing.spacing8};
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => `${theme.heading.md.fontSize}`};
+  }
+`;
+
+export const InstagramGridCustomCss = {
+  post: css`
+    aspect-ratio: 1 / 1;
+  `,
+
+  grid: css`
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  `,
+};

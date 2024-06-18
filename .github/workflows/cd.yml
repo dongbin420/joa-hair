@@ -25,8 +25,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo '${{ secrets.ENV_VARS }}' | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]' > .env
-        shell: bash
+          echo FETCH_INSTAGRAM_POSTS_URL=${{ secrets.FETCH_INSTAGRAM_POSTS_URL }} >> .env
+          echo FETCH_SELECTED_INSTAGRAM_POSTS_URL=${{ secrets.FETCH_SELECTED_INSTAGRAM_POSTS_URL }} >> .env
 
       - name: Install dependencies
         run: npm ci

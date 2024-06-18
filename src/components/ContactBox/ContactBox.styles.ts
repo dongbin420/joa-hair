@@ -33,7 +33,9 @@ export const InformationTitle = styled.p`
   margin: ${({ theme }) => theme.spacing.spacing6} 0;
 `;
 
-export const InformationText = styled.p<InformationTextProps>`
+export const InformationText = styled.p.withConfig({
+  shouldForwardProp: (prop) => prop !== 'link' && prop !== 'title' && prop !== 'lastText',
+})<InformationTextProps>`
   font-weight: ${({ title }) => (title ? 700 : 400)};
   margin-bottom: ${({ lastText, theme }) => (lastText ? 0 : theme.spacing.spacing2)};
   text-decoration: ${({ link }) => (link ? 'underline' : 'none')};

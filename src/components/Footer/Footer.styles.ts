@@ -105,7 +105,7 @@ export const HoursTitle = styled.p`
   }
 `;
 
-export const DayWrapper = styled.p`
+export const DayWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
