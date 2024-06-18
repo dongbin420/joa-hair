@@ -30,7 +30,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.spacing2};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+  @media (max-width: 420px) {
     flex-direction: column;
     align-items: center;
     gap: ${({ theme }) => theme.spacing.spacing4};

@@ -1,5 +1,5 @@
 export const INTRO_TEXT = {
-  FIRST: 'Welcome to our beauty salon nestled in woolloongabba, where beauty meets tranquility.',
+  FIRST: 'Welcome to our beauty salon located in woolloongabba, where beauty meets tranquility.',
 
   SECOND: `Experience professional hair care, rejuvenation treatment, and personalized styling
   services here. We will show you your natural beauty with our professional hands.
