@@ -9,4 +9,5 @@ module.exports = merge(common, {
       DEVELOPMENT: JSON.stringify(false),
     }),
   ],
+  devtool: 'hidden-source-map',
 });

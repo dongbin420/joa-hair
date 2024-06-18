@@ -1,6 +1,8 @@
 import { styled, css } from 'styled-components';
 
-export const AccordionHeaderContainer = styled.div<{ isOpen: boolean }>`
+export const AccordionHeaderContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>`
   img {
     width: 25px;
     height: 25px;
@@ -20,7 +22,9 @@ export const AccordionHeaderContainer = styled.div<{ isOpen: boolean }>`
   }
 `;
 
-export const ClickAreaButton = styled.button<{ isOpen: boolean }>`
+export const ClickAreaButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>`
   font-family: 'Inter', sans-serif;
   display: flex;
   border: 0;
