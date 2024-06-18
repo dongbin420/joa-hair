@@ -20,3 +20,7 @@ export const fetchSelectedPosts = () => {
     `http://127.0.0.1:5001/joa-hair/australia-southeast1/getSelectedInstagramPosts`,
   );
 };
+
+export const fetchPostsForStorybook = () => {
+  return http.get<InstagramPosts[]>('/mockup/gridPostsForStorybook.json');
+};

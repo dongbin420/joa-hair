@@ -275,10 +275,12 @@ export const InstagramGridWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: ${(props) => props.theme.spacing.spacing7} ${(props) => props.theme.spacing.spacing5};
+    padding-bottom: 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${(props) => props.theme.spacing.spacing7} ${(props) => props.theme.spacing.spacing3};
+    padding-bottom: 0;
   }
 `;
 

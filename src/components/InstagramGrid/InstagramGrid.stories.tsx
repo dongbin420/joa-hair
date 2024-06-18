@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import InstagramGrid from './InstagramGrid';
-import { useFetchGalleryPosts } from '@/hooks/useFetchGalleryPosts';
+import { useFetchPostsForStorybook } from '@/hooks/useFetchPostsForStorybook';
 
 /**
- * `InstagramGrid` 컴포넌트
+ * 메인페이지 및 갤러리 페이지에 사용되는 `InstagramGrid` 컴포넌트입니다.
  */
 const meta = {
   title: 'Components/InstagramGrid',
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => {
-    return <InstagramGrid useFetch={useFetchGalleryPosts} />;
+    return <InstagramGrid useFetch={useFetchPostsForStorybook} />;
   },
-  args: { useFetch: useFetchGalleryPosts },
+  args: { useFetch: useFetchPostsForStorybook },
 };
