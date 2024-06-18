@@ -1,4 +1,5 @@
 import * as S from './InstagramPost.styles';
+import { useState } from 'react';
 import { InstagramPosts } from '@/types/InstagramPostsType';
 import instagramIcon from '@/assets/imgs/svg/instagram.svg';
 import slideIcon from '@/assets/imgs/svg/slide.svg';
@@ -16,10 +17,15 @@ interface InstagramPostProps {
 }
 
 function InstagramPost({ post, customCss }: InstagramPostProps) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <a href={post.permalink} target="_blank" rel="noreferrer">
-      <S.PostWrapper customCss={customCss?.post}>
-        <S.thumbnailImg src={post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url} />
+      <S.PostWrapper customCss={customCss?.post} loaded={loaded}>
+        <S.thumbnailImg
+          src={post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url}
+          onLoad={() => setLoaded(true)}
+        />
         {post.media_type === 'VIDEO' && (
           <>
             <S.PlayIcon src={playIcon} />
