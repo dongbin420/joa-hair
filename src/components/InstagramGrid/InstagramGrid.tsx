@@ -67,7 +67,7 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
         {isMainPage && (
           <>
             <Link to="/gallery">
-              <S.SeeMoreButton>See More...</S.SeeMoreButton>
+              <S.SeeMoreButton>{loading ? <S.Spinner /> : 'See More...'}</S.SeeMoreButton>
             </Link>
             <S.InstagramButton>
               <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">

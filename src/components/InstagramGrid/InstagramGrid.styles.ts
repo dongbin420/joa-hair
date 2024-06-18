@@ -41,7 +41,6 @@ export const LoadMoreButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   font-family: 'Inter', sans-serif;
   background-color: ${({ theme }) => theme.color.gray800};
   color: white;
@@ -90,13 +89,17 @@ export const InstagramButtonContentWrapper = styled.div`
 `;
 
 export const SeeMoreButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Inter', sans-serif;
-  padding: ${({ theme }) => theme.spacing.spacing3} ${({ theme }) => theme.spacing.spacing5};
   background-color: ${({ theme }) => theme.color.gray800};
   border: none;
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  width: 110px;
+  height: 40px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.gray600};
@@ -115,5 +118,4 @@ export const Spinner = styled.span`
   height: 20px;
   animation: ${spin} 1s linear infinite;
   display: inline-block;
-  position: absolute;
 `;

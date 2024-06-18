@@ -103,7 +103,8 @@ export const InstagramUsername = styled.span`
   }
 `;
 
-export const PostWrapper = styled.div<{ customCss: CSSProp }>`
+export const PostWrapper = styled.div<{ customCss: CSSProp; loaded: boolean }>`
+  display: ${({ loaded }) => (loaded ? 'block' : 'none')};
   overflow: hidden;
   position: relative;
   cursor: pointer;
