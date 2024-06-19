@@ -5,6 +5,7 @@ interface WrapperProps {
   width?: string;
   height?: string;
   customCss?: CSSProp;
+  isSticky?: boolean;
 }
 
 interface ImgProps {
@@ -20,12 +21,11 @@ export interface GradientProps {
 }
 
 export const Wrapper = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'customCss',
+  shouldForwardProp: (prop) => prop !== 'customCss' && prop !== 'isSticky',
 })<WrapperProps>`
   position: relative;
-  width: ${({ width }) => `${width}`};
-  height: ${({ height }) => `${height}`};
-
+  width: ${({ isSticky, width }) => (isSticky ? '35px' : `${width}`)};
+  height: ${({ isSticky, height }) => (isSticky ? '35px' : `${height}`)};
   ${({ customCss }) => customCss && customCss};
 `;
 

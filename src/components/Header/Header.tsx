@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useOverlayToggle } from '@/hooks/useOverlayToggle';
+import { useStickyHeader } from '@/hooks/useStickyHeader';
 import * as S from './Header.styles';
 import Button from '@/components/Button/Button';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
@@ -12,12 +13,14 @@ import { ROUTES } from '@/constants/routes';
 
 function Header() {
   const { isOverlayOpen, toggleOverlay } = useOverlayToggle();
+  const isSticky = useStickyHeader();
+
   return (
-    <>
-      <S.HeaderContainer>
+    <S.HeaderBigContainer id="headerBigContainer" isSticky={isSticky}>
+      <S.HeaderContainer isSticky={isSticky}>
         <S.HeaderFirst>
           <Link to="/">
-            <S.LogoWrapper>
+            <S.LogoWrapper isSticky={isSticky}>
               <S.LogoTop>JOA</S.LogoTop>
               <S.LogoBottom>HAIR</S.LogoBottom>
             </S.LogoWrapper>
@@ -30,13 +33,13 @@ function Header() {
         </S.HeaderFirst>
         <S.HeaderSecond>
           <S.IconLink href={INSTAGRAM_URL} target="_blank">
-            <S.Icon src={instagram} alt="Instagram"></S.Icon>
+            <S.Icon src={instagram} alt="Instagram" isSticky={isSticky}></S.Icon>
           </S.IconLink>
           <S.IconLink href={FACEBOOK_URL} target="_blank">
-            <S.Icon src={facebook} alt="Facebook" />
+            <S.Icon src={facebook} alt="Facebook" isSticky={isSticky} />
           </S.IconLink>
           <S.ButtonLink href={RESERVATION_URL} target="_blank">
-            <Button size={'large'} customCss={S.ButtonCustomCss}>
+            <Button size={'large'} customCss={S.ButtonCustomCss} isSticky={isSticky}>
               BOOK NOW
             </Button>
           </S.ButtonLink>
@@ -46,10 +49,11 @@ function Header() {
           img={hamburgerIcon}
           width={'45px'}
           customCss={S.HamburgerCustomCss}
+          isSticky={isSticky}
         />
       </S.HeaderContainer>
       {isOverlayOpen && <Overlay toggleOverlay={toggleOverlay} />}
-    </>
+    </S.HeaderBigContainer>
   );
 }
 
