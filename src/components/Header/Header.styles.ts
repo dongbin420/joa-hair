@@ -1,18 +1,56 @@
 import { styled, css } from 'styled-components';
 
-export const HeaderContainer = styled.header`
+export const HeaderBigContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isSticky',
+})<{ isSticky: boolean }>`
+  width: 100%;
+  top: 0;
+  position: sticky;
+  top: ${({ isSticky }) => (isSticky ? '0' : '-150px')};
+
+  z-index: 10;
+  background-color: ${({ isSticky, theme }) =>
+    isSticky ? 'rgba(255, 246, 237, 0.9)' : theme.color.orange50};
+  box-shadow: ${({ isSticky }) => (isSticky ? '0 0.0625em 0.5em rgba(0, 0, 0, 0.2)' : 'none')};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    top: ${({ isSticky }) => (isSticky ? '0' : '-200px')};
+  }
+`;
+
+export const HeaderContainer = styled.header.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isSticky',
+})<{ isSticky: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${(props) => props.theme.color.orange50};
   max-width: 1440px;
-  padding: ${({ theme }) =>
-    `${theme.spacing.spacing7} ${theme.spacing.spacing8} ${theme.spacing.spacing6}`};
+  padding: ${({ theme, isSticky }) =>
+    isSticky
+      ? `${theme.spacing.spacing1} ${theme.spacing.spacing8}`
+      : `${theme.spacing.spacing7} ${theme.spacing.spacing8} ${theme.spacing.spacing6}`};
   margin: 0 auto;
 
   // prettier-ignore
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: ${(props) => props.theme.spacing.spacing8} ${(props) => props.theme.spacing.spacing8};
+    padding: ${({ isSticky, theme }) =>
+    isSticky
+      ? `${theme.spacing.spacing2} ${theme.spacing.spacing2}`
+      : `${theme.spacing.spacing8} ${theme.spacing.spacing8}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ isSticky, theme }) =>
+      isSticky
+        ? `${theme.spacing.spacing2} ${theme.spacing.spacing2}`
+        : `${theme.spacing.spacing8} ${theme.spacing.spacing8}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding: ${({ isSticky, theme }) =>
+      isSticky
+        ? `${theme.spacing.spacing2} ${theme.spacing.spacing2}`
+        : `${theme.spacing.spacing8} ${theme.spacing.spacing4}`};
   }
 `;
 
@@ -30,26 +68,43 @@ export const HeaderFirst = styled.nav`
   }
 `;
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isSticky',
+})<{ isSticky: boolean }>`
   font-family: 'Themunday', sans-serif;
-  font-size: ${(props) => props.theme.heading.lg.fontSize};
-  line-height: ${(props) => props.theme.text.xl.lineHeight};
   color: ${(props) => props.theme.color.black};
   margin-right: ${(props) => props.theme.spacing.spacing2};
   font-weight: 600;
   cursor: pointer;
   overflow: hidden;
 
+  font-size: ${({ isSticky, theme }) =>
+    isSticky ? theme.heading.md.fontSize : theme.heading.lg.fontSize};
+
+  line-height: ${({ isSticky, theme }) =>
+    isSticky ? theme.text.sm.lineHeight : theme.text.xl.lineHeight};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: ${(props) => props.theme.heading.xl.fontSize};
     overflow: visible;
-    line-height: ${(props) => props.theme.heading.sm.lineHeight};
     margin-left: ${(props) => props.theme.spacing.spacing8};
+
+    display: ${({ isSticky }) => (isSticky ? 'flex' : 'block')};
+
+    gap: ${({ isSticky, theme }) => (isSticky ? `${theme.spacing.spacing2}` : '0px')};
+
+    font-size: ${({ isSticky, theme }) =>
+      isSticky ? theme.heading.md.fontSize : theme.heading.xl.fontSize};
+
+    line-height: ${({ isSticky, theme }) =>
+      isSticky ? theme.text.sm.lineHeight : theme.heading.sm.lineHeight};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    font-size: ${(props) => props.theme.heading.lg.fontSize};
-    line-height: ${(props) => props.theme.text.lg.lineHeight};
+    font-size: ${({ isSticky, theme }) =>
+      isSticky ? theme.heading.md.fontSize : theme.heading.lg.fontSize};
+
+    line-height: ${({ isSticky, theme }) =>
+      isSticky ? theme.text.sm.lineHeight : theme.text.lg.lineHeight};
   }
 `;
 
@@ -90,10 +145,15 @@ export const HeaderSecond = styled.div`
 
 export const IconLink = styled.a``;
 
-export const Icon = styled.img`
+export const Icon = styled.img.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isSticky',
+})<{ isSticky: boolean }>`
   cursor: pointer;
   width: 50px;
   height: 50px;
+
+  width: ${({ isSticky }) => (isSticky ? '40px' : '50px')};
+  height: ${({ isSticky }) => (isSticky ? '40px' : '50px')};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
     width: 40px;

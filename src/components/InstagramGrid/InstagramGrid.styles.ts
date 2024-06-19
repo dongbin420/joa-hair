@@ -12,7 +12,9 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const GridWrapper = styled.div<{ customCss: CSSProp }>`
+export const GridWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'customCss',
+})<{ customCss: CSSProp }>`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;

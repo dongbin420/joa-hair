@@ -21,6 +21,8 @@ export interface ImgWrapperProps {
     img?: CSSProp;
     gradient?: CSSProp;
   };
+
+  isSticky?: boolean;
 }
 
 function ImgWrapper({
@@ -31,11 +33,18 @@ function ImgWrapper({
   customCss,
   showGradient,
   onClick,
+  isSticky,
 }: ImgWrapperProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <S.Wrapper width={width} height={height} customCss={customCss?.wrapper} onClick={onClick}>
+    <S.Wrapper
+      width={width}
+      height={height}
+      customCss={customCss?.wrapper}
+      onClick={onClick}
+      isSticky={isSticky}
+    >
       {showGradient && (
         <S.GradientBox
           borderRadius={borderRadius}
