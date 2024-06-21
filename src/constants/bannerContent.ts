@@ -1,6 +1,6 @@
 export const ABOUT_CONTENT = {
   title: 'ABOUT',
-  text: 'Learn more about our salon, our talented team of stylists, and our commitment to providing exceptional hair care services.',
+  text: 'Learn more about our salon, and our commitment to providing exceptional hair care services.',
 };
 
 export const SERVICES_CONTENT = {
