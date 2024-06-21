@@ -10,7 +10,6 @@ export const useStickyHeader = (
 
   useEffect(() => {
     const handleScroll = _.throttle(() => {
-      console.log(window.scrollY);
       if (window.scrollY > thresholdUp) {
         setIsSticky(true);
       } else if (window.scrollY < thresholdDown) {
