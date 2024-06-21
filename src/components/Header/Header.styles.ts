@@ -9,9 +9,8 @@ export const HeaderBigContainer = styled.div.withConfig({
   top: ${({ isSticky }) => (isSticky ? '0' : '-150px')};
 
   z-index: 10;
-  /* background-color: ${({ isSticky, theme }) =>
-    isSticky ? 'rgba(255, 246, 237, 0.9)' : theme.color.orange50}; */
-  background-color: white;
+  background-color: ${({ isSticky, theme }) =>
+    isSticky ? 'rgba(255, 246, 237, 0.9)' : theme.color.orange50};
   box-shadow: ${({ isSticky }) => (isSticky ? '0 0.0625em 0.5em rgba(0, 0, 0, 0.2)' : 'none')};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
