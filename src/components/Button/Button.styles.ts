@@ -2,7 +2,7 @@ import { styled, css } from 'styled-components';
 import { ButtonProps } from './Button';
 
 export const ButtonWrapper = styled.button.withConfig({
-  shouldForwardProp: (prop) => prop !== 'customCss',
+  shouldForwardProp: (prop) => prop !== 'customCss' && prop !== 'isSticky',
 })<ButtonProps>`
   font-family: 'Inter', sans-serif;
   color: ${(props) => props.theme.color.orange600};
@@ -47,5 +47,8 @@ export const ButtonWrapper = styled.button.withConfig({
     }
   }};
 
-  ${(props) => props.customCss}
+  padding: ${({ isSticky }) => (isSticky ? '12px 35px' : '16px 45px')};
+  font-size: ${({ theme, isSticky }) =>
+    isSticky ? theme.text.lg.fontSize : theme.text.xl.fontSize};
+  ${(props) => props.customCss};
 `;

@@ -6,11 +6,12 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large' | 'xLarge' | 'xxLarge';
   onClick?: () => void;
   customCss?: CSSProp;
+  isSticky?: boolean;
 }
 
-function Button({ size, onClick, customCss, children }: ButtonProps) {
+function Button({ size, onClick, customCss, children, isSticky }: ButtonProps) {
   return (
-    <S.ButtonWrapper size={size} onClick={onClick} customCss={customCss}>
+    <S.ButtonWrapper size={size} onClick={onClick} customCss={customCss} isSticky={isSticky}>
       {children}
     </S.ButtonWrapper>
   );
