@@ -31,6 +31,7 @@ export const CONTACT_QUESTIONS = [
     question: 'WHERE SHOULD I PARK?',
     answer:
       "In the shopping complex where our salon is located, there is a large supermarket Coles, and there is an underground parking lot on the lower floor. Free parking for up to 3 hours is available. The entrance to the parking lot is located at the back on Gibbon St. Please don't take the main road. Instead, enter from the side road and park in the Coles underground parking.",
+    isParking: true,
   },
   {
     question: 'HOW DO I GET THERE BY WALKING?',

@@ -52,3 +52,9 @@ export const AccordionTitle = styled.h3`
     font-size: ${({ theme }) => theme.heading.md.fontSize};
   }
 `;
+
+export const ParkingImg = styled.img`
+  width: 100%;
+  margin-top: ${({ theme }) => theme.spacing.spacing4};
+  margin-bottom: ${({ theme }) => theme.spacing.spacing4};
+`;
