@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import _ from 'lodash';
 
 export const useStickyHeader = (
-  thresholdUp: number = 240,
-  thresholdDown: number = 160,
+  thresholdUp: number = 260,
+  thresholdDown: number = 140,
   delay: number = 200,
 ): boolean => {
   const [isSticky, setIsSticky] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = _.throttle(() => {
+      console.log(window.scrollY);
       if (window.scrollY > thresholdUp) {
         setIsSticky(true);
       } else if (window.scrollY < thresholdDown) {
