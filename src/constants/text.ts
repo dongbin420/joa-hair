@@ -44,3 +44,13 @@ export const CONTACT_QUESTIONS = [
       'At Joa Hair Salon we strive for top-notch service, and we always guarantee our work. If you are not completely satisfied with your hair, please contact our guest services team within 7 days of your appointment by calling us at 0494 112 551 or emailing Joahair@hotmail.com with photos explaining the issue and our salon manager will be happy to schedule you in for a fix.',
   },
 ];
+
+export const ABOUT_INTRODUCE_TEXT = [
+  `We are Korean professional hair salon at Gabba central in Woolloongabba. 'Joa' means 'good' in Korean. Our salon is named with the hope that all our customers leave with a good heart and a good appearance.`,
+
+  'At Joa Hair, we are composed of top hairstylists from Korea and Japan, each with over 10 years of experience. we boast excellent transportation and accessibility. Customer satisfaction is our top priority. We are a client-centric salon where our hairstylists care for you from start to finish, aiming to provide the best experience in a cozy and comfortable atmosphere. We strive to offer our customers the utmost experience in a warm and inviting environment.',
+
+  'Relax with our comfortable and excellent service. We hope all good things come to your daily life :)',
+
+  '브리즈번 No.1 한인미용실입니다!',
+];
