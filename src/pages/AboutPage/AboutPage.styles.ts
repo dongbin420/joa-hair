@@ -27,6 +27,10 @@ export const LogoWrapper = styled.div`
   overflow: visible;
   font-size: 90px;
   line-height: ${({ theme }) => theme.heading.sm.lineHeight};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.heading.xxl.fontSize};
+  }
 `;
 
 export const LogoTop = styled.p`
@@ -49,11 +53,19 @@ export const TitleSection = styled.div`
 export const TitleFirst = styled.p`
   font-weight: 100;
   font-size: ${({ theme }) => theme.heading.xl.fontSize};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.heading.lg.fontSize};
+  }
 `;
 
 export const TitleSecond = styled.p`
   font-weight: 400;
   font-size: ${({ theme }) => theme.heading.md.fontSize};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.heading.sm.fontSize};
+  }
 `;
 
 export const IntroduceTextContainer = styled.div`
@@ -77,4 +89,9 @@ export const CarouselContainer = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   margin-bottom: ${(props) => props.theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    margin-left: -${(props) => props.theme.spacing.spacing6};
+    margin-right: -${(props) => props.theme.spacing.spacing6};
+  }
 `;

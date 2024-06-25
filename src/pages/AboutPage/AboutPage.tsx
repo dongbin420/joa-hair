@@ -23,7 +23,7 @@ function AboutPage() {
         </S.TitleSection>
         <S.CarouselContainer>
           <ImageCarousel total={salonImgCarouselSrc.length}>
-            <ImageCarousel.ImageCarouselContainer width={'550px'} height={'650px'}>
+            <ImageCarousel.ImageCarouselContainer width={'550px'} height={'700px'}>
               <ImageCarousel.Indicator />
               <ImageCarousel.ImageCarouselInner>
                 {salonImgCarouselSrc.map((src, idx) => (
