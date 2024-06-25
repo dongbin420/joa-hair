@@ -24,10 +24,10 @@ export const ServicesPicWrapper = styled.div`
 
 export const ImgWrapperCustomCss = {
   wrapper: css`
-    flex-basis: calc(50% - ${({ theme }) => theme.spacing.spacing11} / 2);
+    flex-basis: calc(46% - ${({ theme }) => theme.spacing.spacing11} / 2);
 
     @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
-      flex-basis: 80%;
+      flex-basis: 70%;
     }
 
     @media (max-width: ${({ theme }) => theme.breakpoints.md}) {

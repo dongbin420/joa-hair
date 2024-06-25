@@ -27,11 +27,23 @@ export const CarouselNextButton = styled.button`
 `;
 
 export const StyledPreviousIcon = styled(PreviousIcon)`
+  fill: white;
   width: 50px;
   height: 50px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 export const StyledNextIcon = styled(NextIcon)`
+  fill: white;
   width: 50px;
   height: 50px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 35px;
+    height: 35px;
+  }
 `;

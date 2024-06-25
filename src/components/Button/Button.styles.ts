@@ -47,8 +47,8 @@ export const ButtonWrapper = styled.button.withConfig({
     }
   }};
 
-  padding: ${({ isSticky }) => (isSticky ? '12px 35px' : '16px 45px')};
+  padding: ${({ isSticky }) => (isSticky ? '8px 25px' : '16px 45px')};
   font-size: ${({ theme, isSticky }) =>
-    isSticky ? theme.text.lg.fontSize : theme.text.xl.fontSize};
+    isSticky ? theme.text.md.fontSize : theme.text.xl.fontSize};
   ${(props) => props.customCss};
 `;
