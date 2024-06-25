@@ -77,7 +77,9 @@ export const IntroduceTextContainer = styled.div`
   line-height: ${({ theme }) => theme.text.md.lineHeight};
 `;
 
-export const IntroduceText = styled.p<{ index?: number }>`
+export const IntroduceText = styled.p.withConfig({
+  shouldForwardProp: (prop) => prop !== 'index',
+})<{ index?: number }>`
   font-weight: ${({ index }) => (index === 3 ? '600' : '300')};
   margin-bottom: ${({ index, theme }) => (index === 2 ? theme.spacing.spacing6 : '0px')};
   font-family: sans-serif;
