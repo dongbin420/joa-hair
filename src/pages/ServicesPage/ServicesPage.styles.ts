@@ -4,14 +4,25 @@ export const ServicesPageContainer = styled.div`
   max-width: 1440px;
   padding: ${(props) => props.theme.spacing.spacing8} ${(props) => props.theme.spacing.spacing8};
   margin: ${({ theme }) => theme.spacing.spacing12} auto;
+  margin-top: ${({ theme }) => theme.spacing.spacing5};
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.spacing12};
+  gap: ${(props) => props.theme.spacing.spacing10};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0 ${(props) => props.theme.spacing.spacing2};
-    padding-bottom: ${(props) => props.theme.spacing.spacing10};
+    padding: ${(props) => props.theme.spacing.spacing8} ${(props) => props.theme.spacing.spacing2};
+  }
+`;
+
+export const ServicesTitle = styled.p`
+  display: flex;
+  justify-content: center;
+  font-size: ${({ theme }) => theme.heading.lg.fontSize};
+  font-weight: 500;
+
+  @media (max-width: 350px) {
+    font-size: ${({ theme }) => theme.heading.md.fontSize};
   }
 `;
 

@@ -14,6 +14,11 @@ export const MainPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: ${(props) => props.theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-bottom: 0;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding: 0 ${(props) => props.theme.spacing.spacing4};

@@ -12,8 +12,8 @@ function ContactPage() {
   return (
     <>
       <PageBanner img={bannerImg4} content={CONTACT_CONTENT} />
+      <ContactBox />
       <S.ContactPageContainer>
-        <ContactBox />
         <S.GoogleMapContainer>
           <S.GoogleMap
             title="google map for joa hair"

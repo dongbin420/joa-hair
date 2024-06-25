@@ -6,12 +6,17 @@ interface InformationTextProps {
   link?: boolean;
 }
 
+export const ContactBoxContainerContainer = styled.div`
+  background-color: white;
+`;
+
 export const ContactBoxContainer = styled.div`
-  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
-  padding: ${(props) => props.theme.spacing.spacing11} ${(props) => props.theme.spacing.spacing9};
+  padding: ${(props) => props.theme.spacing.spacing10} ${(props) => props.theme.spacing.spacing9};
   gap: ${({ theme }) => theme.spacing.spacing4};
-  margin-bottom: ${({ theme }) => theme.spacing.spacing6};
+  margin-bottom: ${({ theme }) => theme.spacing.spacing10};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;

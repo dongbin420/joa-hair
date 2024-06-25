@@ -9,48 +9,50 @@ import { INSTAGRAM_URL, FACEBOOK_URL, GOOGLE_MAP_URL } from '@/constants/url';
 
 function ContactBox() {
   return (
-    <S.ContactBoxContainer>
-      <S.InformationWrapper>
-        <ImgWrapper img={phoneIcon} width={'50px'} height={'50px'} />
-        <S.InformationTitle>Contact</S.InformationTitle>
-        <S.InformationText link={true}>
-          <S.InformationLink href="tel:+610494112551">0494 112 551</S.InformationLink>
-        </S.InformationText>
-        <S.InformationText link={true}>
-          <S.InformationLink href="mailto:Joahair@hotmail.com">
-            Joahair@hotmail.com
-          </S.InformationLink>
-        </S.InformationText>
-        <S.IconWrapper>
-          <S.IconLink href={INSTAGRAM_URL} target="_blank">
-            <S.Icon src={instagram} />
-          </S.IconLink>
-          <S.IconLink href={FACEBOOK_URL} target="_blank">
-            <S.Icon src={facebook} />
-          </S.IconLink>
-        </S.IconWrapper>
-      </S.InformationWrapper>
-      <S.InformationWrapper>
-        <ImgWrapper img={clockIcon} width={'50px'} height={'50px'} />
-        <S.InformationTitle>Hours</S.InformationTitle>
-        <S.InformationText title={true}>Monday - Friday</S.InformationText>
-        <S.InformationText>9am - 5:30pm</S.InformationText>
-        <S.InformationText title={true}>Saturday</S.InformationText>
-        <S.InformationText>9am - 5pm</S.InformationText>
-        <S.InformationText title={true}>Sunday</S.InformationText>
-        <S.InformationText lastText={true}>Closed</S.InformationText>
-      </S.InformationWrapper>
-      <S.InformationWrapper>
-        <ImgWrapper img={locationIcon} width={'50px'} height={'50px'} />
-        <S.InformationTitle>Location</S.InformationTitle>
-        <S.InformationLink href={GOOGLE_MAP_URL} target="_blank">
-          <S.InformationText link={true}>Shop 15/803 Stanley St,</S.InformationText>
-          <S.InformationText link={true} lastText={true}>
-            Woolloongabba QLD 4102
+    <S.ContactBoxContainerContainer>
+      <S.ContactBoxContainer>
+        <S.InformationWrapper>
+          <ImgWrapper img={phoneIcon} width={'50px'} height={'50px'} />
+          <S.InformationTitle>Contact</S.InformationTitle>
+          <S.InformationText link={true}>
+            <S.InformationLink href="tel:+610494112551">0494 112 551</S.InformationLink>
           </S.InformationText>
-        </S.InformationLink>
-      </S.InformationWrapper>
-    </S.ContactBoxContainer>
+          <S.InformationText link={true}>
+            <S.InformationLink href="mailto:Joahair@hotmail.com">
+              Joahair@hotmail.com
+            </S.InformationLink>
+          </S.InformationText>
+          <S.IconWrapper>
+            <S.IconLink href={INSTAGRAM_URL} target="_blank">
+              <S.Icon src={instagram} />
+            </S.IconLink>
+            <S.IconLink href={FACEBOOK_URL} target="_blank">
+              <S.Icon src={facebook} />
+            </S.IconLink>
+          </S.IconWrapper>
+        </S.InformationWrapper>
+        <S.InformationWrapper>
+          <ImgWrapper img={clockIcon} width={'50px'} height={'50px'} />
+          <S.InformationTitle>Hours</S.InformationTitle>
+          <S.InformationText title={true}>Monday - Friday</S.InformationText>
+          <S.InformationText>9am - 5:30pm</S.InformationText>
+          <S.InformationText title={true}>Saturday</S.InformationText>
+          <S.InformationText>9am - 5pm</S.InformationText>
+          <S.InformationText title={true}>Sunday</S.InformationText>
+          <S.InformationText lastText={true}>Closed</S.InformationText>
+        </S.InformationWrapper>
+        <S.InformationWrapper>
+          <ImgWrapper img={locationIcon} width={'50px'} height={'50px'} />
+          <S.InformationTitle>Location</S.InformationTitle>
+          <S.InformationLink href={GOOGLE_MAP_URL} target="_blank">
+            <S.InformationText link={true}>Shop 15/803 Stanley St,</S.InformationText>
+            <S.InformationText link={true} lastText={true}>
+              Woolloongabba QLD 4102
+            </S.InformationText>
+          </S.InformationLink>
+        </S.InformationWrapper>
+      </S.ContactBoxContainer>
+    </S.ContactBoxContainerContainer>
   );
 }
 
