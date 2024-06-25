@@ -18,8 +18,8 @@ function AboutPage() {
           </S.LogoWrapper>
         </S.LogoContainer>
         <S.TitleSection>
-          <S.TitleFirst>&quot;Where Your Beauty Dreams Come True&quot;</S.TitleFirst>
-          <S.TitleSecond>Hello, We Are JOA HAIR.</S.TitleSecond>
+          <S.TitleFirst>&quot;Where your beauty dreams come true&quot;</S.TitleFirst>
+          <S.TitleSecond>Hello, we are JOA HAIR.</S.TitleSecond>
         </S.TitleSection>
         <S.CarouselContainer>
           <ImageCarousel total={salonImgCarouselSrc.length}>
