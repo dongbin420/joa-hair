@@ -2,15 +2,20 @@ import { styled } from 'styled-components';
 
 export const AboutPageContainer = styled.div`
   max-width: 1440px;
-  padding: 0 ${(props) => props.theme.spacing.spacing8};
-  padding-bottom: ${(props) => props.theme.spacing.spacing10};
-  margin: ${({ theme }) => theme.spacing.spacing12} auto;
+  padding: 0 ${(props) => props.theme.spacing.spacing14};
+  margin: 0 auto;
+  margin-top: ${(props) => props.theme.spacing.spacing12};
+  margin-bottom: ${(props) => props.theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 0 ${(props) => props.theme.spacing.spacing7};
+  }
 `;
 
 export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: ${(props) => props.theme.spacing.spacing10};
+  margin-bottom: ${(props) => props.theme.spacing.spacing9};
 `;
 
 export const LogoWrapper = styled.div`
@@ -36,7 +41,7 @@ export const TitleSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(props) => props.theme.spacing.spacing7};
+  gap: ${(props) => props.theme.spacing.spacing6};
   margin-bottom: ${(props) => props.theme.spacing.spacing10};
   text-align: center;
 `;
@@ -54,15 +59,22 @@ export const TitleSecond = styled.p`
 export const IntroduceTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.spacing.spacing8};
+  gap: ${(props) => props.theme.spacing.spacing6};
   font-weight: 300;
   font-size: ${({ theme }) => theme.text.lg.fontSize};
-  line-height: ${({ theme }) => theme.text.lg.lineHeight};
-  padding-left: ${(props) => props.theme.spacing.spacing12};
-  padding-right: ${(props) => props.theme.spacing.spacing12};
+  line-height: ${({ theme }) => theme.text.md.lineHeight};
 `;
 
 export const IntroduceText = styled.p<{ index?: number }>`
   font-weight: ${({ index }) => (index === 3 ? '600' : '300')};
+  margin-bottom: ${({ index, theme }) => (index === 2 ? theme.spacing.spacing6 : '0px')};
   font-family: sans-serif;
+`;
+
+export const CarouselContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-bottom: ${(props) => props.theme.spacing.spacing10};
 `;

@@ -19,7 +19,7 @@ function ImageCarouselContainer({
   useEffect(() => {
     if (isPaused) return;
 
-    const interval = setInterval(moveNextImage, 5000);
+    const interval = setInterval(moveNextImage, 7000);
 
     return () => clearInterval(interval);
   }, [moveNextImage, isPaused]);

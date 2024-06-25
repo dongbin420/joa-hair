@@ -54,3 +54,23 @@ export const ABOUT_INTRODUCE_TEXT = [
 
   '브리즈번 No.1 한인미용실입니다!',
 ];
+
+export const PROMISE_TEXT = [
+  {
+    title: 'One-time Adjustment',
+    text: `Your satisfaction is our priority. If you're not satisfied with the salon service results,
+        you can receive a complimentary one-time adjustment with the same stylist to perfect your look.`,
+  },
+  {
+    title: 'Professional Care',
+    text: 'All products we use are professional and have proven effeciency. No compromises.',
+  },
+  {
+    title: 'Personalized Experience',
+    text: 'Each guest is our favorite guest. Come and experience exceptional service.',
+  },
+  {
+    title: 'We Love What We Do',
+    text: 'We loves what we do. Come and make sure there is a difference.',
+  },
+];
