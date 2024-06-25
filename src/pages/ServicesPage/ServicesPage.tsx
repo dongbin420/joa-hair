@@ -2,6 +2,7 @@ import * as S from './ServicesPage.styles';
 import PageBanner from '@/components/PageBanner/PageBanner';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import Button from '@/components/Button/Button';
+import PromiseBox from '@/components/PromiseBox/PromiseBox';
 import bannerImg2 from '@/assets/imgs/webp/bannerImg2.webp';
 import serviceImg1 from '@/assets/imgs/png/serviceImg1.png';
 import serviceImg2 from '@/assets/imgs/png/serviceImg2.png';
@@ -14,7 +15,9 @@ function ServicesPage() {
   return (
     <>
       <PageBanner img={bannerImg2} content={SERVICES_CONTENT} />
+      <PromiseBox />
       <S.ServicesPageContainer>
+        <S.ServicesTitle>Our Services</S.ServicesTitle>
         <S.ServicesPicWrapper>
           {[serviceImg1, serviceImg2, serviceImg3].map((img, idx) => (
             <ImgWrapper key={idx} img={img} customCss={S.ImgWrapperCustomCss} />

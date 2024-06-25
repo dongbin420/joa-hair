@@ -11,7 +11,11 @@ export const PromiseBoxTitle = styled.p`
   display: flex;
   justify-content: center;
   font-size: ${({ theme }) => theme.heading.lg.fontSize};
-  font-weight: 300;
+  font-weight: 500;
+
+  @media (max-width: 350px) {
+    font-size: ${({ theme }) => theme.heading.md.fontSize};
+  }
 `;
 
 export const PromiseBoxContainer = styled.div`
@@ -20,7 +24,15 @@ export const PromiseBoxContainer = styled.div`
   display: flex;
   padding: ${(props) => props.theme.spacing.spacing10} ${(props) => props.theme.spacing.spacing8};
   gap: ${({ theme }) => theme.spacing.spacing6};
-  margin-bottom: ${({ theme }) => theme.spacing.spacing10};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-wrap: wrap;
+    gap: ${({ theme }) => theme.spacing.spacing8};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: ${({ theme }) => theme.spacing.spacing10};
+  }
 `;
 
 export const InformationWrapper = styled.div`
@@ -28,6 +40,14 @@ export const InformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-basis: calc(50% - ${({ theme }) => theme.spacing.spacing8} / 2);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-basis: 80%;
+  }
 `;
 
 export const InformationTitle = styled.p`
