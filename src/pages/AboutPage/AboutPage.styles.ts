@@ -6,9 +6,11 @@ export const AboutPageContainer = styled.div`
   margin: 0 auto;
   margin-top: ${(props) => props.theme.spacing.spacing12};
   margin-bottom: ${(props) => props.theme.spacing.spacing10};
+  padding-bottom: ${(props) => props.theme.spacing.spacing10};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 0 ${(props) => props.theme.spacing.spacing7};
+    padding-bottom: ${(props) => props.theme.spacing.spacing10};
   }
 `;
 
