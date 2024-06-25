@@ -84,6 +84,10 @@ export const LogoWrapper = styled.div.withConfig({
   line-height: ${({ isSticky, theme }) =>
     isSticky ? theme.text.sm.lineHeight : theme.text.xl.lineHeight};
 
+  display: ${({ isSticky }) => (isSticky ? 'flex' : 'block')};
+
+  gap: ${({ isSticky, theme }) => (isSticky ? `${theme.spacing.spacing2}` : '0px')};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     overflow: visible;
     margin-left: ${(props) => props.theme.spacing.spacing8};
