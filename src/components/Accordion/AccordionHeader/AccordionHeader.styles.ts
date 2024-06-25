@@ -48,4 +48,8 @@ export const ClickAreaButton = styled.button.withConfig({
     font-size: ${({ theme }) => theme.text.sm.fontSize};
     text-align: left;
   }
+
+  &:hover {
+    color: ${({ theme }) => theme.color.orange600};
+  }
 `;
