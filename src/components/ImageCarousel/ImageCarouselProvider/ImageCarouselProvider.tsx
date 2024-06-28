@@ -7,6 +7,8 @@ interface ImageCarouselProviderContextProps {
   clickPrevious: () => void;
   moveNextImage: () => void;
   clickIndicator: (index: number) => void;
+  isTransition: boolean;
+  transitionEnd: () => void;
 }
 
 export const ImageCarouselContext = createContext<ImageCarouselProviderContextProps | undefined>(
@@ -14,18 +16,40 @@ export const ImageCarouselContext = createContext<ImageCarouselProviderContextPr
 );
 
 function ImageCarouselProvider({ children, total }: PropsWithChildren<{ total: number }>) {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(1);
+  const [isTransition, setIsTransition] = useState<boolean>(false);
 
   const clickPrevious = useCallback(() => {
-    setActiveIndex((prevIndex) => (prevIndex === 0 ? total - 1 : prevIndex - 1));
-  }, [total]);
+    if (!isTransition) {
+      setIsTransition(true);
+      setActiveIndex((prevIndex) => prevIndex - 1);
+    }
+  }, [isTransition]);
 
   const moveNextImage = useCallback(() => {
-    setActiveIndex((prevIndex) => (prevIndex === total - 1 ? 0 : prevIndex + 1));
+    if (!isTransition) {
+      setIsTransition(true);
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    }
+  }, [isTransition]);
+
+  const transitionEnd = useCallback(() => {
+    setIsTransition(false);
+
+    setActiveIndex((prevIndex) => {
+      if (prevIndex === 0) {
+        return total;
+      } else if (prevIndex === total + 1) {
+        return 1;
+      } else {
+        return prevIndex;
+      }
+    });
   }, [total]);
 
   const clickIndicator = useCallback((index: number) => {
-    setActiveIndex(index);
+    setActiveIndex(index + 1);
+    setIsTransition(true);
   }, []);
 
   return (
@@ -36,6 +60,8 @@ function ImageCarouselProvider({ children, total }: PropsWithChildren<{ total: n
         clickPrevious,
         moveNextImage,
         clickIndicator,
+        isTransition,
+        transitionEnd,
       }}
     >
       {children}
