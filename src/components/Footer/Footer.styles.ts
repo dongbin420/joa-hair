@@ -137,6 +137,7 @@ export const MarqueeWrapper = styled.div`
   display: flex;
   gap: 100px;
   animation: ${marquee} 15s linear infinite;
+  will-change: transform;
 `;
 
 export const MarqueeText = styled.div`
