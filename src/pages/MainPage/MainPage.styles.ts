@@ -345,6 +345,7 @@ export const StyledQuotesUp = styled(QuotesUp)`
   height: 80px;
   top: 25%;
   left: 12%;
+  transform: rotate(180deg);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 60px;
