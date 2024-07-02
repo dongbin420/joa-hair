@@ -24,11 +24,15 @@ function AboutPage() {
         <S.CarouselContainer>
           <ImageCarousel total={salonImgCarouselSrc.length}>
             <ImageCarousel.ImageCarouselContainer width={'550px'} height={'700px'}>
-              <ImageCarousel.Indicator />
+              <ImageCarousel.ImageCarouselIndicator />
               <ImageCarousel.ImageCarouselInner>
+                <ImageCarousel.ImageCarouselItem
+                  imgSrc={salonImgCarouselSrc[salonImgCarouselSrc.length - 1]}
+                />
                 {salonImgCarouselSrc.map((src, idx) => (
                   <ImageCarousel.ImageCarouselItem key={idx} imgSrc={src} />
                 ))}
+                <ImageCarousel.ImageCarouselItem imgSrc={salonImgCarouselSrc[0]} />
               </ImageCarousel.ImageCarouselInner>
               <ImageCarousel.ImageCarouselButton />
             </ImageCarousel.ImageCarouselContainer>

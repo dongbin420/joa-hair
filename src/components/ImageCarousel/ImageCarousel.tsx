@@ -15,7 +15,7 @@ function ImageCarousel({ children, total }: PropsWithChildren<ImageCarouselProps
 }
 
 ImageCarousel.ImageCarouselContainer = ImageCarouselContainer;
-ImageCarousel.Indicator = ImageCarouselIndicator;
+ImageCarousel.ImageCarouselIndicator = ImageCarouselIndicator;
 ImageCarousel.ImageCarouselButton = ImageCarouselButton;
 ImageCarousel.ImageCarouselInner = ImageCarouselInner;
 ImageCarousel.ImageCarouselItem = ImageCarouselItem;

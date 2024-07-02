@@ -22,11 +22,15 @@ export const Default: Story = {
     return (
       <ImageCarousel total={pepeImgCarouselSrc.length}>
         <ImageCarousel.ImageCarouselContainer width={'800px'} height={'500px'}>
-          <ImageCarousel.Indicator />
+          <ImageCarousel.ImageCarouselIndicator />
           <ImageCarousel.ImageCarouselInner>
+            <ImageCarousel.ImageCarouselItem
+              imgSrc={pepeImgCarouselSrc[pepeImgCarouselSrc.length - 1]}
+            />
             {pepeImgCarouselSrc.map((src, idx) => (
               <ImageCarousel.ImageCarouselItem key={idx} imgSrc={src} />
             ))}
+            <ImageCarousel.ImageCarouselItem imgSrc={pepeImgCarouselSrc[0]} />
           </ImageCarousel.ImageCarouselInner>
           <ImageCarousel.ImageCarouselButton />
         </ImageCarousel.ImageCarouselContainer>
