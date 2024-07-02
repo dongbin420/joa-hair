@@ -1,5 +1,6 @@
 import { styled, css } from 'styled-components';
 import { GradientProps } from '@/components/ImgWrapper/ImgWrapper.styles';
+import { QuotesUp, QuotesDown } from '@/assets/imgs/svg/index';
 
 interface IntroTextTitle {
   margin?: string;
@@ -259,7 +260,7 @@ export const ButtonLink = styled.a`
 `;
 
 export const ThirdSection = styled.section`
-  margin-bottom: ${({ theme }) => `${theme.spacing.spacing12}`};
+  margin-bottom: ${({ theme }) => `${theme.spacing.spacing14}`};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     justify-content: center;
@@ -312,3 +313,54 @@ export const InstagramGridCustomCss = {
     }
   `,
 };
+
+export const FourthSection = styled.section`
+  margin-bottom: ${({ theme }) => `${theme.spacing.spacing12}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    order: 4;
+  }
+`;
+
+export const ReviewCarouselContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid ${({ theme }) => `${theme.color.orange500}`};
+  border-bottom: none;
+  padding: ${(props) => props.theme.spacing.spacing10} 0;
+  padding-bottom: 0;
+  position: relative;
+`;
+
+export const ReviewTitle = styled.p`
+  font-size: ${({ theme }) => `${theme.text.xl.fontSize}`};
+  font-weight: 600;
+  text-align: center;
+`;
+
+export const StyledQuotesUp = styled(QuotesUp)`
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 25%;
+  left: 12%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 60px;
+    height: 60px;
+  }
+`;
+
+export const StyledQuotesDown = styled(QuotesDown)`
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 8%;
+  right: 12%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 60px;
+    height: 60px;
+  }
+`;

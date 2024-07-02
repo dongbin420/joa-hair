@@ -1,7 +1,7 @@
 import { createContext, useState, useCallback } from 'react';
 import type { PropsWithChildren } from 'react';
 
-interface ImageCarouselProviderContextProps {
+interface ReviewCarouselProviderContextProps {
   activeIndex: number;
   total: number;
   clickPrevious: () => void;
@@ -11,11 +11,11 @@ interface ImageCarouselProviderContextProps {
   transitionEnd: () => void;
 }
 
-export const ImageCarouselContext = createContext<ImageCarouselProviderContextProps | undefined>(
+export const ReviewCarouselContext = createContext<ReviewCarouselProviderContextProps | undefined>(
   undefined,
 );
 
-function ImageCarouselProvider({ children, total }: PropsWithChildren<{ total: number }>) {
+function ReviewCarouselProvider({ children, total }: PropsWithChildren<{ total: number }>) {
   const [activeIndex, setActiveIndex] = useState<number>(1);
   const [isTransition, setIsTransition] = useState<boolean>(false);
 
@@ -53,7 +53,7 @@ function ImageCarouselProvider({ children, total }: PropsWithChildren<{ total: n
   }, []);
 
   return (
-    <ImageCarouselContext.Provider
+    <ReviewCarouselContext.Provider
       value={{
         activeIndex,
         total,
@@ -65,8 +65,8 @@ function ImageCarouselProvider({ children, total }: PropsWithChildren<{ total: n
       }}
     >
       {children}
-    </ImageCarouselContext.Provider>
+    </ReviewCarouselContext.Provider>
   );
 }
 
-export default ImageCarouselProvider;
+export default ReviewCarouselProvider;

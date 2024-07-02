@@ -2,7 +2,7 @@ import * as S from './ImageCarouselIndicator.styles';
 import { useImageCarouselContext } from '@/hooks/useImageCarouselContext';
 
 function ImageCarouselIndicator() {
-  const { activeIndex, total, clickIndicator } = useImageCarouselContext();
+  const { total, clickIndicator, activeIndex } = useImageCarouselContext();
 
   return (
     <S.ImageCarouselIndicatorContainer>
@@ -10,7 +10,7 @@ function ImageCarouselIndicator() {
         <S.StyledIndicatorIcon
           key={idx}
           onClick={() => clickIndicator(idx)}
-          isActive={activeIndex === idx}
+          isActive={activeIndex - 1 === idx}
         />
       ))}
     </S.ImageCarouselIndicatorContainer>

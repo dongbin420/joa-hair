@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import * as S from './ImageCarouselInner.styles';
+import * as S from './ReviewCarouselInner.styles';
 import type { PropsWithChildren } from 'react';
-import { useImageCarouselContext } from '@/hooks/useImageCarouselContext';
+import { useReviewCarouselContext } from '@/hooks/useReviewCarouselContext';
 
-function ImageCarouselInner({ children }: PropsWithChildren) {
-  const { activeIndex, isTransition, transitionEnd } = useImageCarouselContext();
+function ReviewCarouselInner({ children }: PropsWithChildren) {
+  const { activeIndex, isTransition, transitionEnd } = useReviewCarouselContext();
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -17,14 +17,14 @@ function ImageCarouselInner({ children }: PropsWithChildren) {
   }, [transitionEnd]);
 
   return (
-    <S.ImageCarouselInnerContainer
+    <S.ReviewCarouselInnerContainer
       ref={carouselRef}
       activeIndex={activeIndex}
       isTransition={isTransition}
     >
       {children}
-    </S.ImageCarouselInnerContainer>
+    </S.ReviewCarouselInnerContainer>
   );
 }
 
-export default ImageCarouselInner;
+export default ReviewCarouselInner;
