@@ -134,11 +134,13 @@ export const MarqueeContainer = styled.div`
 export const MarqueeWrapper = styled.div`
   display: flex;
   animation: ${marquee} 15s linear infinite;
+  will-change: transform;
+  gap: 3%;
 `;
 
 export const MarqueeText = styled.div`
   display: inline-block;
-  padding-right: 3%;
+  /* padding-right: 3%; */
   font-size: 100px;
   color: ${({ theme }) => `${theme.color.orange600}`};
 
