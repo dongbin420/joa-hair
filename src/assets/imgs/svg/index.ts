@@ -18,3 +18,6 @@ export { ReactComponent as Products } from './products.svg';
 export { ReactComponent as UserHeart } from './userHeart.svg';
 export { ReactComponent as TwoHearts } from './twoHearts.svg';
 export { ReactComponent as HeartHand } from './heartHand.svg';
+export { ReactComponent as Circle } from './circle.svg';
+export { ReactComponent as QuotesUp } from './quotesUp.svg';
+export { ReactComponent as QuotesDown } from './quotesDown.svg';
