@@ -137,7 +137,8 @@ export const MarqueeContainer = styled.div`
 
   --offset: 20vw;
   --move-initial: calc(-25% + var(--offset));
-  --move-final: calc(-50% + var(--offset) - 3%);
+  /* --move-final: calc(-50% + var(--offset) - 3%); */
+  --move-final: calc(-50% + var(--offset));
 `;
 
 export const MarqueeWrapper = styled.div`
