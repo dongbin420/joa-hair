@@ -1,8 +1,8 @@
 import { styled, keyframes } from 'styled-components';
 
 const marquee = keyframes`
-  0% { transform: translateX(0); }
-  100% { transform: translateX(var(--move-final)); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(var(--move-final), 0, 0); }
 `;
 
 export const FooterContainer = styled.footer`
@@ -137,7 +137,6 @@ export const MarqueeWrapper = styled.div`
   display: flex;
   gap: 100px;
   animation: ${marquee} 15s linear infinite;
-  will-change: transform;
 `;
 
 export const MarqueeText = styled.div`
