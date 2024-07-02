@@ -1,4 +1,9 @@
-import { styled } from 'styled-components';
+import { styled, keyframes } from 'styled-components';
+
+const marquee = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-56%); }
+`;
 
 export const FooterContainer = styled.footer`
   display: flex;
@@ -117,3 +122,44 @@ export const Day = styled.p`
 `;
 
 export const Time = styled.p``;
+
+export const MarqueeContainer = styled.div`
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid ${({ theme }) => `${theme.color.orange600}`};
+  border-bottom: 2px solid ${({ theme }) => `${theme.color.orange600}`};
+`;
+
+export const MarqueeWrapper = styled.div`
+  display: flex;
+  animation: ${marquee} 15s linear infinite;
+`;
+
+export const MarqueeText = styled.div`
+  display: inline-block;
+  padding-right: 3%;
+  font-size: 100px;
+  color: ${({ theme }) => `${theme.color.orange600}`};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => `${theme.heading.lg.fontSize}`};
+  }
+`;
+
+export const MundayText = styled.span`
+  font-family: 'Themunday';
+  line-height: 150px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    line-height: 120px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    line-height: ${({ theme }) => `${theme.heading.xxl.lineHeight}`};
+  }
+`;
