@@ -1,8 +1,13 @@
 import { styled, keyframes } from 'styled-components';
 
+// const marquee = keyframes`
+//   0% { transform: translate3d(0, 0, 0) }
+//   100% { transform: translate3d(-56%, 0, 0); }
+// `;
+
 const marquee = keyframes`
-  0% { transform: translate3d(0, 0, 0) }
-  100% { transform: translate3d(-56%, 0, 0); }
+  0% {transform: translate3d(var(--move-initial), 0, 0);}
+  100% {transform: translate3d(var(--move-final), 0, 0);}
 `;
 
 export const FooterContainer = styled.footer`
@@ -129,12 +134,16 @@ export const MarqueeContainer = styled.div`
   white-space: nowrap;
   border-top: 2px solid ${({ theme }) => `${theme.color.orange600}`};
   border-bottom: 2px solid ${({ theme }) => `${theme.color.orange600}`};
+
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset) - 3%);
 `;
 
 export const MarqueeWrapper = styled.div`
-  /* display: flex; */
-  animation: ${marquee} 15s linear infinite;
-  will-change: transform;
+  display: flex;
+  transform: translate3d(var(--move-initial), 0, 0);
+  animation: ${marquee} 7s linear infinite;
 `;
 
 export const MarqueeText = styled.div`
