@@ -1,8 +1,8 @@
 import { styled, keyframes } from 'styled-components';
 
 const marquee = keyframes`
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-56%); }
+  0% { transform: translate3d(0, 0, 0) }
+  100% { transform: translate3d(-56%, 0, 0); }
 `;
 
 export const FooterContainer = styled.footer`
