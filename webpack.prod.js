@@ -16,4 +16,9 @@ module.exports = merge(common, {
       statsFilename: 'bundle-report.json',
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 });
