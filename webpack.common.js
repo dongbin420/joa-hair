@@ -10,7 +10,7 @@ dotenv.config();
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
     clean: true,
