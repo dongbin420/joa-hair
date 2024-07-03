@@ -34,6 +34,7 @@ function MainPage() {
           borderRadius={20}
           showGradient={true}
           customCss={S.MainImgCustomCss}
+          description={'main image on main page'}
         />
       </S.FirstSection>
       <S.SecondSection>
@@ -46,7 +47,12 @@ function MainPage() {
             <S.IntroTextContent margin={'bottom'}>{INTRO_TEXT.SECOND}</S.IntroTextContent>
             <S.IntroTextContent>{INTRO_TEXT.THIRD}</S.IntroTextContent>
           </S.IntroTextWrapper>
-          <ImgWrapper img={introImg} borderRadius={15} customCss={S.IntroImgCustomCss} />
+          <ImgWrapper
+            img={introImg}
+            borderRadius={15}
+            customCss={S.IntroImgCustomCss}
+            description={'intro image on main page'}
+          />
         </S.IntroContentWrapper>
       </S.SecondSection>
       <S.ThirdSection>

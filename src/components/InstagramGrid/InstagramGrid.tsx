@@ -57,7 +57,7 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
             <S.InstagramButton>
               <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
                 <S.InstagramButtonContentWrapper>
-                  <img src={instagramIcon} />
+                  <img src={instagramIcon} alt="instagram button" />
                   Follow on Instagram
                 </S.InstagramButtonContentWrapper>
               </a>
@@ -72,7 +72,7 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
             <S.InstagramButton>
               <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
                 <S.InstagramButtonContentWrapper>
-                  <img src={instagramIcon} />
+                  <img src={instagramIcon} alt="instagram button" />
                   Follow on Instagram
                 </S.InstagramButtonContentWrapper>
               </a>

@@ -20,7 +20,12 @@ function ServicesPage() {
         <S.ServicesTitle>Our Services</S.ServicesTitle>
         <S.ServicesPicWrapper>
           {[serviceImg1, serviceImg2, serviceImg3].map((img, idx) => (
-            <ImgWrapper key={idx} img={img} customCss={S.ImgWrapperCustomCss} />
+            <ImgWrapper
+              key={idx}
+              img={img}
+              customCss={S.ImgWrapperCustomCss}
+              description={'service menu image'}
+            />
           ))}
         </S.ServicesPicWrapper>
         <S.ButtonLink href={RESERVATION_URL} target="_blank">

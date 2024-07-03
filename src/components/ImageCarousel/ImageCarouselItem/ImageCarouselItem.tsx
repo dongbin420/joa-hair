@@ -7,7 +7,7 @@ interface ImageCarouselItemProps {
 function ImageCarouselItem({ imgSrc }: ImageCarouselItemProps) {
   return (
     <S.ImageCarouselItemContainer>
-      <S.ImageCarouselImage src={imgSrc} />
+      <S.ImageCarouselImage src={imgSrc} alt="image carousel image" />
     </S.ImageCarouselItemContainer>
   );
 }

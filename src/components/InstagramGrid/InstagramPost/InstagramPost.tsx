@@ -25,17 +25,18 @@ function InstagramPost({ post, customCss }: InstagramPostProps) {
         <S.thumbnailImg
           src={post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url}
           onLoad={() => setLoaded(true)}
+          alt="instagram post"
         />
         {post.media_type === 'VIDEO' && (
           <>
-            <S.PlayIcon src={playIcon} />
-            <S.VideoIcon src={videoIcon} />
+            <S.PlayIcon src={playIcon} alt="play icon" />
+            <S.VideoIcon src={videoIcon} alt="video icon" />
           </>
         )}
         {post.media_type === 'CAROUSEL_ALBUM' && <S.SlideIcon src={slideIcon} />}
-        <S.InstagramIcon src={instagramIcon} />
+        <S.InstagramIcon src={instagramIcon} alt="instagram icon" />
         <S.ClockWrapper>
-          <S.ClockIcon src={clockWhiteIcon} />
+          <S.ClockIcon src={clockWhiteIcon} alt="clock icon" />
           <S.ClockText>{formatDateForInstaPost(post.timestamp)}</S.ClockText>
         </S.ClockWrapper>
         <S.InstagramUsername>{post.username}</S.InstagramUsername>

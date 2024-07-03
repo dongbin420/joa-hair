@@ -33,10 +33,10 @@ function Header() {
         </S.HeaderFirst>
         <S.HeaderSecond>
           <S.IconLink href={INSTAGRAM_URL} target="_blank">
-            <S.Icon src={instagram} alt="Instagram" isSticky={isSticky}></S.Icon>
+            <S.Icon src={instagram} alt="instagram icon" isSticky={isSticky}></S.Icon>
           </S.IconLink>
           <S.IconLink href={FACEBOOK_URL} target="_blank">
-            <S.Icon src={facebook} alt="Facebook" isSticky={isSticky} />
+            <S.Icon src={facebook} alt="facebook icon" isSticky={isSticky} />
           </S.IconLink>
           <S.ButtonLink href={RESERVATION_URL} target="_blank">
             <Button size={'large'} customCss={S.ButtonCustomCss} isSticky={isSticky}>
@@ -50,6 +50,7 @@ function Header() {
           width={'45px'}
           customCss={S.HamburgerCustomCss}
           isSticky={isSticky}
+          description={'hamburger icon'}
         />
       </S.HeaderContainer>
       {isOverlayOpen && <Overlay toggleOverlay={toggleOverlay} />}

@@ -18,6 +18,7 @@ function PageBanner({ img, content }: PageBannerProps) {
         height={'100%'}
         showGradient={true}
         customCss={S.ImgWrapperCustomCss}
+        description={'page banner image'}
       />
       <S.TextWrapper>
         <S.PageTitle>{content.title}</S.PageTitle>
