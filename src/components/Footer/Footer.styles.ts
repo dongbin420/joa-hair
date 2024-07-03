@@ -130,12 +130,12 @@ export const MarqueeContainer = styled.div`
   border-top: 2px solid ${({ theme }) => `${theme.color.orange600}`};
   border-bottom: 2px solid ${({ theme }) => `${theme.color.orange600}`};
 
-  --move-final: calc(-50% - 50px);
+  --move-final: calc(-50%);
 `;
 
 export const MarqueeWrapper = styled.div`
   display: flex;
-  gap: 100px;
+  /* gap: 100px; */
   animation: ${marquee} 15s linear infinite;
 `;
 
@@ -143,6 +143,7 @@ export const MarqueeText = styled.div`
   display: inline-block;
   font-size: 100px;
   color: ${({ theme }) => `${theme.color.orange600}`};
+  padding-right: 100px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
