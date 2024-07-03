@@ -137,8 +137,8 @@ export const MarqueeWrapper = styled.div`
 `;
 
 export const MarqueeText = styled.div`
-  /* display: inline-block; */
-  padding-right: 3%;
+  display: inline-block;
+  margin-right: 3%;
   font-size: 100px;
   color: ${({ theme }) => `${theme.color.orange600}`};
 

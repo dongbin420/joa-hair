@@ -1,13 +1,34 @@
 import * as S from './Footer.styles';
+import { useEffect, useRef } from 'react';
 import instagram from '@/assets/imgs/png/instagram.png';
 import facebook from '@/assets/imgs/png/facebook.png';
 import { INSTAGRAM_URL, FACEBOOK_URL, GOOGLE_MAP_URL } from '@/constants/url';
 
 function Footer() {
+  const marqueeWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const marqueeWrapper = marqueeWrapperRef.current;
+
+    if (marqueeWrapper) {
+      const marqueeTexts = marqueeWrapper.children;
+      let totalWidth = 0;
+
+      for (let i = 0; i < marqueeTexts.length; i++) {
+        const text = marqueeTexts[i] as HTMLElement;
+        const style = window.getComputedStyle(text);
+        const marginRight = parseFloat(style.marginRight);
+        totalWidth += text.offsetWidth + marginRight;
+      }
+
+      marqueeWrapper.style.width = `${totalWidth}px`;
+    }
+  }, []);
+
   return (
     <>
       <S.MarqueeContainer>
-        <S.MarqueeWrapper>
+        <S.MarqueeWrapper ref={marqueeWrapperRef}>
           {[...Array(4)].map((_, idx) => (
             <S.MarqueeText key={idx}>
               Welcome to <S.MundayText>JOA HAIR.</S.MundayText>
