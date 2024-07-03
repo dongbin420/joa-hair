@@ -1,10 +1,5 @@
 import { styled, keyframes } from 'styled-components';
 
-const marquee = keyframes`
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(var(--move-final), 0, 0); }
-`;
-
 export const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-evenly;
@@ -124,26 +119,33 @@ export const Day = styled.p`
 export const Time = styled.p``;
 
 export const MarqueeContainer = styled.div`
+  width: 100%;
   display: flex;
   overflow: hidden;
   white-space: nowrap;
   border-top: 2px solid ${({ theme }) => `${theme.color.orange600}`};
   border-bottom: 2px solid ${({ theme }) => `${theme.color.orange600}`};
 
-  --move-final: calc(-50%);
+  --gap: 4rem;
+  --move-final: calc(-50% - var(--gap) / 2);
+`;
+
+const marquee = keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--move-final)); }
 `;
 
 export const MarqueeWrapper = styled.div`
   display: flex;
-  /* gap: 100px; */
+  gap: var(--gap);
   animation: ${marquee} 15s linear infinite;
 `;
 
 export const MarqueeText = styled.div`
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 100px;
   color: ${({ theme }) => `${theme.color.orange600}`};
-  padding-right: 100px;
+  /* padding-right: 100px; */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
