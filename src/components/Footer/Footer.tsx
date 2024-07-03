@@ -8,11 +8,17 @@ function Footer() {
     <>
       <S.MarqueeContainer>
         <S.MarqueeWrapper>
-          {[...Array(4)].map((_, idx) => (
+          {/* {[...Array(4)].map((_, idx) => (
             <S.MarqueeText key={idx}>
               Welcome to <S.MundayText>JOA HAIR.</S.MundayText>
             </S.MarqueeText>
-          ))}
+          ))} */}
+          <S.MarqueeText>
+            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
+            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
+            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
+            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
+          </S.MarqueeText>
         </S.MarqueeWrapper>
       </S.MarqueeContainer>
       <S.FooterContainer>

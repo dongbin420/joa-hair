@@ -125,27 +125,20 @@ export const MarqueeContainer = styled.div`
   white-space: nowrap;
   border-top: 2px solid ${({ theme }) => `${theme.color.orange600}`};
   border-bottom: 2px solid ${({ theme }) => `${theme.color.orange600}`};
-
-  --gap: 4rem;
-  --move-final: calc(-50% - var(--gap) / 2);
 `;
 
 const marquee = keyframes`
   0% { transform: translateX(0); }
-  100% { transform: translateX(var(--move-final)); }
+  100% { transform: translateX(-50%); }
 `;
 
 export const MarqueeWrapper = styled.div`
-  display: flex;
-  gap: var(--gap);
   animation: ${marquee} 15s linear infinite;
 `;
 
 export const MarqueeText = styled.div`
-  /* display: inline-block; */
   font-size: 100px;
   color: ${({ theme }) => `${theme.color.orange600}`};
-  /* padding-right: 100px; */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
