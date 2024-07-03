@@ -33,7 +33,7 @@ function InstagramPost({ post, customCss }: InstagramPostProps) {
             <S.VideoIcon src={videoIcon} alt="video icon" />
           </>
         )}
-        {post.media_type === 'CAROUSEL_ALBUM' && <S.SlideIcon src={slideIcon} />}
+        {post.media_type === 'CAROUSEL_ALBUM' && <S.SlideIcon src={slideIcon} alt="slide icon" />}
         <S.InstagramIcon src={instagramIcon} alt="instagram icon" />
         <S.ClockWrapper>
           <S.ClockIcon src={clockWhiteIcon} alt="clock icon" />
