@@ -34,12 +34,6 @@ function Footer() {
               Welcome to <S.MundayText>JOA HAIR.</S.MundayText>
             </S.MarqueeText>
           ))}
-          {/* <S.MarqueeText>
-            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
-            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
-            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
-            Welcome to <S.MundayText>JOA HAIR. &nbsp;&nbsp;&nbsp;</S.MundayText>
-          </S.MarqueeText> */}
         </S.MarqueeWrapper>
       </S.MarqueeContainer>
       <S.FooterContainer>
@@ -51,10 +45,10 @@ function Footer() {
           </S.ContactContents>
           <S.IconWrapper>
             <S.IconLink href={INSTAGRAM_URL} target="_blank">
-              <S.Icon src={instagram} />
+              <S.Icon src={instagram} alt="instagram icon" />
             </S.IconLink>
             <S.IconLink href={FACEBOOK_URL} target="_blank">
-              <S.Icon src={facebook} />
+              <S.Icon src={facebook} alt="facebook icon" />
             </S.IconLink>
           </S.IconWrapper>
         </S.FooterSection>

@@ -8,7 +8,7 @@ function ReviewCarouselItem({ data }: ReviewCarouselItemProps) {
   return (
     <S.ReviewCarouselItemContainer>
       <S.ContentsWrapper>
-        <S.ReviewProfile src={data.photoUri} />
+        <S.ReviewProfile src={data.photoUri} alt="profile icon" />
         <S.ReviewText>{data.text}</S.ReviewText>
         <S.ReviewName>{data.displayName}</S.ReviewName>
       </S.ContentsWrapper>

@@ -11,7 +11,8 @@
     "test": "jest",
     "test:ci": "jest --ci",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "analyze": "webpack-bundle-analyzer ./dist/bundle-report.json"
   },
   "keywords": [],
   "author": "",
@@ -69,6 +70,7 @@
     "typescript": "^5.4.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.91.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   }

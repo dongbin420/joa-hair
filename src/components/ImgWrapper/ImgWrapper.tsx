@@ -23,6 +23,7 @@ export interface ImgWrapperProps {
   };
 
   isSticky?: boolean;
+  description: string;
 }
 
 function ImgWrapper({
@@ -34,6 +35,7 @@ function ImgWrapper({
   showGradient,
   onClick,
   isSticky,
+  description,
 }: ImgWrapperProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -58,6 +60,7 @@ function ImgWrapper({
         customCss={customCss?.img}
         onLoad={() => setLoaded(true)}
         loaded={loaded}
+        alt={description}
       />
     </S.Wrapper>
   );

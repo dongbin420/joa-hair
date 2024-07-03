@@ -12,7 +12,7 @@ function ContactBox() {
     <S.ContactBoxContainerContainer>
       <S.ContactBoxContainer>
         <S.InformationWrapper>
-          <ImgWrapper img={phoneIcon} width={'50px'} height={'50px'} />
+          <ImgWrapper img={phoneIcon} width={'50px'} height={'50px'} description={'phone icon'} />
           <S.InformationTitle>Contact</S.InformationTitle>
           <S.InformationText link={true}>
             <S.InformationLink href="tel:+610494112551">0494 112 551</S.InformationLink>
@@ -32,7 +32,7 @@ function ContactBox() {
           </S.IconWrapper>
         </S.InformationWrapper>
         <S.InformationWrapper>
-          <ImgWrapper img={clockIcon} width={'50px'} height={'50px'} />
+          <ImgWrapper img={clockIcon} width={'50px'} height={'50px'} description={'clock icon'} />
           <S.InformationTitle>Hours</S.InformationTitle>
           <S.InformationText title={true}>Monday - Friday</S.InformationText>
           <S.InformationText>9am - 5:30pm</S.InformationText>
@@ -42,7 +42,12 @@ function ContactBox() {
           <S.InformationText lastText={true}>Closed</S.InformationText>
         </S.InformationWrapper>
         <S.InformationWrapper>
-          <ImgWrapper img={locationIcon} width={'50px'} height={'50px'} />
+          <ImgWrapper
+            img={locationIcon}
+            width={'50px'}
+            height={'50px'}
+            description={'location icon'}
+          />
           <S.InformationTitle>Location</S.InformationTitle>
           <S.InformationLink href={GOOGLE_MAP_URL} target="_blank">
             <S.InformationText link={true}>Shop 15/803 Stanley St,</S.InformationText>

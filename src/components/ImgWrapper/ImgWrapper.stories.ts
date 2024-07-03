@@ -23,5 +23,6 @@ export const Default: Story = {
     width: '350px',
     height: '500px',
     borderRadius: 20,
+    description: 'storybook image',
   },
 };
