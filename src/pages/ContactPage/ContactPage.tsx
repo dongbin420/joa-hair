@@ -30,7 +30,9 @@ function ContactPage() {
               <Accordion.Item key={questionIdx}>
                 <Accordion.Header idx={questionIdx}>{question.question}</Accordion.Header>
                 <Accordion.Body idx={questionIdx}>
-                  {question.isParking && <S.ParkingImg src={parkingImg} />}
+                  {question.isParking && (
+                    <S.ParkingImg src={parkingImg} alt="parking information" />
+                  )}
                   {question.answer}
                 </Accordion.Body>
               </Accordion.Item>

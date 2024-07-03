@@ -44,10 +44,10 @@ function Overlay({ toggleOverlay }: OverlayProps) {
         </S.OverlayLinkContainer>
         <S.IconWrapper>
           <S.IconLink href={INSTAGRAM_URL} target="_blank">
-            <S.Icon src={instagram} />
+            <S.Icon src={instagram} alt="instagram icon" />
           </S.IconLink>
           <S.IconLink href={FACEBOOK_URL} target="_blank">
-            <S.Icon src={facebook} />
+            <S.Icon src={facebook} alt="facebook icon" />
           </S.IconLink>
         </S.IconWrapper>
         <S.ButtonLink href={RESERVATION_URL} target="_blank">
@@ -62,6 +62,7 @@ function Overlay({ toggleOverlay }: OverlayProps) {
         width={'50px'}
         height={'50px'}
         customCss={S.CloseCustomCss}
+        description={'close icon'}
       />
     </S.OverlayContainer>
   );
