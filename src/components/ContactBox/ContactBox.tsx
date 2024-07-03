@@ -24,10 +24,10 @@ function ContactBox() {
           </S.InformationText>
           <S.IconWrapper>
             <S.IconLink href={INSTAGRAM_URL} target="_blank">
-              <S.Icon src={instagram} />
+              <S.Icon src={instagram} alt="instagram icon" />
             </S.IconLink>
             <S.IconLink href={FACEBOOK_URL} target="_blank">
-              <S.Icon src={facebook} />
+              <S.Icon src={facebook} alt="facebook icon" />
             </S.IconLink>
           </S.IconWrapper>
         </S.InformationWrapper>
