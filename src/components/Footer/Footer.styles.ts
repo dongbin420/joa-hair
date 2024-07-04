@@ -152,7 +152,7 @@ export const MarqueeText = styled.div`
 `;
 
 export const MundayText = styled.span`
-  font-family: 'Themunday';
+  font-family: 'Themunday', sans-serif;
   line-height: 150px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
