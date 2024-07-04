@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -66,6 +67,12 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      fileWhitelist: [/\.woff2$/],
+      include: 'allAssets',
+      as: 'font',
     }),
   ],
   resolve: {
