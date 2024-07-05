@@ -23,7 +23,7 @@ export const LogoContainer = styled.div`
 export const LogoWrapper = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.spacing2};
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   color: ${(props) => props.theme.color.orange600};
   font-weight: 500;
   overflow: visible;
