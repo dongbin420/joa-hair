@@ -24,6 +24,7 @@ export interface ImgWrapperProps {
 
   isSticky?: boolean;
   description: string;
+  isLcp?: boolean;
 }
 
 function ImgWrapper({
@@ -36,6 +37,7 @@ function ImgWrapper({
   onClick,
   isSticky,
   description,
+  isLcp,
 }: ImgWrapperProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -61,6 +63,7 @@ function ImgWrapper({
         onLoad={() => setLoaded(true)}
         loaded={loaded}
         alt={description}
+        fetchPriority={isLcp ? 'high' : 'auto'}
       />
     </S.Wrapper>
   );
