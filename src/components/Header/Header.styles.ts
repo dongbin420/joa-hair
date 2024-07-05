@@ -71,7 +71,7 @@ export const HeaderFirst = styled.nav`
 export const LogoWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'isSticky',
 })<{ isSticky: boolean }>`
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   color: ${(props) => props.theme.color.black};
   margin-right: ${(props) => props.theme.spacing.spacing2};
   font-weight: 600;

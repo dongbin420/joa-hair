@@ -11,6 +11,13 @@ const GlobalStyle = createGlobalStyle`
       url(${Themunday}) format('woff2'); 
   }
 
+  @font-face {
+    font-family: 'customArial';
+    size-adjust: 90%;
+    ascent-override: 70%;
+    src: local('Arial');
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;

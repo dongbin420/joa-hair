@@ -23,7 +23,7 @@ export const LogoContainer = styled.div`
 export const LogoWrapper = styled.div`
   display: flex;
   gap: ${(props) => props.theme.spacing.spacing2};
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   color: ${(props) => props.theme.color.orange600};
   font-weight: 500;
   overflow: visible;
@@ -84,7 +84,6 @@ export const IntroduceText = styled.p.withConfig({
 })<{ index?: number }>`
   font-weight: ${({ index }) => (index === 3 ? '600' : '300')};
   margin-bottom: ${({ index, theme }) => (index === 2 ? theme.spacing.spacing6 : '0px')};
-  font-family: sans-serif;
 `;
 
 export const CarouselContainer = styled.div`
