@@ -35,6 +35,7 @@ function MainPage() {
           showGradient={true}
           customCss={S.MainImgCustomCss}
           description={'main image on main page'}
+          isLcp={true}
         />
       </S.FirstSection>
       <S.SecondSection>
