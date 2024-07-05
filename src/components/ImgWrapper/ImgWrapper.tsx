@@ -63,7 +63,7 @@ function ImgWrapper({
         onLoad={() => setLoaded(true)}
         loaded={loaded}
         alt={description}
-        fetchPriority={isLcp ? 'high' : 'auto'}
+        fetchpriority={isLcp ? 'high' : 'auto'}
       />
     </S.Wrapper>
   );
