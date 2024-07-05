@@ -74,7 +74,7 @@ export const Icon = styled.img`
 `;
 
 export const Logo = styled.p`
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
   line-height: ${({ theme }) => `${theme.heading.xxl.lineHeight}`};
   margin-top: ${(props) => props.theme.spacing.spacing6};
@@ -152,7 +152,7 @@ export const MarqueeText = styled.div`
 `;
 
 export const MundayText = styled.span`
-  font-family: 'Themunday';
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   line-height: 150px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {

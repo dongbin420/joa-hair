@@ -40,7 +40,7 @@ export const FirstSection = styled.section`
 
 export const MainContentWrapper = styled.div`
   position: absolute;
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   padding: ${({ theme }) => `${theme.spacing.spacing10} 0`};
   color: ${({ theme }) => `${theme.color.orange600}`};
   z-index: 1;
@@ -194,7 +194,7 @@ export const IntroTextTitle = styled.h3.withConfig({
   shouldForwardProp: (prop) => prop !== 'margin',
 })<IntroTextTitle>`
   font-weight: 100;
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   font-size: ${({ theme }) => `${theme.heading.xxl.fontSize}`};
   line-height: ${({ theme }) => `${theme.heading.xl.lineHeight}`};
   display: inline-block;

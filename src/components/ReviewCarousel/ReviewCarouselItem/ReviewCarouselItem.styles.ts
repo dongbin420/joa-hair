@@ -26,7 +26,7 @@ export const ReviewText = styled.p`
 
 export const ReviewName = styled.p`
   text-align: center;
-  font-family: 'Themunday', sans-serif;
+  font-family: 'Themunday', 'customArial', Helvetica, sans-serif;
   font-weight: 700;
   font-size: ${({ theme }) => `${theme.text.lg.fontSize}`};
   font-style: italic;
