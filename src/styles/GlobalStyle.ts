@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import Themunday from '../assets/fonts/Themunday-Regular.woff2';
+import Inter from '../assets/fonts/Inter-VariableFont_slnt,wght.woff2';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -9,6 +10,13 @@ const GlobalStyle = createGlobalStyle`
       local('The munday free version Regular'),
       local('The munday Regular'),
       url(${Themunday}) format('woff2'); 
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: 
+      local('Inter'),
+      url(${Inter}) format('woff2');
   }
 
   @font-face {
