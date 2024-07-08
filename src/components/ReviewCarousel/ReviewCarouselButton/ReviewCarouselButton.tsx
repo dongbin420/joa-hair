@@ -6,10 +6,10 @@ function ReviewCarouselButton() {
 
   return (
     <S.ReviewCarouselButtonContainer>
-      <S.CarouselPrevButton onClick={clickPrevious}>
+      <S.CarouselPrevButton onClick={clickPrevious} aria-label="Carousel previous button">
         <S.StyledPreviousIcon />
       </S.CarouselPrevButton>
-      <S.CarouselNextButton onClick={moveNextImage}>
+      <S.CarouselNextButton onClick={moveNextImage} aria-label="Carousel next button">
         <S.StyledNextIcon />
       </S.CarouselNextButton>
     </S.ReviewCarouselButtonContainer>
