@@ -8,8 +8,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const imagesToPreload = ['mainImg', 'bannerImg1', 'bannerImg2', 'bannerImg3', 'bannerImg4'];
-const imagePatterns = imagesToPreload.map((image) => new RegExp(`${image}\\.[a-f0-9]{20}\\.webp$`));
+// 프리로드(세번째)
+// const imagesToPreload = ['mainImg', 'bannerImg1', 'bannerImg2', 'bannerImg3', 'bannerImg4'];
+// const imagePatterns = imagesToPreload.map((image) => new RegExp(`${image}\\.[a-f0-9]{20}\\.webp$`));
 
 module.exports = {
   entry: './src/index.tsx',
@@ -75,39 +76,27 @@ module.exports = {
       'process.env': JSON.stringify(process.env),
     }),
     // 첫번째 시도 (폰트만 프리로드)
-    // new PreloadWebpackPlugin({
-    //   rel: 'preload',
-    //   fileWhitelist: [/\.woff2$/],
-    //   include: 'allAssets',
-    //   as: 'font',
-    // }),
-
-    // 두번째 시도 (폰트 + 모든 이미지 프리로드)
-    // new PreloadWebpackPlugin({
-    //   rel: 'preload',
-    //   fileWhitelist: [/\.woff2$/, /\.webp$/],
-    //   include: 'allAssets',
-    //   as(entry) {
-    //     if (/\.woff2$/.test(entry)) return 'font';
-    //     if (/\.webp$/.test(entry)) return 'image';
-    //     return 'script';
-    //   },
-    // }),
-
-    // 세번째 시도 (폰트 + 해당하는 이미지만 프리로드)
     new PreloadWebpackPlugin({
       rel: 'preload',
-      fileWhitelist: [/\.woff2$/, ...imagePatterns],
+      fileWhitelist: [/\.woff2$/],
       include: 'allAssets',
-      as(entry) {
-        if (/\.woff2$/.test(entry)) {
-          return 'font';
-        }
-        if (imagePatterns.some((pattern) => pattern.test(entry))) {
-          return 'image';
-        }
-      },
+      as: 'font',
     }),
+
+    // 세번째 시도 (폰트 + 해당하는 이미지만 프리로드)
+    // new PreloadWebpackPlugin({
+    //   rel: 'preload',
+    //   fileWhitelist: [/\.woff2$/, ...imagePatterns],
+    //   include: 'allAssets',
+    //   as(entry) {
+    //     if (/\.woff2$/.test(entry)) {
+    //       return 'font';
+    //     }
+    //     if (imagePatterns.some((pattern) => pattern.test(entry))) {
+    //       return 'image';
+    //     }
+    //   },
+    // }),
   ],
   resolve: {
     extensions: ['.tsx', '.jsx', '.ts', '.js'],
