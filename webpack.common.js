@@ -9,8 +9,18 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // 폰트 + 해당하는 이미지만 프리로드
-const imagesToPreload = ['mainImg', 'bannerImg1', 'bannerImg2', 'bannerImg3', 'bannerImg4'];
-const imagePatterns = imagesToPreload.map((image) => new RegExp(`${image}\\.[a-f0-9]{20}\\.webp$`));
+const imagesToPreload = [
+  'bannerImg4',
+  'bannerImg3',
+  'bannerImg2',
+  'bannerImg1',
+  'facebook',
+  'instagram',
+  'mainImg',
+];
+const imagePatterns = imagesToPreload.map(
+  (image) => new RegExp(`${image}\\.[a-f0-9]{20}\\.(webp|png)$`),
+);
 
 module.exports = {
   entry: './src/index.tsx',
