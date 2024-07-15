@@ -58,7 +58,7 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
             {isGalleryPage && (
               <>
                 <S.LoadMoreButton onClick={loadMore} disabled={loading}>
-                  {data && data.length > 0 ? 'Load More...' : <S.Spinner />}
+                  {!loading && data && data.length > 0 ? 'Load More...' : <S.Spinner />}
                 </S.LoadMoreButton>
                 <S.InstagramButton>
                   <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
@@ -74,7 +74,7 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
               <>
                 <Link to="/gallery">
                   <S.SeeMoreButton>
-                    {data && data.length > 0 ? 'See More...' : <S.Spinner />}
+                    {!loading && data && data.length > 0 ? 'See More...' : <S.Spinner />}
                   </S.SeeMoreButton>
                 </Link>
                 <S.InstagramButton>
