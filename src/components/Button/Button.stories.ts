@@ -31,9 +31,30 @@ export const Small: Story = {
   },
 };
 
+export const Medium: Story = {
+  args: {
+    children: 'Button',
+    size: 'medium',
+  },
+};
+
 export const Large: Story = {
   args: {
     children: 'Button',
     size: 'large',
+  },
+};
+
+export const Xlarge: Story = {
+  args: {
+    children: 'Button',
+    size: 'xLarge',
+  },
+};
+
+export const XXLarge: Story = {
+  args: {
+    children: 'Button',
+    size: 'xxLarge',
   },
 };
