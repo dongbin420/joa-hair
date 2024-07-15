@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const ErrorPageContainer = styled.div`
-  height: 100vh;
+  height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

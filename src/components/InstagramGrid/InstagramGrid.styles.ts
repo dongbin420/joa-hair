@@ -121,3 +121,7 @@ export const Spinner = styled.span`
   animation: ${spin} 1s linear infinite;
   display: inline-block;
 `;
+
+export const ErrorMessage = styled.div`
+  margin-top: ${({ theme }) => theme.spacing.spacing8};
+`;
