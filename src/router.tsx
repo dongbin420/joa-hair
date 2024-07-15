@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import App from '@/App';
 import Spinner from '@/components/Spinner/Spinner';
 
+const App = lazy(() => import('@/App'));
 const ErrorPage = lazy(() => import('@/pages/ErrorPage/ErrorPage'));
 const MainPage = lazy(() => import('@/pages/MainPage/MainPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage/AboutPage'));
@@ -13,7 +13,11 @@ const ContactPage = lazy(() => import('@/pages/ContactPage/ContactPage'));
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: (
+      <Suspense fallback={<Spinner />}>
+        <App />
+      </Suspense>
+    ),
     errorElement: (
       <Suspense fallback={<Spinner />}>
         <ErrorPage />
