@@ -1,24 +1,32 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import App from '@/App';
-import MainPage from '@/pages/MainPage/MainPage';
-import ErrorPage from '@/pages/ErrorPage/ErrorPage';
 import Spinner from '@/components/Spinner/Spinner';
 
-const AboutPage = lazy(() => delayForDemo(import('@/pages/AboutPage/AboutPage')));
-const ServicesPage = lazy(() => delayForDemo(import('@/pages/ServicesPage/ServicesPage')));
-const GalleryPage = lazy(() => delayForDemo(import('@/pages/GalleryPage/GalleryPage')));
-const ContactPage = lazy(() => delayForDemo(import('@/pages/ContactPage/ContactPage')));
+const ErrorPage = lazy(() => import('@/pages/ErrorPage/ErrorPage'));
+const MainPage = lazy(() => import('@/pages/MainPage/MainPage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage/AboutPage'));
+const ServicesPage = lazy(() => import('@/pages/ServicesPage/ServicesPage'));
+const GalleryPage = lazy(() => import('@/pages/GalleryPage/GalleryPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage/ContactPage'));
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
+    errorElement: (
+      <Suspense fallback={<Spinner />}>
+        <ErrorPage />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: <MainPage />,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <MainPage />
+          </Suspense>
+        ),
       },
       {
         path: 'about',
@@ -57,10 +65,10 @@ const router = createBrowserRouter([
 ]);
 
 // suspense ui 확인 위한 테스트용
-function delayForDemo<T>(promise: Promise<T>): Promise<T> {
-  return new Promise<void>((resolve) => {
-    setTimeout(resolve, 500);
-  }).then(() => promise);
-}
+// function delayForDemo<T>(promise: Promise<T>): Promise<T> {
+//   return new Promise<void>((resolve) => {
+//     setTimeout(resolve, 500);
+//   }).then(() => promise);
+// }
 
 export default router;
