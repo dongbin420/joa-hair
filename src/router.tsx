@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import App from '@/App';
-import MainPage from '@/pages/MainPage/MainPage';
-import ErrorPage from '@/pages/ErrorPage/ErrorPage';
 import Spinner from '@/components/Spinner/Spinner';
 
+const ErrorPage = lazy(() => import('@/pages/ErrorPage/ErrorPage'));
+const MainPage = lazy(() => import('@/pages/MainPage/MainPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage/AboutPage'));
 const ServicesPage = lazy(() => import('@/pages/ServicesPage/ServicesPage'));
 const GalleryPage = lazy(() => import('@/pages/GalleryPage/GalleryPage'));
