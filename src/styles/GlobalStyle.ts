@@ -4,7 +4,18 @@ import Themunday from '../assets/fonts/Themunday-Regular.woff2';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Themunday";
-    src: url(${Themunday}) format('woff2'); 
+    font-display: swap;
+    src:
+      local('The munday free version Regular'),
+      local('The munday Regular'),
+      url(${Themunday}) format('woff2'); 
+  }
+
+  @font-face {
+    font-family: 'customArial';
+    size-adjust: 90%;
+    ascent-override: 70%;
+    src: local('Arial');
   }
 
   *, *::before, *::after {

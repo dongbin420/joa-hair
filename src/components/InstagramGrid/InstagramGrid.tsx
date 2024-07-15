@@ -43,43 +43,53 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
 
   return (
     <S.Container>
-      <S.GridWrapper customCss={customCss?.grid}>
-        {data &&
-          data.length > 0 &&
-          data.map((post, idx) => <InstagramPost key={idx} post={post} customCss={customCss} />)}
-      </S.GridWrapper>
-      <S.ButtonContainer>
-        {isGalleryPage && (
-          <>
-            <S.LoadMoreButton onClick={loadMore} disabled={loading}>
-              {loading ? <S.Spinner /> : 'Load More...'}
-            </S.LoadMoreButton>
-            <S.InstagramButton>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-                <S.InstagramButtonContentWrapper>
-                  <img src={instagramIcon} alt="instagram button" />
-                  Follow on Instagram
-                </S.InstagramButtonContentWrapper>
-              </a>
-            </S.InstagramButton>
-          </>
-        )}
-        {isMainPage && (
-          <>
-            <Link to="/gallery">
-              <S.SeeMoreButton>{loading ? <S.Spinner /> : 'See More...'}</S.SeeMoreButton>
-            </Link>
-            <S.InstagramButton>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
-                <S.InstagramButtonContentWrapper>
-                  <img src={instagramIcon} alt="instagram button" />
-                  Follow on Instagram
-                </S.InstagramButtonContentWrapper>
-              </a>
-            </S.InstagramButton>
-          </>
-        )}
-      </S.ButtonContainer>
+      {error ? (
+        <S.ErrorMessage>{error}</S.ErrorMessage>
+      ) : (
+        <>
+          {data && data.length > 0 && (
+            <S.GridWrapper customCss={customCss?.grid}>
+              {data.map((post, idx) => (
+                <InstagramPost key={idx} post={post} customCss={customCss} />
+              ))}
+            </S.GridWrapper>
+          )}
+          <S.ButtonContainer>
+            {isGalleryPage && (
+              <>
+                <S.LoadMoreButton onClick={loadMore} disabled={loading}>
+                  {!loading && data && data.length > 0 ? 'Load More...' : <S.Spinner />}
+                </S.LoadMoreButton>
+                <S.InstagramButton>
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+                    <S.InstagramButtonContentWrapper>
+                      <img src={instagramIcon} alt="instagram button" />
+                      Follow on Instagram
+                    </S.InstagramButtonContentWrapper>
+                  </a>
+                </S.InstagramButton>
+              </>
+            )}
+            {isMainPage && (
+              <>
+                <Link to="/gallery">
+                  <S.SeeMoreButton>
+                    {!loading && data && data.length > 0 ? 'See More...' : <S.Spinner />}
+                  </S.SeeMoreButton>
+                </Link>
+                <S.InstagramButton>
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">
+                    <S.InstagramButtonContentWrapper>
+                      <img src={instagramIcon} alt="instagram button" />
+                      Follow on Instagram
+                    </S.InstagramButtonContentWrapper>
+                  </a>
+                </S.InstagramButton>
+              </>
+            )}
+          </S.ButtonContainer>
+        </>
+      )}
     </S.Container>
   );
 }
