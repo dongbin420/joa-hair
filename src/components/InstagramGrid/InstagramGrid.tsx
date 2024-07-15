@@ -47,13 +47,13 @@ function InstagramGrid({ useFetch, isGalleryPage, isMainPage, customCss }: Insta
         <S.ErrorMessage>{error}</S.ErrorMessage>
       ) : (
         <>
-          <S.GridWrapper customCss={customCss?.grid}>
-            {data &&
-              data.length > 0 &&
-              data.map((post, idx) => (
+          {data && data.length > 0 && (
+            <S.GridWrapper customCss={customCss?.grid}>
+              {data.map((post, idx) => (
                 <InstagramPost key={idx} post={post} customCss={customCss} />
               ))}
-          </S.GridWrapper>
+            </S.GridWrapper>
+          )}
           <S.ButtonContainer>
             {isGalleryPage && (
               <>
