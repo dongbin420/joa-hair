@@ -103,7 +103,7 @@ export const InstagramUsername = styled.span`
   }
 `;
 
-export const PostWrapper = styled.div.withConfig({
+export const PostWrapper = styled.a.withConfig({
   shouldForwardProp: (prop) => prop !== 'customCss' && prop !== 'loaded',
 })<{ customCss: CSSProp; loaded: boolean }>`
   opacity: ${({ loaded }) => (loaded ? '1' : '0')};
@@ -111,12 +111,17 @@ export const PostWrapper = styled.div.withConfig({
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  aspect-ratio: 2 / 3;
 
-  ${({ customCss }) => customCss && customCss};
+  @supports (aspect-ratio: 1 / 1) {
+    aspect-ratio: 2 / 3;
+
+    ${({ customCss }) => customCss && customCss};
+  }
 
   /* aspect-ratio대신 쓸 수도 있음 */
-  /* max-height: 400px; */
+  @supports not (aspect-ratio: 1 / 1) {
+    max-height: 400px;
+  }
 
   &:hover
     ${InstagramIcon},
