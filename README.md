@@ -22,4 +22,9 @@
 <img src="https://github.com/user-attachments/assets/30af5c4b-0233-411d-83cc-b46ef9324f3b" width="700px" title="px(픽셀) 크기 설정" alt="infra"></img>
 
 ### 기타
-<img src="https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1721154920303?alt=media&token=7576a85e-3b25-4ba0-b084-38950f9e7e20" width="700px" title="px(픽셀) 크기 설정" alt="infra"></img>
+<img src="https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1721154920303?alt=media&token=7576a85e-3b25-4ba0-b084-38950f9e7e20" width="700px" title="px(픽셀) 크기 설정" alt="etc"></img>
+
+<br>
+
+## 인프라구조
+<img src="https://github.com/user-attachments/assets/e96c9cbf-8b42-400d-8f12-73d6b7b531c4" width="850px" title="px(픽셀) 크기 설정" alt="infra structure"></img>
