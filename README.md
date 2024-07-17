@@ -16,7 +16,7 @@
 
 ### 백엔드(서버리스)
 
-<img src="https://github.com/user-attachments/assets/75997699-8184-465c-a95c-8cbd83e1d85a" width="700px" title="px(픽셀) 크기 설정" alt="backend"></img>
+<img src="https://github.com/user-attachments/assets/60d329bb-81de-404d-af75-79914c4aec39" width="700px" title="px(픽셀) 크기 설정" alt="backend"></img>
 
 ### 인프라
 <img src="https://github.com/user-attachments/assets/30af5c4b-0233-411d-83cc-b46ef9324f3b" width="700px" title="px(픽셀) 크기 설정" alt="infra"></img>
