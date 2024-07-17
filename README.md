@@ -15,7 +15,7 @@
 
 ### 프론트엔드
 
-<img src="https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1721152767589?alt=media&token=fd2d6e30-a9fb-4431-8411-b6254377e470" width="700px" title="px(픽셀) 크기 설정" alt="frontend"></img>
+<img src="https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1721220643996?alt=media&token=07ea6c23-0ec5-458e-a12d-11235d1eaf17" width="700px" title="px(픽셀) 크기 설정" alt="frontend"></img>
 
 ### 백엔드(서버리스)
 
