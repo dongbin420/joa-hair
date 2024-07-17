@@ -4,6 +4,9 @@
   # JOA HAIR
 
   ### JOA HAIR 프로젝트는 헤어살롱의 비즈니스 마케팅을 위해 제작된 웹사이트 프로젝트입니다.
+  <img src="https://img.shields.io/badge/node-v20.11.1-brightgreen.svg?style=flat-square" title="px(픽셀) 크기 설정" alt="node"></img>
+  <img src="https://img.shields.io/badge/npm-v10.2.4-orange.svg?style=flat-square" title="px(픽셀) 크기 설정" alt="npm"></img>
+  
 </div>
 
 <br>
