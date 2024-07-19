@@ -109,19 +109,19 @@ module.exports = {
     // }),
 
     // 폰트 + 해당하는 이미지만 프리로드
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      fileWhitelist: [/\.woff2$/, ...imagePatterns],
-      include: 'allAssets',
-      as(entry) {
-        if (/\.woff2$/.test(entry)) {
-          return 'font';
-        }
-        if (imagePatterns.some((pattern) => pattern.test(entry))) {
-          return 'image';
-        }
-      },
-    }),
+    // new PreloadWebpackPlugin({
+    //   rel: 'preload',
+    //   fileWhitelist: [/\.woff2$/, ...imagePatterns],
+    //   include: 'allAssets',
+    //   as(entry) {
+    //     if (/\.woff2$/.test(entry)) {
+    //       return 'font';
+    //     }
+    //     if (imagePatterns.some((pattern) => pattern.test(entry))) {
+    //       return 'image';
+    //     }
+    //   },
+    // }),
   ],
   resolve: {
     extensions: ['.tsx', '.jsx', '.ts', '.js'],
