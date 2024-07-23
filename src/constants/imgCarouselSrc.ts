@@ -9,11 +9,11 @@ import salonImg8 from '@/assets/imgs/webp/salon8.webp';
 import salonImg9 from '@/assets/imgs/webp/salon9.webp';
 
 export const pepeImgCarouselSrc = [
-  'https://kr.cryptonews.com/wp-content/uploads/sites/18/2023/10/1698248758-pepe-coin-rise-1024x536.webp',
-  'https://static.news.bitcoin.com/wp-content/uploads/2023/04/pepes.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Feels_good_man.jpg/200px-Feels_good_man.jpg',
-  'https://www.tbstat.com/cdn-cgi/image/format=webp,q=75/wp/uploads/2023/05/Fvz9hOIXwAEaIR8.jpeg',
-  'https://cdn.theatlantic.com/thumbor/Q7m9sYavGcBjEXE_ql88rm_QAAQ=/289x408:3287x1982/960x504/filters:watermark(https://cdn.theatlantic.com/media/files/badge_2x.png,-20,20,0,33)/media/img/mt/2016/09/original-2/original.jpg',
+  'https://images.unsplash.com/photo-1721635513019-4dd5f5c18042?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1717137389747-d1d4ced6abc8?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1721406769891-f2ba651401d9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1721296381825-426cfb4dc450?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1721241843448-af1c8ade1835?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 ];
 
 export const salonImgCarouselSrc = [
