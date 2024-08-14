@@ -2,11 +2,32 @@ const axios = require('axios');
 const { initializeApp } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 const { onRequest } = require('firebase-functions/v2/https');
+const { onSchedule } = require('firebase-functions/v2/scheduler');
 // const logger = require('firebase-functions/logger');
 
 initializeApp();
 const db = getFirestore();
 const MAIN_API_URL = `${process.env.INSTAGRAM_API_BASE_URL}/v20.0/${process.env.INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,permalink,timestamp,thumbnail_url,username,caption,is_shared_to_feed,children{id,media_type,media_url,thumbnail_url}&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&pretty=1&limit=10000`;
+
+// 인스타그램 api이용해서 모든 post 가져와 firestore에 저장하는 함수(3일에 1번 자동 실행)
+exports.scheduledFetchInstaPosts = onSchedule(
+  {
+    schedule: '0 0 */3 * *',
+    timeZone: 'UTC',
+    region: 'australia-southeast1',
+  },
+  async (req, res) => {
+    try {
+      const { data } = await axios.get(MAIN_API_URL);
+      await db.collection('instagram_all_posts').doc('latest').set(data);
+
+      console.log('Scheduled Instagram posts updated successfully');
+      res.send('Scheduled trigger executed successfully!');
+    } catch (error) {
+      console.error('Error fetching Instagram data:', error);
+    }
+  },
+);
 
 // 수동으로 인스타그램 api에서 인스타그램 posts들 가져와서, 데이터베이스에 저장하는 함수
 exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, async (req, res) => {
@@ -14,7 +35,7 @@ exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, as
     const { data } = await axios.get(MAIN_API_URL);
     await db.collection('instagram_all_posts').doc('latest').set(data);
 
-    console.log('Instagram posts updated successfully');
+    console.log('Manual Instagram posts updated successfully');
     res.send('Manual trigger executed successfully!');
   } catch (error) {
     console.error('Error fetching Instagram data:', error);
