@@ -18,9 +18,18 @@ exports.scheduledFetchInstaPosts = onSchedule(
   },
   async (req, res) => {
     try {
-      const { data } = await axios.get(MAIN_API_URL);
-      await db.collection('instagram_all_posts').doc('latest').set(data);
+      let allPosts = [];
+      let url = MAIN_API_URL;
 
+      while (url) {
+        const { data } = await axios.get(url);
+        allPosts = allPosts.concat(data.data);
+
+        // Check if there's a next page
+        url = data.paging?.next || null;
+      }
+
+      await db.collection('instagram_all_posts').doc('latest').set({ data: allPosts });
       console.log('Scheduled Instagram posts updated successfully');
       res.send('Scheduled trigger executed successfully!');
     } catch (error) {
@@ -32,9 +41,18 @@ exports.scheduledFetchInstaPosts = onSchedule(
 // 수동으로 인스타그램 api에서 인스타그램 posts들 가져와서, 데이터베이스에 저장하는 함수
 exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, async (req, res) => {
   try {
-    const { data } = await axios.get(MAIN_API_URL);
-    await db.collection('instagram_all_posts').doc('latest').set(data);
+    let allPosts = [];
+    let url = MAIN_API_URL;
 
+    while (url) {
+      const { data } = await axios.get(url);
+      allPosts = allPosts.concat(data.data);
+
+      // Check if there's a next page
+      url = data.paging?.next || null;
+    }
+
+    await db.collection('instagram_all_posts').doc('latest').set({ data: allPosts });
     console.log('Manual Instagram posts updated successfully');
     res.send('Manual trigger executed successfully!');
   } catch (error) {
