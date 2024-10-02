@@ -73,7 +73,7 @@ function Footer() {
           </S.DayWrapper>
           <S.DayWrapper>
             <S.Day>Sunday</S.Day>
-            <S.Time>Closed</S.Time>
+            <S.Time>9am - 5pm</S.Time>
           </S.DayWrapper>
         </S.FooterSection>
       </S.FooterContainer>

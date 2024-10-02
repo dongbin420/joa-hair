@@ -39,7 +39,7 @@ function ContactBox() {
           <S.InformationText title={true}>Saturday</S.InformationText>
           <S.InformationText>9am - 5pm</S.InformationText>
           <S.InformationText title={true}>Sunday</S.InformationText>
-          <S.InformationText lastText={true}>Closed</S.InformationText>
+          <S.InformationText lastText={true}>9am - 5pm</S.InformationText>
         </S.InformationWrapper>
         <S.InformationWrapper>
           <ImgWrapper
