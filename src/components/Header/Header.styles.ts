@@ -4,9 +4,9 @@ export const HeaderBigContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'isSticky',
 })<{ isSticky: boolean }>`
   width: 100%;
+
+  position: ${({ isSticky }) => (isSticky ? 'fixed' : 'static')};
   top: 0;
-  position: sticky;
-  top: ${({ isSticky }) => (isSticky ? '0' : '-150px')};
 
   z-index: 10;
   background-color: ${({ isSticky, theme }) =>

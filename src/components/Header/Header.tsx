@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useOverlayToggle } from '@/hooks/useOverlayToggle';
-import { useStickyHeader } from '@/hooks/useStickyHeader';
 import * as S from './Header.styles';
 import Button from '@/components/Button/Button';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
@@ -11,9 +10,8 @@ import hamburgerIcon from '@/assets/imgs/svg/hamburger.svg';
 import { INSTAGRAM_URL, FACEBOOK_URL, RESERVATION_URL } from '@/constants/url';
 import { ROUTES } from '@/constants/routes';
 
-function Header() {
+function Header({ isSticky }: { isSticky: boolean }) {
   const { isOverlayOpen, toggleOverlay } = useOverlayToggle();
-  const isSticky = useStickyHeader();
 
   return (
     <S.HeaderBigContainer id="headerBigContainer" isSticky={isSticky}>
