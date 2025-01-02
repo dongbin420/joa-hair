@@ -39,7 +39,7 @@ function Footer() {
       <S.FooterContainer>
         <S.FooterSection order={'1'}>
           <S.ContactTitle>CONTACT</S.ContactTitle>
-          <S.ContactContents href="tel:+610494112551">0494 112 551</S.ContactContents>
+          <S.ContactContents href="tel:0494112551">0494 112 551</S.ContactContents>
           <S.ContactContents href="mailto:Joahair@hotmail.com">
             Joahair@hotmail.com
           </S.ContactContents>

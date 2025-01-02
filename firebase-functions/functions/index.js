@@ -7,7 +7,7 @@ const { onSchedule } = require('firebase-functions/v2/scheduler');
 
 initializeApp();
 const db = getFirestore();
-const MAIN_API_URL = `${process.env.INSTAGRAM_API_BASE_URL}/v20.0/${process.env.INSTAGRAM_USER_ID}/media?fields=id,media_type,media_url,permalink,timestamp,thumbnail_url,username,caption,is_shared_to_feed,children{id,media_type,media_url,thumbnail_url}&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&pretty=1&limit=10000`;
+const MAIN_API_URL = `${process.env.INSTAGRAM_API_BASE_URL}/v21.0/${process.env.INSTAGRAM_IG_ID}/media?fields=id,media_type,media_url,permalink,timestamp,thumbnail_url,username,caption,is_shared_to_feed,children{id,media_type,media_url,thumbnail_url}&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&pretty=1&limit=10000`;
 
 // 인스타그램 api이용해서 모든 post 가져와 firestore에 저장하는 함수(3일에 1번 자동 실행)
 exports.scheduledFetchInstaPosts = onSchedule(
@@ -62,7 +62,10 @@ exports.manualFetchInstaPosts = onRequest({ region: 'australia-southeast1' }, as
 
 // 인스타그램 모든 포스트들 8개, 16개로 나눠서 클라이언트 요청시 보내주는 함수.
 exports.getSortedInstagramPosts = onRequest(
-  { region: 'australia-southeast1', cors: [/joahair\.com$/] },
+  {
+    region: 'australia-southeast1',
+    cors: [/joahair\.com$/],
+  },
   // { region: 'australia-southeast1', cors: 'http://localhost:3000' },
 
   async (req, res) => {
@@ -91,7 +94,10 @@ exports.getSortedInstagramPosts = onRequest(
 
 // instagram_all_posts 데이터베이스에서 selectedPost에 해당하는 id만 검색해서, 클라이언트 요청시 보내주는 함수
 exports.getSelectedInstagramPosts = onRequest(
-  { region: 'australia-southeast1', cors: [/joahair\.com$/] },
+  {
+    region: 'australia-southeast1',
+    cors: [/joahair\.com$/],
+  },
   // { region: 'australia-southeast1', cors: 'http://localhost:3000' },
 
   async (req, res) => {

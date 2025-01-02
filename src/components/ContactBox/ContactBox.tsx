@@ -15,7 +15,7 @@ function ContactBox() {
           <ImgWrapper img={phoneIcon} width={'50px'} height={'50px'} description={'phone icon'} />
           <S.InformationTitle>Contact</S.InformationTitle>
           <S.InformationText link={true}>
-            <S.InformationLink href="tel:+610494112551">0494 112 551</S.InformationLink>
+            <S.InformationLink href="tel:0494112551">0494 112 551</S.InformationLink>
           </S.InformationText>
           <S.InformationText link={true}>
             <S.InformationLink href="mailto:Joahair@hotmail.com">
