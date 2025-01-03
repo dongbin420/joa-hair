@@ -4,9 +4,7 @@ import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import Button from '@/components/Button/Button';
 import PromiseBox from '@/components/PromiseBox/PromiseBox';
 import bannerImg2 from '@/assets/imgs/webp/bannerImg2.webp';
-import serviceImg1 from '@/assets/imgs/png/serviceImg1.png';
-import serviceImg2 from '@/assets/imgs/png/serviceImg2.png';
-import serviceImg3 from '@/assets/imgs/png/serviceImg3.png';
+import serviceImg0 from '@/assets/imgs/png/serviceImg0.png';
 import { SERVICES_CONTENT } from '@/constants/bannerContent';
 import { RESERVATION_URL } from '@/constants/url';
 import { SERVICES_NOTE_TEXT } from '@/constants/text';
@@ -19,7 +17,7 @@ function ServicesPage() {
       <S.ServicesPageContainer>
         <S.ServicesTitle>Our Services</S.ServicesTitle>
         <S.ServicesPicWrapper>
-          {[serviceImg1, serviceImg2, serviceImg3].map((img, idx) => (
+          {[serviceImg0].map((img, idx) => (
             <ImgWrapper
               key={idx}
               img={img}

@@ -51,8 +51,6 @@ export const ABOUT_INTRODUCE_TEXT = [
   'At Joa Hair, we are composed of top hairstylists from Korea and Japan, each with over 10 years of experience. we boast excellent transportation and accessibility. Customer satisfaction is our top priority. We are a client-centric salon where our hairstylists care for you from start to finish, aiming to provide the best experience in a cozy and comfortable atmosphere. We strive to offer our customers the utmost experience in a warm and inviting environment.',
 
   'Relax with our comfortable and excellent service. We hope all good things come to your daily life :)',
-
-  '브리즈번 No.1 한인미용실입니다!',
 ];
 
 export const PROMISE_TEXT = [
