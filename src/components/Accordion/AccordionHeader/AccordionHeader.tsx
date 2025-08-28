@@ -16,6 +16,7 @@ function AccordionHeader({ children, idx }: PropsWithChildren<AccordionHeaderPro
         isOpen={idx === activeIndex}
         onClick={() => toggleAccordion(idx)}
         aria-expanded={idx === activeIndex}
+        type="button"
       >
         <img src={triangleUpIcon} alt="triangle icon in Accordion" />
         {children}

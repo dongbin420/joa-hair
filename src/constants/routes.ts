@@ -5,3 +5,5 @@ export const ROUTES = [
   { path: '/gallery', label: 'GALLERY' },
   { path: '/contact', label: 'CONTACT' },
 ];
+
+export const RESERVATION_ROUTE = '/booking';

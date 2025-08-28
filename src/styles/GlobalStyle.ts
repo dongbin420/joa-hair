@@ -30,6 +30,10 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 
+  button {
+  all: unset; 
+}
+
   body {
     // default font style
     font-family: "Inter", sans-serif;

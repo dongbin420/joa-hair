@@ -165,7 +165,7 @@ export const Icon = styled.img.withConfig({
   }
 `;
 
-export const ButtonLink = styled.a`
+export const ButtonLink = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }

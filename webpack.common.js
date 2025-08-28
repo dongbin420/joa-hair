@@ -10,6 +10,7 @@ dotenv.config();
 
 // 폰트 + 해당하는 이미지만 프리로드
 const imagesToPreload = [
+  'bannerImg5',
   'bannerImg4',
   'bannerImg3',
   'bannerImg2',

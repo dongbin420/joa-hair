@@ -6,6 +6,7 @@ import AboutPage from '@/pages/AboutPage/AboutPage';
 import ServicesPage from '@/pages/ServicesPage/ServicesPage';
 import GalleryPage from '@/pages/GalleryPage/GalleryPage';
 import ContactPage from '@/pages/ContactPage/ContactPage';
+import BookingPage from '@/pages/BookingPage/BookingPage';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: 'contact',
         element: <ContactPage />,
+      },
+      {
+        path: 'booking',
+        element: <BookingPage />,
       },
     ],
   },

@@ -21,3 +21,7 @@ export { ReactComponent as HeartHand } from './heartHand.svg';
 export { ReactComponent as Circle } from './circle.svg';
 export { ReactComponent as QuotesUp } from './quotesUp.svg';
 export { ReactComponent as QuotesDown } from './quotesDown.svg';
+export { ReactComponent as MinusGray } from './minus-gray.svg';
+export { ReactComponent as MinusRed } from './minus-red.svg';
+export { ReactComponent as PlusGray } from './plus-gray.svg';
+export { ReactComponent as PlusBlue } from './plus-blue.svg';

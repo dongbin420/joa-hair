@@ -6,8 +6,9 @@ import PromiseBox from '@/components/PromiseBox/PromiseBox';
 import bannerImg2 from '@/assets/imgs/webp/bannerImg2.webp';
 import serviceImg from '@/assets/imgs/png/serviceImg.png';
 import { SERVICES_CONTENT } from '@/constants/bannerContent';
-import { RESERVATION_URL } from '@/constants/url';
 import { SERVICES_NOTE_TEXT } from '@/constants/text';
+import { RESERVATION_ROUTE } from '@/constants/routes';
+import { Link } from 'react-router-dom';
 
 function ServicesPage() {
   return (
@@ -26,10 +27,12 @@ function ServicesPage() {
             />
           ))}
         </S.ServicesPicWrapper>
-        <S.ButtonLink href={RESERVATION_URL} target="_blank">
-          <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
-            BOOK NOW
-          </Button>
+        <S.ButtonLink>
+          <Link to={RESERVATION_ROUTE}>
+            <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
+              BOOK NOW
+            </Button>
+          </Link>
         </S.ButtonLink>
         <S.NoteWrapper>
           <S.NoteTitle>Note</S.NoteTitle>

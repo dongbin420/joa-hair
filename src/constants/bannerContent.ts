@@ -17,3 +17,8 @@ export const CONTACT_CONTENT = {
   title: 'CONTACT',
   text: "Find our salon's location, contact details, and hours of operation. Reach out to us for any inquiries or to schedule your next visit.",
 };
+
+export const BOOKING_CONTENT = {
+  title: 'BOOKING',
+  text: 'Schedule your appointment with ease. Select your preferred service, stylist, and time to ensure a seamless and personalized salon experience.',
+};

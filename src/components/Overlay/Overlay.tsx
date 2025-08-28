@@ -6,8 +6,10 @@ import Button from '@/components/Button/Button';
 import closeIcon from '@/assets/imgs/svg/close.svg';
 import instagram from '@/assets/imgs/png/instagram.png';
 import facebook from '@/assets/imgs/png/facebook.png';
-import { INSTAGRAM_URL, FACEBOOK_URL, RESERVATION_URL } from '@/constants/url';
+import { INSTAGRAM_URL, FACEBOOK_URL } from '@/constants/url';
 import { ROUTES } from '@/constants/routes';
+import { RESERVATION_ROUTE } from '@/constants/routes';
+import { Link } from 'react-router-dom';
 
 interface OverlayProps {
   toggleOverlay: () => void;
@@ -50,10 +52,12 @@ function Overlay({ toggleOverlay }: OverlayProps) {
             <S.Icon src={facebook} alt="facebook icon" />
           </S.IconLink>
         </S.IconWrapper>
-        <S.ButtonLink href={RESERVATION_URL} target="_blank">
-          <Button size={'xLarge'} customCss={S.ButtonCustomCss}>
-            BOOK NOW
-          </Button>
+        <S.ButtonLink>
+          <Link onClick={() => handleClose(RESERVATION_ROUTE)} to={RESERVATION_ROUTE}>
+            <Button size={'xLarge'} customCss={S.ButtonCustomCss}>
+              BOOK NOW
+            </Button>
+          </Link>
         </S.ButtonLink>
       </S.OverlayContentContainer>
       <ImgWrapper
