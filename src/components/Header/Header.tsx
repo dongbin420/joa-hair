@@ -1,14 +1,17 @@
-import { Link } from 'react-router-dom';
 import { useOverlayToggle } from '@/hooks/useOverlayToggle';
 import * as S from './Header.styles';
 import Button from '@/components/Button/Button';
 import ImgWrapper from '@/components/ImgWrapper/ImgWrapper';
 import Overlay from '@/components/Overlay/Overlay';
+import Logo from './Logo/Logo';
+import Navigation from './Navigation/Navigation';
+import Icon from './Icon/Icon';
 import instagram from '@/assets/imgs/png/instagram.png';
 import facebook from '@/assets/imgs/png/facebook.png';
 import hamburgerIcon from '@/assets/imgs/svg/hamburger.svg';
 import { INSTAGRAM_URL, FACEBOOK_URL, RESERVATION_URL } from '@/constants/url';
-import { ROUTES } from '@/constants/routes';
+import { ROUTES, INDEX_FOR_MENU } from '@/constants/routes';
+import { getFilteredRoutes } from '@/utils/navigationUtils';
 
 function Header({ isSticky }: { isSticky: boolean }) {
   const { isOverlayOpen, toggleOverlay } = useOverlayToggle();
@@ -17,25 +20,12 @@ function Header({ isSticky }: { isSticky: boolean }) {
     <S.HeaderBigContainer id="headerBigContainer" isSticky={isSticky}>
       <S.HeaderContainer isSticky={isSticky}>
         <S.HeaderFirst>
-          <Link to="/">
-            <S.LogoWrapper isSticky={isSticky}>
-              <S.LogoTop>JOA</S.LogoTop>
-              <S.LogoBottom>HAIR</S.LogoBottom>
-            </S.LogoWrapper>
-          </Link>
-          {ROUTES.slice(1).map((route) => (
-            <S.NavElement key={route.path}>
-              <Link to={route.path}>{route.label}</Link>
-            </S.NavElement>
-          ))}
+          <Logo isSticky={isSticky} />
+          <Navigation routes={getFilteredRoutes(ROUTES, INDEX_FOR_MENU)} />
         </S.HeaderFirst>
         <S.HeaderSecond>
-          <S.IconLink href={INSTAGRAM_URL} target="_blank">
-            <S.Icon src={instagram} alt="instagram icon" isSticky={isSticky}></S.Icon>
-          </S.IconLink>
-          <S.IconLink href={FACEBOOK_URL} target="_blank">
-            <S.Icon src={facebook} alt="facebook icon" isSticky={isSticky} />
-          </S.IconLink>
+          <Icon link={INSTAGRAM_URL} img={instagram} isSticky={isSticky} />
+          <Icon link={FACEBOOK_URL} img={facebook} isSticky={isSticky} />
           <S.ButtonLink href={RESERVATION_URL} target="_blank">
             <Button size={'large'} customCss={S.ButtonCustomCss} isSticky={isSticky}>
               BOOK NOW

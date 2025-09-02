@@ -5,3 +5,5 @@ export const ROUTES = [
   { path: '/gallery', label: 'GALLERY' },
   { path: '/contact', label: 'CONTACT' },
 ];
+
+export const INDEX_FOR_MENU = 1;
