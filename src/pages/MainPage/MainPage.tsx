@@ -12,6 +12,13 @@ import { RESERVATION_ROUTE } from '@/constants/routes';
 import { Link } from 'react-router-dom';
 
 function MainPage() {
+  const { data, status, error } = useFetchSelectedPosts();
+  const queryState = {
+    data,
+    status,
+    error,
+  };
+
   return (
     <S.MainPageContainer>
       <S.FirstSection>
@@ -39,6 +46,7 @@ function MainPage() {
           isLcp={true}
         />
       </S.FirstSection>
+
       <S.SecondSection>
         <S.IntroContentWrapper>
           <S.IntroTextWrapper>
@@ -57,18 +65,20 @@ function MainPage() {
           />
         </S.IntroContentWrapper>
       </S.SecondSection>
+
       <S.ThirdSection>
         <S.InstagramGridContainer>
           <S.InstagramGridWrapper>
             <S.InstagramGridTitle>Style Spotlights</S.InstagramGridTitle>
             <InstagramGrid
-              isMainPage={true}
-              useFetch={useFetchSelectedPosts}
+              queryState={queryState}
               customCss={S.InstagramGridCustomCss}
+              pageType="main"
             />
           </S.InstagramGridWrapper>
         </S.InstagramGridContainer>
       </S.ThirdSection>
+
       <S.FourthSection>
         <S.ReviewCarouselContainer>
           <S.StyledQuotesUp />
