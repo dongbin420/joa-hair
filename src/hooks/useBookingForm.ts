@@ -36,6 +36,7 @@ const useBookingForm = () => {
   };
 
   const onSubmit = (data: BookingFormData) => {
+    console.log('제출!!');
     console.log(data);
   };
 

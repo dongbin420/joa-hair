@@ -16,7 +16,7 @@ export const ServiceContentWrapper = styled.div.withConfig({
   padding-bottom: ${({ theme, isActive }) => (isActive ? `${theme.spacing.spacing6}` : '0')};
   max-height: ${({ isActive }) => (isActive ? '120vh' : 0)};
   overflow-y: ${({ isActive }) => (isActive ? 'auto' : 'hidden')};
-  transition: max-height 0.5s ease;
+  transition: max-height 0.3s ease;
 
   // 아코디언 클릭 등 이벤트 동작 안되게 막기
   pointer-events: ${({ isActive }) => (isActive ? 'auto' : 'none')};

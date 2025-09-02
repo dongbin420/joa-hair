@@ -42,8 +42,6 @@ function ServiceAccordion() {
       {typeof formState.errors.serviceIds?.message === 'string' && (
         <S.SelectNote>{formState.errors.serviceIds?.message}</S.SelectNote>
       )}
-
-      {console.log(formState.isValid)}
     </>
   );
 }

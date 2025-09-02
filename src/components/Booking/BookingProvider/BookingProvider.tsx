@@ -3,6 +3,7 @@ import type { PropsWithChildren } from 'react';
 import useBookingForm from '@/hooks/useBookingForm';
 import { FormProvider, SubmitHandler } from 'react-hook-form';
 import { BookingFormData } from '@/types/bookingType';
+import { selectionConfig, TOTAL_STEPS } from './../Booking.config';
 
 interface BookingContextValue {
   onSubmit: SubmitHandler<BookingFormData>;
@@ -19,15 +20,15 @@ function BookingProvider({ children }: PropsWithChildren) {
   const [isAdvancing, setIsAdvancing] = useState(false); // 중복 클릭 방지(trigger 비동기)
   const { methods, onSubmit, addService, removeService } = useBookingForm();
 
-  // 다른 컴포넌트에서도 사용할 수 있게 수정(지금은 serviceIds에 대해서만 가능)
   const handleNextStep = async () => {
     if (isAdvancing) return;
     setIsAdvancing(true);
+    const formData = selectionConfig[activeStep - 1].formData;
 
     try {
-      const valid = await methods.trigger('serviceIds');
+      const valid = await methods.trigger(formData, { shouldFocus: true });
       if (!valid) return;
-      setActiveStep((prev) => (prev < 3 ? prev + 1 : prev));
+      setActiveStep((prev) => (prev < TOTAL_STEPS ? prev + 1 : prev));
     } finally {
       setIsAdvancing(false);
     }

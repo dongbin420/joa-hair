@@ -2,18 +2,22 @@ import * as S from './SelectionTitle.styles';
 import { useFormContext } from 'react-hook-form';
 import { BookingFormData } from '@/types/bookingType';
 
-// 이후에, 모든 셀렉션 컴포넌트에서 재사용할 수 있도록 구성(props를 사용하면 될 듯)
+interface SelectionTitleProps {
+  step: number;
+  title: string;
+  showSelectedServices?: boolean;
+}
 
-function SelectionTitle() {
+function SelectionTitle({ step, title, showSelectedServices }: SelectionTitleProps) {
   const { watch } = useFormContext<BookingFormData>();
-  const services = watch('serviceIds');
+  const services = showSelectedServices ? watch('serviceIds') : [];
 
   return (
     <S.SelectionTitleWrapper>
-      <S.SelectionNum>1</S.SelectionNum>
+      <S.SelectionNum>{step}</S.SelectionNum>
       <S.SelectionTitleTextWrapper>
-        <S.SelectionTitle>Choose Your Services</S.SelectionTitle>
-        <S.SelectedServices>{services.join(', ')}</S.SelectedServices>
+        <S.SelectionTitle>{title}</S.SelectionTitle>
+        {showSelectedServices && <S.SelectedServices>{services.join(', ')}</S.SelectedServices>}
       </S.SelectionTitleTextWrapper>
     </S.SelectionTitleWrapper>
   );
