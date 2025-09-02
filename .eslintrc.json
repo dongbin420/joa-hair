@@ -11,6 +11,7 @@
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended",
+    "plugin:@tanstack/query/recommended",
     "prettier" // eslint-config-prettier (prettier가 formatting을 전담하게끔 해줌. extends의 마지막에 작성함으로써 다른 configs들을 덮어쓰게끔 해야함.)
   ],
   "parser": "@typescript-eslint/parser", // 소스파일을 파싱하는데 쓰임. 이게 없으면 ESLint는 타입스크립트를 일반 자바스크립트인 것처럼 파싱하기에 에러가 남.
