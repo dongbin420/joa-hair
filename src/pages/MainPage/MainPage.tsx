@@ -11,6 +11,13 @@ import { useFetchSelectedPosts } from '@/hooks/useFetchSelectedPosts';
 import { reviews } from '@/constants/reviewData';
 
 function MainPage() {
+  const { data, status, error } = useFetchSelectedPosts();
+  const queryState = {
+    data,
+    status,
+    error,
+  };
+
   return (
     <S.MainPageContainer>
       <S.FirstSection>
@@ -38,6 +45,7 @@ function MainPage() {
           isLcp={true}
         />
       </S.FirstSection>
+
       <S.SecondSection>
         <S.IntroContentWrapper>
           <S.IntroTextWrapper>
@@ -56,18 +64,20 @@ function MainPage() {
           />
         </S.IntroContentWrapper>
       </S.SecondSection>
+
       <S.ThirdSection>
         <S.InstagramGridContainer>
           <S.InstagramGridWrapper>
             <S.InstagramGridTitle>Style Spotlights</S.InstagramGridTitle>
             <InstagramGrid
-              isMainPage={true}
-              useFetch={useFetchSelectedPosts}
+              queryState={queryState}
               customCss={S.InstagramGridCustomCss}
+              pageType="main"
             />
           </S.InstagramGridWrapper>
         </S.InstagramGridContainer>
       </S.ThirdSection>
+
       <S.FourthSection>
         <S.ReviewCarouselContainer>
           <S.StyledQuotesUp />
@@ -88,6 +98,7 @@ function MainPage() {
           </ReviewCarousel>
         </S.ReviewCarouselContainer>
       </S.FourthSection>
+
       <S.ButtonLink href={RESERVATION_URL} target="_blank">
         <Button size={'xxLarge'} customCss={S.ButtonCustomCss}>
           BOOK NOW

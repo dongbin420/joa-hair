@@ -6,11 +6,22 @@ import InstagramGrid from '@/components/InstagramGrid/InstagramGrid';
 import { useFetchGalleryPosts } from '@/hooks/useFetchGalleryPosts';
 
 function GalleryPage() {
+  const { data, error, fetchNextPage, hasNextPage, isFetching, status } = useFetchGalleryPosts();
+  const flattenedData = data ? data.pages.flat() : undefined;
+  const queryState = {
+    data: flattenedData,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    status,
+  };
+
   return (
     <>
       <PageBanner img={bannerImg3} content={GALLERY_CONTENT} />
       <S.GalleryPageContainer>
-        <InstagramGrid isGalleryPage={true} useFetch={useFetchGalleryPosts} />
+        <InstagramGrid pageType="gallery" queryState={queryState} />
       </S.GalleryPageContainer>
     </>
   );
