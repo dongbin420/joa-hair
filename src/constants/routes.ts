@@ -7,3 +7,5 @@ export const ROUTES = [
 ];
 
 export const RESERVATION_ROUTE = '/booking';
+
+export const INDEX_FOR_MENU = 1;
