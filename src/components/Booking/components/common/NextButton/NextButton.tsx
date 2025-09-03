@@ -10,7 +10,7 @@ interface NextButtonProps {
 
 function NextButton({ step }: NextButtonProps) {
   const { getFieldState, trigger, control } = useFormContext();
-  const { handleNextStep } = useBookingContext();
+  const { handleNextStep, activeStep } = useBookingContext();
   const [buttonReady, setButtonReady] = useState(false);
   const formData = selectionConfig[step - 1].formData;
   const fs = useFormState({ control, name: formData });
@@ -29,7 +29,7 @@ function NextButton({ step }: NextButtonProps) {
     <S.ButtonContainer>
       <S.NextButton
         type="button"
-        onClick={handleNextStep}
+        onClick={() => handleNextStep(activeStep)}
         disabled={buttonDisabled}
         isActive={!buttonDisabled}
       >

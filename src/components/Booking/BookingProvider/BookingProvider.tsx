@@ -9,7 +9,8 @@ interface BookingContextValue {
   onSubmit: SubmitHandler<BookingFormData>;
   addService: (serviceId: string) => void;
   removeService: (serviceId: string) => void;
-  handleNextStep: () => void;
+  handleNextStep: (active: number) => void;
+  handleBackStep: () => void;
   activeStep: number;
 }
 
@@ -20,10 +21,10 @@ function BookingProvider({ children }: PropsWithChildren) {
   const [isAdvancing, setIsAdvancing] = useState(false); // 중복 클릭 방지(trigger 비동기)
   const { methods, onSubmit, addService, removeService } = useBookingForm();
 
-  const handleNextStep = async () => {
+  const handleNextStep = async (active: number) => {
     if (isAdvancing) return;
     setIsAdvancing(true);
-    const formData = selectionConfig[activeStep - 1].formData;
+    const formData = selectionConfig[active - 1].formData;
 
     try {
       const valid = await methods.trigger(formData, { shouldFocus: true });
@@ -34,17 +35,14 @@ function BookingProvider({ children }: PropsWithChildren) {
     }
   };
 
-  // back 버튼 구현시, 위 handleNextStep 참고해서 좀 더 디테일하게 수정
   const handleBackStep = () => {
-    if (activeStep > 1) {
-      setActiveStep((prev) => prev - 1);
-    }
+    setActiveStep((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
   return (
     <FormProvider {...methods}>
       <BookingContext.Provider
-        value={{ onSubmit, addService, removeService, handleNextStep, activeStep }}
+        value={{ onSubmit, addService, removeService, handleNextStep, handleBackStep, activeStep }}
       >
         {children}
       </BookingContext.Provider>

@@ -24,8 +24,7 @@ export const selectionConfig: SelectionConfig[] = [
     step: 3,
     title: 'Booking Summary',
 
-    // 추후 상황보고 수정
-    // trigger 실행 시 customer만 넘겼을때와, customer의 모든 프로퍼티를 개별로 넘겼을때, 검증 차이를 직접 실험을 통해 확인
+    // trigger 실행 시 customer만 넘겨도, 내부 각 필드하나하나 검증 진행함.
     formData: ['customer'],
   },
 ] as const;

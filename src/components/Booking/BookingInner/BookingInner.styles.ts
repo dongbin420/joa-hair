@@ -6,3 +6,8 @@ export const BookingContainer = styled.form`
   padding: ${({ theme }) => theme.spacing.spacing4};
   background-color: white;
 `;
+
+export const StepButtonContainer = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.spacing3};
+`;
