@@ -89,3 +89,5 @@ export const BOOKING_SERVICES = [
     },
   },
 ];
+
+export const MONTH_RANGE = 3;

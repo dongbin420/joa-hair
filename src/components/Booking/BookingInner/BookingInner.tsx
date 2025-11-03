@@ -9,6 +9,7 @@ import InputContent from '../components/common/InputContent/InputContent';
 import ServiceAccordion from '../components/ServiceSelection/ServiceAccordion/ServiceAccordion';
 import NextButton from '../components/common/NextButton/NextButton';
 import BackButton from '../components/common/BackButton/BackButton';
+import DateSelection from '../components/DateSelection/DateSelection';
 
 function BookingInner() {
   const { handleSubmit, register } = useFormContext<BookingFormData>();
@@ -28,7 +29,7 @@ function BookingInner() {
             )}
             {step === 2 && (
               <>
-                hi
+                <DateSelection />
                 {/* 아래 인풋은 step2 컴포넌트를 만든 후, 거기에 삽입되어야 함. */}
                 <input
                   type="hidden"
