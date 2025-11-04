@@ -3,6 +3,6 @@ export interface DayState {
   state: 'open' | 'full' | 'closed';
 }
 
-export interface dayStates {
+export interface DayStates {
   days: DayState[];
 }
