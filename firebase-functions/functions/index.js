@@ -8,6 +8,7 @@ const { onSchedule } = require('firebase-functions/v2/scheduler');
 initializeApp();
 const db = getFirestore();
 const MAIN_API_URL = `${process.env.INSTAGRAM_API_BASE_URL}/v21.0/${process.env.INSTAGRAM_IG_ID}/media?fields=id,media_type,media_url,permalink,timestamp,thumbnail_url,username,caption,is_shared_to_feed,children{id,media_type,media_url,thumbnail_url}&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&pretty=1&limit=10000`;
+const LONG_LIVE_TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
 
 // 인스타그램 api이용해서 모든 post 가져와 firestore에 저장하는 함수(3일에 1번 자동 실행)
 exports.scheduledFetchInstaPosts = onSchedule(
@@ -34,6 +35,40 @@ exports.scheduledFetchInstaPosts = onSchedule(
       res.send('Scheduled trigger executed successfully!');
     } catch (error) {
       console.error('Error fetching Instagram data:', error);
+    }
+  },
+);
+
+// 한 달에 한 번, 인스타그램 long-live 토큰 갱신하는 함수
+exports.scheduledRefreshInstagramToken = onSchedule(
+  {
+    schedule: '0 0 1 * *',
+    timeZone: 'UTC',
+    region: 'australia-southeast1',
+  },
+  async () => {
+    try {
+      const { data } = await axios.get('https://graph.instagram.com/refresh_access_token', {
+        params: {
+          grant_type: 'ig_refresh_token',
+          access_token: LONG_LIVE_TOKEN,
+        },
+      });
+
+      const { access_token, token_type } = data || {};
+
+      if (access_token) {
+        console.log('[IG] Token refreshed successfully', {
+          tokenType: token_type,
+          tokenLength: access_token.length,
+        });
+      }
+    } catch (err) {
+      console.error('[IG] Refresh error', {
+        message: err.message,
+        status: err.response?.status,
+        data: err.response?.data,
+      });
     }
   },
 );
