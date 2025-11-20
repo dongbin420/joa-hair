@@ -12,7 +12,7 @@ import BackButton from '../components/common/BackButton/BackButton';
 import DateSelection from '../components/DateSelection/DateSelection';
 
 function BookingInner() {
-  const { handleSubmit, register } = useFormContext<BookingFormData>();
+  const { handleSubmit } = useFormContext<BookingFormData>();
   const { onSubmit } = useBookingContext();
 
   return (
@@ -30,25 +30,6 @@ function BookingInner() {
             {step === 2 && (
               <>
                 <DateSelection />
-                {/* 아래 인풋은 step2 컴포넌트를 만든 후, 거기에 삽입되어야 함. */}
-                <input
-                  type="hidden"
-                  {...register('date', {
-                    validate: () => {
-                      console.log('date!!');
-                      return true;
-                    },
-                  })}
-                />
-                <input
-                  type="hidden"
-                  {...register('startTime', {
-                    validate: () => {
-                      console.log('startTime!!');
-                      return true;
-                    },
-                  })}
-                />
                 <S.StepButtonContainer>
                   <NextButton step={step} />
                   <BackButton />

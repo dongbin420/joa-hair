@@ -28,6 +28,10 @@ const useBookingForm = () => {
   const removeService = (service: string) => {
     const currentServices = methods.getValues('serviceIds');
 
+    if (!currentServices.includes(service)) {
+      return;
+    }
+
     methods.setValue(
       'serviceIds',
       currentServices.filter((item) => item !== service),

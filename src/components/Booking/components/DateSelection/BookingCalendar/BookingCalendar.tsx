@@ -4,14 +4,17 @@ import { addMonths, getEndDateOfMonth, toYmd } from '@/utils/dayPickerUtils';
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { MONTH_RANGE } from '@/constants/bookingData';
 import { useFetchDayStates } from '@/hooks/useFetchDayStates';
+import { useFormContext } from 'react-hook-form';
+import { validateDate } from '@/utils/validators';
+import { useBookingContext } from '@/hooks/useBookingContext';
 
 function BookingCalendar() {
+  const { register, setValue } = useFormContext();
+  const { selected, setSelected } = useBookingContext();
   const [today] = useState(() => new Date());
   const [visibleMonth, setVisibleMonth] = useState(() => new Date());
-  const [selected, setSelected] = useState<Date | undefined>(undefined);
   const endMonth = useMemo(() => addMonths(today, MONTH_RANGE), [today]);
-  const endDate = useMemo(() => getEndDateOfMonth(visibleMonth), [visibleMonth]);
-  const curMonth = useMemo(
+  const rangeStartDate = useMemo(
     () =>
       visibleMonth.getFullYear() === today.getFullYear() &&
       visibleMonth.getMonth() === today.getMonth()
@@ -20,9 +23,15 @@ function BookingCalendar() {
     [visibleMonth, today],
   );
 
-  const startParam = useMemo(() => toYmd(curMonth), [curMonth]);
-  const endParam = useMemo(() => toYmd(endDate), [endDate]);
+  const rangeEndDate = useMemo(() => getEndDateOfMonth(rangeStartDate), [rangeStartDate]);
+  const startParam = useMemo(() => toYmd(rangeStartDate), [rangeStartDate]);
+  const endParam = useMemo(() => toYmd(rangeEndDate), [rangeEndDate]);
   const { data: dayStates, status, error } = useFetchDayStates(startParam, endParam);
+
+  // 요청 실패 버그 디버깅용
+  if (error) {
+    console.log(startParam, endParam, error);
+  }
 
   const { open, full } = useMemo(() => {
     const open = dayStates?.days.filter((d) => d.state === 'open').map((d) => new Date(d.date));
@@ -39,18 +48,23 @@ function BookingCalendar() {
     [dayStates],
   );
 
-  // '오늘'이 '선택 불가능한 날'인 경우, selected가 되는 것을 방지하기 위한 useEffect
+  // '오늘'(또는 달의 첫 날)이 '선택 불가능한 날'인 경우, selected가 되는 것을 방지하기 위한 useEffect
   useEffect(() => {
-    let d = today;
+    let d = rangeStartDate;
 
-    while (isDisabled(d)) {
-      const newDate = new Date(d);
-      newDate.setDate(newDate.getDate() + 1);
-      d = newDate;
+    while (d <= rangeEndDate && isDisabled(d)) {
+      d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
     }
 
-    setSelected(d);
-  }, [dayStates, isDisabled, today]);
+    setSelected(d <= rangeEndDate ? d : undefined);
+  }, [isDisabled, rangeStartDate, rangeEndDate, setSelected]);
+
+  useEffect(() => {
+    if (selected) {
+      setValue('date', toYmd(selected), { shouldValidate: true });
+      setValue('startTime', '', { shouldValidate: true });
+    }
+  }, [selected, setValue]);
 
   return (
     <>
@@ -73,6 +87,12 @@ function BookingCalendar() {
         }}
 
         // footer={selected ? `Selected: ${selected.toLocaleDateString()}` : 'Pick a day.'}
+      />
+      <input
+        type="hidden"
+        {...register('date', {
+          validate: validateDate,
+        })}
       />
     </>
   );

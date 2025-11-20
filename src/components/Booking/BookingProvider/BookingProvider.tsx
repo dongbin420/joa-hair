@@ -12,12 +12,15 @@ interface BookingContextValue {
   handleNextStep: (active: number) => void;
   handleBackStep: () => void;
   activeStep: number;
+  selected: Date | undefined;
+  setSelected: (date: Date | undefined) => void;
 }
 
 export const BookingContext = createContext<BookingContextValue | null>(null);
 
 function BookingProvider({ children }: PropsWithChildren) {
   const [activeStep, setActiveStep] = useState(1);
+  const [selected, setSelected] = useState<Date | undefined>(undefined);
   const [isAdvancing, setIsAdvancing] = useState(false); // 중복 클릭 방지(trigger 비동기)
   const { methods, onSubmit, addService, removeService } = useBookingForm();
 
@@ -42,7 +45,16 @@ function BookingProvider({ children }: PropsWithChildren) {
   return (
     <FormProvider {...methods}>
       <BookingContext.Provider
-        value={{ onSubmit, addService, removeService, handleNextStep, handleBackStep, activeStep }}
+        value={{
+          onSubmit,
+          addService,
+          removeService,
+          handleNextStep,
+          handleBackStep,
+          activeStep,
+          selected,
+          setSelected,
+        }}
       >
         {children}
       </BookingContext.Provider>

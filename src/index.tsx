@@ -12,13 +12,16 @@ const root = createRoot(document.getElementById('root') as HTMLElement);
 const queryClient = new QueryClient();
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
-    return;
-  }
+  // if (process.env.NODE_ENV !== 'development') {
+  //   return;
+  // }
 
   const { worker } = await import('./mocks/browser');
 
-  return worker.start();
+  return worker.start({
+    serviceWorker: { url: '/mockServiceWorker.js' },
+    onUnhandledRequest: 'warn',
+  });
 }
 
 enableMocking().then(() => {
