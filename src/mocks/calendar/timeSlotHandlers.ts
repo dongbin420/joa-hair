@@ -2,20 +2,58 @@ import { http, HttpResponse } from 'msw';
 import { BUSINESS_OPEN_HOUR } from './../constants/timeSlot';
 import { BUSINESS_CLOSE_HOUR } from './../constants/timeSlot';
 import { SLOT_INTERVAL_MINUTES } from './../constants/timeSlot';
+import { TimeSlotCell, TimeSlotState } from '@/types/dayPickerType';
+
+function* timeRangeGenerator() {
+  for (let hour = BUSINESS_OPEN_HOUR; hour < BUSINESS_CLOSE_HOUR; hour++) {
+    yield `${hour.toString().padStart(2, '0')}:00`;
+    yield `${hour.toString().padStart(2, '0')}:30`;
+  }
+}
+
+// 같은 문자를 넣으면, 항상 같은 값, 다른 문자는 아주 높은 확률로 다른 값을 리턴하는 해시함수
+// 문자를 32비트 정수 범위(약 42억개)의 숫자 하나로 변환
+const hashString = (str: string): number => {
+  let hash = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) | 0;
+  }
+
+  return Math.abs(hash);
+};
+
+// seed(문자열의 고유 값)를 기준으로, 연속된 랜덤 시퀀스를 만드는 함수(이 함수로 리턴하는 함수를 호출할 때 마다 각 시퀀스를 구성하는 하나의 숫자가 생성된다.)
+const pseudoRandom = (seedStr: string) => {
+  let seed = hashString(seedStr);
+
+  return () => {
+    // 0-1 사이의 숫자를 만들기 위한 방식
+    const x = Math.sin(seed++) * 10000;
+
+    return x - Math.floor(x); // 0 ~ 1 사이의 숫자
+  };
+};
+
+// 00:00 형태의 시간은 문자열비교로 가능.
+const isBeforeTime = (a: string, b: string) => {
+  return a < b;
+};
 
 export const timeSlotHandlers = [
   http.get('/calendar/time-slots', ({ request }) => {
+    console.info('[MSW HIT]', request.url);
     const url = new URL(request.url);
     const dateParam = url.searchParams.get('date');
-    const serviceName = url.searchParams.get('serviceName');
+    const serviceIds = url.searchParams.getAll('serviceIds');
     const durationParam = url.searchParams.get('durationMinutes');
 
     if (!dateParam) {
       return HttpResponse.json({ error: 'Missing date query parameter' }, { status: 400 });
     }
 
-    if (!serviceName) {
-      return HttpResponse.json({ error: 'Missing serviceName query parameter' }, { status: 400 });
+    if (!serviceIds) {
+      return HttpResponse.json({ error: 'Missing serviceIds query parameter' }, { status: 400 });
     }
 
     if (!durationParam) {
@@ -25,12 +63,20 @@ export const timeSlotHandlers = [
       );
     }
 
-    // 오늘 날짜 + 1시간 cutoff 계산(1시간 내 시간들은 blocked)
+    const durationMinutes = Number(durationParam);
 
+    if (!Number.isFinite(durationMinutes) || durationMinutes <= 0) {
+      return HttpResponse.json(
+        { error: 'Invalid durationMinutes query parameter' },
+        { status: 400 },
+      );
+    }
+
+    // 오늘 날짜 + 1시간 cutoff 계산(1시간 내 시간들은 blocked)
     // new Date()는 로컬 시간을 가리키지만, 내부적으론 UTC 기준으로 저장되어 있음
     const serverNow = new Date();
 
-    // toISOString()는 UTC기준으로 문자열 변환을 함
+    // toISOString()는 UTC기준으로 문자열 변환을 함. 따라서 dateParam도 UTC 기준으로 변환 되어 있어야 함.
     const todayStr = serverNow.toISOString().slice(0, 10);
     const isToday = dateParam === todayStr;
     let cutoffTime: string | null = null;
@@ -40,10 +86,71 @@ export const timeSlotHandlers = [
       // getTime은 UTC기준 타임스탬프(ms)를 돌려준다.
       // ms를 그대로 ui렌더링에 사용하지는 않고, 보통 비교를 위해, 변환 후 사용하기에 utc로 변환되어도 무방
       const cutoff = new Date(serverNow.getTime() + 60 * 60 * 1000);
+
       // toTimeString()은 로컬타임 존 기반으로 문자열 변환(시간 + 타임존)
       cutoffTime = cutoff.toTimeString().slice(0, 5);
     }
 
-    return HttpResponse.json({});
+    const sequenceNumGenerator = pseudoRandom(`${dateParam}-${durationParam}`);
+    const timeCells: TimeSlotCell[] = [];
+
+    for (const time of timeRangeGenerator()) {
+      if (cutoffTime && isBeforeTime(time, cutoffTime)) {
+        timeCells.push({
+          time,
+          state: 'blocked',
+          selectable: false,
+        });
+
+        continue;
+      }
+
+      const sequenceNum = sequenceNumGenerator();
+      let state: TimeSlotState;
+
+      if (sequenceNum < 0.2) state = 'booked';
+      else if (sequenceNum < 0.23) state = 'blocked';
+      else state = 'open';
+
+      timeCells.push({
+        time,
+        state,
+        selectable: false,
+      });
+    }
+
+    const slotsNeeded = durationMinutes / SLOT_INTERVAL_MINUTES;
+
+    if (Number.isInteger(slotsNeeded) && slotsNeeded > 0) {
+      for (let i = 0; i < timeCells.length; i++) {
+        const cell = timeCells[i];
+
+        if (cell.state !== 'open') continue;
+
+        const slots = timeCells.slice(i, i + slotsNeeded);
+        if (slots.length < slotsNeeded) continue;
+
+        const isAllOpen = slots.every((slot) => slot.state === 'open');
+        if (!isAllOpen) continue;
+
+        cell.selectable = true;
+        const [startHour, startMin] = cell.time.split(':').map(Number);
+        const tempDate = new Date(0, 0, 1, startHour, startMin + durationMinutes);
+        const endTime = tempDate.toTimeString().slice(0, 5);
+        cell.endIfStart = endTime;
+      }
+    }
+
+    const timeSlotData = {
+      date: dateParam,
+      grid: {
+        businessOpen: '09:00',
+        businessClose: '21:00',
+        slotIntervalMinutes: SLOT_INTERVAL_MINUTES,
+      },
+      timeCells,
+    };
+
+    return HttpResponse.json(timeSlotData);
   }),
 ];

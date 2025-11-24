@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { toMs, toYmd } from '../utils/date';
+import { toMs, toYmdForHandler } from '../utils/date';
 import { DAY, SUNDAY } from '../constants/date';
 
 export const daysHandlers = [
@@ -18,7 +18,7 @@ export const daysHandlers = [
     const days = [];
 
     for (let time = startDay; time <= endDay; time += DAY) {
-      const date = toYmd(time);
+      const date = toYmdForHandler(time);
       let state;
 
       if (new Date(date).getUTCDay() === SUNDAY) {

@@ -13,7 +13,7 @@ export interface TimeSlotCell {
   time: string;
   state: TimeSlotState;
   selectable: boolean;
-  endIfStart: string;
+  endIfStart?: string;
 }
 
 export interface TimeSlotGrid {

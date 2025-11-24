@@ -24,12 +24,14 @@ function DateSelection() {
         </S.RightContainer>
       </S.DateSelectionContainer>
       {typeof errMsg === 'string' && <S.SelectNote>{errMsg}</S.SelectNote>}
-      <input
+
+      {/* startTime 필드에 대한 구현이 아직 이루어지지 않은 상태에서 버그 발생. 일단 주석처리 */}
+      {/* <input
         type="hidden"
         {...register('startTime', {
           validate: validateStartTime,
         })}
-      />
+      /> */}
     </>
   );
 }

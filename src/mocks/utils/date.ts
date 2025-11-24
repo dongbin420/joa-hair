@@ -3,6 +3,6 @@ export const toMs = (ymd: string) => {
   return Date.UTC(y, m - 1, d);
 };
 
-export const toYmd = (ms: number) => {
+export const toYmdForHandler = (ms: number) => {
   return new Date(ms).toISOString().slice(0, 10);
 };
