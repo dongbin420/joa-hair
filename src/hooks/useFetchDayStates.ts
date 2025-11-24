@@ -9,7 +9,6 @@ export const useFetchDayStates = (startDate: string, endDate: string) => {
       const response = await fetchDayStates(startDate, endDate);
       return response.data;
     },
-    staleTime: 5 * 60 * 1000,
-    gcTime: 5 * 60 * 1000,
+    gcTime: 0,
   });
 };

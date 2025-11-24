@@ -1,9 +1,10 @@
 import { http, HttpResponse } from 'msw';
 import { toMs, toYmdForHandler } from '../utils/date';
 import { DAY, SUNDAY } from '../constants/date';
+import { pseudoRandom } from '../utils/date';
 
 export const daysHandlers = [
-  http.get('/calendar/days', ({ request }) => {
+  http.get('/calendar/days', async ({ request }) => {
     console.info('[MSW HIT]', request.url);
     const url = new URL(request.url);
     const startParam = url.searchParams.get('start');
@@ -17,6 +18,8 @@ export const daysHandlers = [
     const endDay = toMs(endParam);
     const days = [];
 
+    const rand = pseudoRandom(`${startParam}-${endParam}`);
+
     for (let time = startDay; time <= endDay; time += DAY) {
       const date = toYmdForHandler(time);
       let state;
@@ -24,7 +27,7 @@ export const daysHandlers = [
       if (new Date(date).getUTCDay() === SUNDAY) {
         state = 'closed';
       } else {
-        const r = Math.random();
+        const r = rand();
 
         if (r < 0.2) state = 'full';
         else if (r < 0.3) state = 'closed';
