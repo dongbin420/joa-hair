@@ -7,10 +7,11 @@ import { useFetchDayStates } from '@/hooks/useFetchDayStates';
 import { useFormContext } from 'react-hook-form';
 import { validateDate } from '@/utils/validators';
 import { useBookingContext } from '@/hooks/useBookingContext';
+import { useRef } from 'react';
 
 function BookingCalendar() {
   const { register, setValue } = useFormContext();
-  const { selected, setSelected } = useBookingContext();
+  const { selected, setSelected, setShowTime, activeStep } = useBookingContext();
   const [today] = useState(() => new Date());
   const [visibleMonth, setVisibleMonth] = useState(() => new Date());
   const endMonth = useMemo(() => addMonths(today, MONTH_RANGE), [today]);
@@ -27,11 +28,17 @@ function BookingCalendar() {
   const startParam = useMemo(() => toYmd(rangeStartDate), [rangeStartDate]);
   const endParam = useMemo(() => toYmd(rangeEndDate), [rangeEndDate]);
   const { data: dayStates, status, error } = useFetchDayStates(startParam, endParam);
+  const prevSelectedRef = useRef<Date | undefined>(undefined);
 
   // 요청 실패 버그 디버깅용
   if (error) {
     console.log(startParam, endParam, error);
   }
+
+  const handleSelect = (day: Date | undefined) => {
+    setSelected(day);
+    // setShowTime(false);
+  };
 
   const { open, full } = useMemo(() => {
     const open = dayStates?.days.filter((d) => d.state === 'open').map((d) => new Date(d.date));
@@ -57,14 +64,24 @@ function BookingCalendar() {
     }
 
     setSelected(d <= rangeEndDate ? d : undefined);
+    // setShowTime(false);
   }, [isDisabled, rangeStartDate, rangeEndDate, setSelected]);
 
   useEffect(() => {
-    if (selected) {
-      setValue('date', toYmd(selected), { shouldValidate: true });
-      setValue('startTime', '', { shouldValidate: true });
-    }
-  }, [selected, setValue]);
+    // 날짜가 실질적으로 변경된 경우에만 실행
+    if (selected === prevSelectedRef.current) return;
+
+    prevSelectedRef.current = selected;
+
+    if (!selected) return;
+
+    const shouldValidate = activeStep === 2;
+    setValue('date', toYmd(selected), { shouldValidate });
+    setValue('startTime', '', { shouldValidate });
+
+    // 날짜 바꿀 때만 리스트 닫기
+    setShowTime(false);
+  }, [selected, setValue, setShowTime, activeStep]);
 
   return (
     <>
@@ -75,7 +92,7 @@ function BookingCalendar() {
         mode="single"
         required
         selected={selected}
-        onSelect={setSelected}
+        onSelect={handleSelect}
         disabled={[{ before: today }, isDisabled]}
         onMonthChange={(month) => {
           setVisibleMonth(month);

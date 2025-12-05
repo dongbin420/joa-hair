@@ -1,37 +1,58 @@
 import * as S from './TimeSelection.styles';
 import { useBookingContext } from '@/hooks/useBookingContext';
 import { useFormContext } from 'react-hook-form';
-import { useEffect } from 'react';
 import { toYmd } from '@/utils/dayPickerUtils';
-import axios from 'axios';
+import { useFetchTimeSlot } from '@/hooks/useFetchTimeslot';
+import { BookingFormData } from '@/types/bookingType';
+import { buildDurationMap, calculateTotalDuration } from '@/utils/dayPickerUtils';
+import { getTimeSlotViewState } from '@/utils/dayPickerUtils';
+import { BOOKING_SERVICES } from '@/constants/bookingData';
+import TimeSlot from './TimeSlot/TimeSlot';
+import { useState } from 'react';
 
 function TimeSelection() {
-  const { selected } = useBookingContext();
-  const { getValues } = useFormContext();
+  const { selected, selectStartTime } = useBookingContext();
+  const { getValues, trigger } = useFormContext<BookingFormData>();
   const selectedService = getValues('serviceIds');
+  const durationMap = buildDurationMap(BOOKING_SERVICES);
+  const totalMinutes = calculateTotalDuration(selectedService, durationMap);
 
-  // 임시 api 테스트 요청
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get('/calendar/time-slots', {
-          params: {
-            date: selected && toYmd(selected),
-            serviceIds: selectedService,
-            durationMinutes: 120,
-          },
-        });
+  const {
+    data: timeSlots,
+    status,
+    error,
+  } = useFetchTimeSlot(toYmd(selected!), selectedService, String(totalMinutes));
+  console.log(timeSlots);
+  const visibleSlots =
+    timeSlots?.timeCells.filter((slot) => getTimeSlotViewState(slot) !== 'hidden') ?? [];
 
-        console.log('응답 데이터: ', res.data);
-      } catch (err) {
-        console.error('API 요청 실패:', err);
-      }
-    };
+  const handleSlotClick = async (startTime: string) => {
+    selectStartTime(startTime);
+    await trigger('date', { shouldFocus: false });
+  };
 
-    fetchData();
-  }, [selected, selectedService]);
+  if (status === 'pending') {
+    return null;
+  }
 
-  return <>시간 골라!!</>;
+  return (
+    <>
+      <S.TimeSlotContainer>
+        {visibleSlots.length === 0 ? (
+          <S.EmptyMessage>No available times.</S.EmptyMessage>
+        ) : (
+          visibleSlots.map((slot) => (
+            <TimeSlot
+              key={`${slot.time}-${slot.state}-${slot.selectable}`}
+              slotData={slot}
+              // handleSlotClick={() => selectStartTime(slot.time)}
+              handleSlotClick={handleSlotClick}
+            />
+          ))
+        )}
+      </S.TimeSlotContainer>
+    </>
+  );
 }
 
 export default TimeSelection;

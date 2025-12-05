@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const DateSelectionContainer = styled.div`
   display: flex;
+  gap: ${({ theme }) => theme.spacing.spacing6};
 `;
 
 export const RightContainer = styled.div`
@@ -22,6 +23,7 @@ export const SearchButton = styled.button.withConfig({
   font-weight: 400;
   cursor: ${({ isActive }) => (isActive ? 'pointer' : 'default')};
   text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing.spacing6};
 
   ${({ isActive }) =>
     isActive &&

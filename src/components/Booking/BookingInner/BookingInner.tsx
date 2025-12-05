@@ -17,9 +17,14 @@ function BookingInner() {
 
   return (
     <S.BookingContainer onSubmit={handleSubmit(onSubmit)}>
-      {selectionConfig.map(({ step, title, showSelectedServices }) => (
+      {selectionConfig.map(({ step, title, showSelectedServices, showSelectedDateAndTime }) => (
         <Selection key={step}>
-          <SelectionTitle step={step} title={title} showSelectedServices={showSelectedServices} />
+          <SelectionTitle
+            step={step}
+            title={title}
+            showSelectedServices={showSelectedServices}
+            showSelectedDateAndTime={showSelectedDateAndTime}
+          />
           <InputContent step={step}>
             {step === 1 && (
               <>

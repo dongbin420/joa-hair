@@ -9,6 +9,5 @@ export const validateDate = (value: string) => {
 };
 
 export const validateStartTime = (value: string) => {
-  console.log(value);
   return value && value.length > 0 ? true : 'Please select a date and time.';
 };

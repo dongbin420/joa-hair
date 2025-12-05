@@ -23,22 +23,42 @@ export const timeSlotHandlers = [
     const url = new URL(request.url);
     const dateParam = url.searchParams.get('date');
     const serviceIds = url.searchParams.getAll('serviceIds');
+
+    // 임시#2 => 바꿨음
     const durationParam = url.searchParams.get('durationMinutes');
+
+    // 임시#2 => 바꿨음
+    // const durationParam = 120;
 
     if (!dateParam) {
       return HttpResponse.json({ error: 'Missing date query parameter' }, { status: 400 });
     }
 
+    // 임시#2 => 바꿨음
     if (!serviceIds) {
       return HttpResponse.json({ error: 'Missing serviceIds query parameter' }, { status: 400 });
     }
 
+    // 임시#2 => 바꿨음
     if (!durationParam) {
       return HttpResponse.json(
         { error: 'Missing durationMinutes query parameter' },
         { status: 400 },
       );
     }
+
+    // 테스트 용
+    // console.log(serviceIds);
+    // const totalDuration = serviceIds.reduce((total, item) => {
+    //   const parts = item.split('-');
+    //   const timePart = parts[1];
+    //   console.log(timePart);
+    //   const minutes = parseInt(timePart);
+
+    //   return total + minutes;
+    // }, 0);
+
+    // console.log(totalDuration);
 
     const durationMinutes = Number(durationParam);
 
@@ -85,8 +105,8 @@ export const timeSlotHandlers = [
       const sequenceNum = sequenceNumGenerator();
       let state: TimeSlotState;
 
-      if (sequenceNum < 0.2) state = 'booked';
-      else if (sequenceNum < 0.23) state = 'blocked';
+      if (sequenceNum < 0.1) state = 'booked';
+      else if (sequenceNum < 0.13) state = 'blocked';
       else state = 'open';
 
       timeCells.push({

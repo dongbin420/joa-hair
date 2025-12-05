@@ -25,5 +25,5 @@ export interface TimeSlotGrid {
 export interface TimeSlotResponse {
   date: string;
   grid: TimeSlotGrid;
-  cells: TimeSlotCell[];
+  timeCells: TimeSlotCell[];
 }
