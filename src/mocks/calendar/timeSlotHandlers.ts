@@ -81,10 +81,10 @@ export const timeSlotHandlers = [
     // '현재 시간' 기준, 1시간 이후 시간을 만들기
     if (isToday) {
       // getTime은 UTC기준 타임스탬프(ms)를 돌려준다.
-      // ms를 그대로 ui렌더링에 사용하지는 않고, 보통 비교를 위해, 변환 후 사용하기에 utc로 변환되어도 무방
+      // ms를 그대로 ui렌더링에 사용하지는 않고 보통 비교를 위해, 변환 후 사용하기에 utc로 변환되어도 무방
       const cutoff = new Date(serverNow.getTime() + 60 * 60 * 1000);
 
-      // toTimeString()은 로컬타임 존 기반으로 문자열 변환(시간 + 타임존)
+      // toTimeString()은 로컬타임존 기반으로 문자열 변환(시간 + 타임존)
       cutoffTime = cutoff.toTimeString().slice(0, 5);
     }
 

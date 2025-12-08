@@ -9,7 +9,7 @@ function DateSelection() {
   const { formState, register } = useFormContext();
   const { selected, showTime, setShowTime } = useBookingContext();
   const errMsg = formState.errors.date?.message ?? formState.errors.startTime?.message;
-  console.log(showTime);
+
   return (
     <>
       <S.DateSelectionContainer>
