@@ -19,11 +19,13 @@ function NextButton({ step }: NextButtonProps) {
 
   // 초기 검증 강제 실행 용.(invalid 초기 값이 false인 것을 대비)
   useEffect(() => {
+    if (activeStep !== step) return;
+
     (async () => {
       await trigger(formData, { shouldFocus: false });
       setButtonReady(true);
     })();
-  }, [trigger, formData]);
+  }, [trigger, formData, activeStep, step]);
 
   return (
     <S.ButtonContainer>

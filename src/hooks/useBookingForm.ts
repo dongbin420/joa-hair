@@ -28,6 +28,10 @@ const useBookingForm = () => {
   const removeService = (service: string) => {
     const currentServices = methods.getValues('serviceIds');
 
+    if (!currentServices.includes(service)) {
+      return;
+    }
+
     methods.setValue(
       'serviceIds',
       currentServices.filter((item) => item !== service),
@@ -40,7 +44,11 @@ const useBookingForm = () => {
     console.log(data);
   };
 
-  return { methods, onSubmit, addService, removeService };
+  const selectStartTime = (selected: string) => {
+    methods.setValue('startTime', selected, { shouldValidate: true });
+  };
+
+  return { methods, onSubmit, addService, removeService, selectStartTime };
 };
 
 export default useBookingForm;

@@ -21,10 +21,10 @@ export const BOOKING_SERVICES = [
     answer: {
       options: [
         { menu: 'Kids Cut', time: '30 minutes' },
-        { menu: 'Ladies Cut', time: '40 minutes' },
-        { menu: 'Ladies Cut & Wash', time: '40 minutes' },
+        { menu: 'Ladies Cut', time: '30 minutes' },
+        { menu: 'Ladies Cut & Wash', time: '30 minutes' },
         { menu: 'Mens Cut', time: '30 minutes' },
-        { menu: 'Wash & cut', time: '40 minutes' },
+        { menu: 'Wash & cut', time: '30 minutes' },
       ],
     },
   },
@@ -38,9 +38,9 @@ export const BOOKING_SERVICES = [
     question: 'Foils',
     answer: {
       options: [
-        { menu: '1/2 Head foil', time: '105 minutes' },
+        { menu: '1/2 Head foil', time: '120 minutes' },
         { menu: '1/4 Head foil', time: '90 minutes' },
-        { menu: 'Full head foil', time: '130 minutes' },
+        { menu: 'Full head foil', time: '150 minutes' },
       ],
     },
   },
@@ -51,7 +51,7 @@ export const BOOKING_SERVICES = [
         { menu: 'Cold perm', time: '120 minutes' },
         { menu: 'Digital&setting perm', time: '180 minutes' },
         { menu: 'Down perm', time: '30 minutes' },
-        { menu: "Men's perm", time: '95 minutes' },
+        { menu: "Men's perm", time: '90 minutes' },
       ],
     },
   },
@@ -59,9 +59,9 @@ export const BOOKING_SERVICES = [
     question: 'Styling',
     answer: {
       options: [
-        { menu: 'Blow Dry', time: '45 minutes' },
+        { menu: 'Blow Dry', time: '30 minutes' },
         { menu: 'Hair Upstyles', time: '60 minutes' },
-        { menu: 'Iron Curl', time: '50 minutes' },
+        { menu: 'Iron Curl', time: '60 minutes' },
         { menu: 'Iron Straightening', time: '60 minutes' },
         { menu: 'Wash', time: '30 minutes' },
       ],
@@ -85,7 +85,9 @@ export const BOOKING_SERVICES = [
   {
     question: 'toner',
     answer: {
-      options: [{ menu: 'Toner', time: '45 minutes' }],
+      options: [{ menu: 'Toner', time: '30 minutes' }],
     },
   },
 ];
+
+export const MONTH_RANGE = 3;

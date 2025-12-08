@@ -5,6 +5,7 @@ interface SelectionConfig {
   step: number;
   title: string;
   showSelectedServices?: boolean;
+  showSelectedDateAndTime?: boolean;
   formData: Path<BookingFormData>[];
 }
 
@@ -18,6 +19,7 @@ export const selectionConfig: SelectionConfig[] = [
   {
     step: 2,
     title: 'Choose Date & Time',
+    showSelectedDateAndTime: true,
     formData: ['date', 'startTime'],
   },
   {
