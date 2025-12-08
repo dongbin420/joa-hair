@@ -81,7 +81,13 @@ module.exports = {
       },
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './public/og', to: './og' }],
+      patterns: [
+        { from: './public/og', to: './og' },
+        {
+          from: path.resolve(__dirname, 'public/mockServiceWorker.js'),
+          to: 'mockServiceWorker.js', // dist/mockServiceWorker.js 로 복사
+        },
+      ],
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
