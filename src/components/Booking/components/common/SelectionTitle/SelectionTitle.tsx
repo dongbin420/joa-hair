@@ -6,18 +6,31 @@ interface SelectionTitleProps {
   step: number;
   title: string;
   showSelectedServices?: boolean;
+  showSelectedDateAndTime?: boolean;
 }
 
-function SelectionTitle({ step, title, showSelectedServices }: SelectionTitleProps) {
+function SelectionTitle({
+  step,
+  title,
+  showSelectedServices,
+  showSelectedDateAndTime,
+}: SelectionTitleProps) {
   const { watch } = useFormContext<BookingFormData>();
   const services = showSelectedServices ? watch('serviceIds') : [];
+  const date = showSelectedDateAndTime ? watch('date') : '';
+  const startTime = showSelectedDateAndTime ? watch('startTime') : '';
 
   return (
     <S.SelectionTitleWrapper>
       <S.SelectionNum>{step}</S.SelectionNum>
       <S.SelectionTitleTextWrapper>
         <S.SelectionTitle>{title}</S.SelectionTitle>
-        {showSelectedServices && <S.SelectedServices>{services.join(', ')}</S.SelectedServices>}
+        {showSelectedServices && <S.SelectedBrief>{services.join(', ')}</S.SelectedBrief>}
+        {showSelectedDateAndTime && (
+          <S.SelectedBrief>
+            {date.replaceAll('-', '/')} {startTime}
+          </S.SelectedBrief>
+        )}
       </S.SelectionTitleTextWrapper>
     </S.SelectionTitleWrapper>
   );

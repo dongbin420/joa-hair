@@ -26,7 +26,7 @@ export const SelectionTitle = styled.p`
   margin-bottom: ${({ theme }) => theme.spacing.spacing2};
 `;
 
-export const SelectedServices = styled.p`
+export const SelectedBrief = styled.p`
   color: ${({ theme }) => theme.color.gray700};
   font-weight: 300;
 `;

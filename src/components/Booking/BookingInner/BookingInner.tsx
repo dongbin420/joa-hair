@@ -9,16 +9,22 @@ import InputContent from '../components/common/InputContent/InputContent';
 import ServiceAccordion from '../components/ServiceSelection/ServiceAccordion/ServiceAccordion';
 import NextButton from '../components/common/NextButton/NextButton';
 import BackButton from '../components/common/BackButton/BackButton';
+import DateSelection from '../components/DateSelection/DateSelection';
 
 function BookingInner() {
-  const { handleSubmit, register } = useFormContext<BookingFormData>();
+  const { handleSubmit } = useFormContext<BookingFormData>();
   const { onSubmit } = useBookingContext();
 
   return (
     <S.BookingContainer onSubmit={handleSubmit(onSubmit)}>
-      {selectionConfig.map(({ step, title, showSelectedServices }) => (
+      {selectionConfig.map(({ step, title, showSelectedServices, showSelectedDateAndTime }) => (
         <Selection key={step}>
-          <SelectionTitle step={step} title={title} showSelectedServices={showSelectedServices} />
+          <SelectionTitle
+            step={step}
+            title={title}
+            showSelectedServices={showSelectedServices}
+            showSelectedDateAndTime={showSelectedDateAndTime}
+          />
           <InputContent step={step}>
             {step === 1 && (
               <>
@@ -28,26 +34,7 @@ function BookingInner() {
             )}
             {step === 2 && (
               <>
-                hi
-                {/* 아래 인풋은 step2 컴포넌트를 만든 후, 거기에 삽입되어야 함. */}
-                <input
-                  type="hidden"
-                  {...register('date', {
-                    validate: () => {
-                      console.log('date!!');
-                      return true;
-                    },
-                  })}
-                />
-                <input
-                  type="hidden"
-                  {...register('startTime', {
-                    validate: () => {
-                      console.log('startTime!!');
-                      return true;
-                    },
-                  })}
-                />
+                <DateSelection />
                 <S.StepButtonContainer>
                   <NextButton step={step} />
                   <BackButton />

@@ -10,3 +10,15 @@ export interface BookingFormData {
     note?: string;
   };
 }
+
+export interface ServiceOption {
+  menu: string;
+  time: string;
+}
+
+export interface BookingService {
+  question: string;
+  answer: {
+    options: ServiceOption[];
+  };
+}

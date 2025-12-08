@@ -12,14 +12,24 @@ interface BookingContextValue {
   handleNextStep: (active: number) => void;
   handleBackStep: () => void;
   activeStep: number;
+  selected: Date | undefined;
+  showTime: boolean;
+  setSelected: (date: Date | undefined) => void;
+  setShowTime: (isShowTime: boolean) => void;
+  selectStartTime: (selected: string) => void;
 }
 
 export const BookingContext = createContext<BookingContextValue | null>(null);
 
 function BookingProvider({ children }: PropsWithChildren) {
+  // (임시#1)
+  // activeStep을 개발하는 동안 편의를 위해 초기 값을 2로 바꿈. 개발 후에는 꼭 1로 다시 바꿔야 함.
+  // => 바꿨음
   const [activeStep, setActiveStep] = useState(1);
+  const [selected, setSelected] = useState<Date | undefined>(undefined);
+  const [showTime, setShowTime] = useState(false);
   const [isAdvancing, setIsAdvancing] = useState(false); // 중복 클릭 방지(trigger 비동기)
-  const { methods, onSubmit, addService, removeService } = useBookingForm();
+  const { methods, onSubmit, addService, removeService, selectStartTime } = useBookingForm();
 
   const handleNextStep = async (active: number) => {
     if (isAdvancing) return;
@@ -42,7 +52,19 @@ function BookingProvider({ children }: PropsWithChildren) {
   return (
     <FormProvider {...methods}>
       <BookingContext.Provider
-        value={{ onSubmit, addService, removeService, handleNextStep, handleBackStep, activeStep }}
+        value={{
+          onSubmit,
+          addService,
+          removeService,
+          handleNextStep,
+          handleBackStep,
+          activeStep,
+          selected,
+          setSelected,
+          showTime,
+          setShowTime,
+          selectStartTime,
+        }}
       >
         {children}
       </BookingContext.Provider>
