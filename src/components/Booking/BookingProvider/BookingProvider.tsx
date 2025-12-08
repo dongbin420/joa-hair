@@ -33,6 +33,7 @@ function BookingProvider({ children }: PropsWithChildren) {
 
   const handleNextStep = async (active: number) => {
     if (isAdvancing) return;
+
     setIsAdvancing(true);
     const formData = selectionConfig[active - 1].formData;
 
@@ -46,6 +47,10 @@ function BookingProvider({ children }: PropsWithChildren) {
   };
 
   const handleBackStep = () => {
+    if (activeStep === 2) {
+      methods.setValue('startTime', '', { shouldValidate: true });
+    }
+
     setActiveStep((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
