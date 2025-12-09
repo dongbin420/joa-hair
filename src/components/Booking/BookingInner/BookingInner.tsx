@@ -7,6 +7,7 @@ import Selection from '../components/common/Selection/Selection';
 import SelectionTitle from '../components/common/SelectionTitle/SelectionTitle';
 import InputContent from '../components/common/InputContent/InputContent';
 import ServiceAccordion from '../components/ServiceSelection/ServiceAccordion/ServiceAccordion';
+import BookingSummary from '../components/BookingSummary/BookingSummary';
 import NextButton from '../components/common/NextButton/NextButton';
 import BackButton from '../components/common/BackButton/BackButton';
 import DateSelection from '../components/DateSelection/DateSelection';
@@ -43,7 +44,7 @@ function BookingInner() {
             )}
             {step === 3 && (
               <>
-                bye
+                <BookingSummary />
                 <S.StepButtonContainer>
                   <BackButton />
                 </S.StepButtonContainer>
