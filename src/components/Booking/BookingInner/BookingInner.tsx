@@ -14,10 +14,20 @@ import DateSelection from '../components/DateSelection/DateSelection';
 
 function BookingInner() {
   const { handleSubmit } = useFormContext<BookingFormData>();
-  const { onSubmit } = useBookingContext();
+  const { onSubmit, onInvalid } = useBookingContext();
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
 
   return (
-    <S.BookingContainer onSubmit={handleSubmit(onSubmit)}>
+    <S.BookingContainer
+      noValidate
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
+      onKeyDown={handleKeyDown}
+    >
       {selectionConfig.map(({ step, title, showSelectedServices, showSelectedDateAndTime }) => (
         <Selection key={step}>
           <SelectionTitle

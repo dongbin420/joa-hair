@@ -7,6 +7,8 @@ export interface BookingFormData {
     lastName: string;
     email: string;
     phone: string;
+    emailVerificationCode: string;
+    emailVerified: boolean;
     note?: string;
   };
 }

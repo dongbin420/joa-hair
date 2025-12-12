@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { BookingFormData } from '@/types/bookingType';
+import { FieldErrors } from 'react-hook-form';
 
 const useBookingForm = () => {
   const methods = useForm<BookingFormData>({
@@ -12,9 +13,13 @@ const useBookingForm = () => {
         lastName: '',
         email: '',
         phone: '',
+        emailVerificationCode: '',
+        emailVerified: false,
         note: '',
       },
     },
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
   const addService = (service: string) => {
@@ -44,11 +49,15 @@ const useBookingForm = () => {
     console.log(data);
   };
 
+  const onInvalid = (errors: FieldErrors<BookingFormData>) => {
+    console.log('폼 제출시 필드값 검증 에러', errors);
+  };
+
   const selectStartTime = (selected: string) => {
     methods.setValue('startTime', selected, { shouldValidate: true });
   };
 
-  return { methods, onSubmit, addService, removeService, selectStartTime };
+  return { methods, onSubmit, addService, removeService, selectStartTime, onInvalid };
 };
 
 export default useBookingForm;
