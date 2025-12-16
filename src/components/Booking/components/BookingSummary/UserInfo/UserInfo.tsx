@@ -1,13 +1,41 @@
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import type { BookingFormData } from '@/types/bookingType';
 import * as S from './UserInfo.styles';
 import EmailVerification from '../EmailVerification/EmailVerification';
+import { useBookingContext } from '@/hooks/useBookingContext';
+import ConfirmBookingModal from '../ConfirmBookingModal/ConfirmBookingModal';
 
 function UserInfo() {
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const {
     register,
+    trigger,
+    handleSubmit,
     formState: { isValid, errors },
   } = useFormContext<BookingFormData>();
+  const { onSubmit, onInvalid } = useBookingContext();
+
+  const handleOpenConfirm = async () => {
+    const valid = await trigger();
+    if (!valid) return;
+    setIsConfirmOpen(true);
+  };
+
+  const handleCloseConfirm = () => setIsConfirmOpen(false);
+
+  const handleConfirmBooking = () => {
+    handleSubmit(
+      (data) => {
+        onSubmit(data);
+        setIsConfirmOpen(false);
+      },
+      (submitErrors) => {
+        onInvalid(submitErrors);
+        setIsConfirmOpen(false);
+      },
+    )();
+  };
 
   return (
     <S.Card>
@@ -71,10 +99,21 @@ function UserInfo() {
       </S.Field>
 
       <S.SubmitButtonRow>
-        <S.SubmitButton type="submit" isActive={isValid} disabled={!isValid}>
+        <S.SubmitButton
+          type="button"
+          isActive={isValid}
+          disabled={!isValid}
+          onClick={handleOpenConfirm}
+        >
           BOOK APPOINTMENT
         </S.SubmitButton>
       </S.SubmitButtonRow>
+
+      <ConfirmBookingModal
+        open={isConfirmOpen}
+        onClose={handleCloseConfirm}
+        onConfirm={handleConfirmBooking}
+      />
     </S.Card>
   );
 }
