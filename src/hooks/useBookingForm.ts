@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { BookingFormData } from '@/types/bookingType';
 import { FieldErrors } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { createBooking } from '@/apis/bookingApi';
+import type { BookingFormData } from '@/types/bookingType';
 
 const useBookingForm = () => {
+  const navigate = useNavigate();
   const methods = useForm<BookingFormData>({
     defaultValues: {
       serviceIds: [],
@@ -44,13 +47,17 @@ const useBookingForm = () => {
     );
   };
 
-  const onSubmit = (data: BookingFormData) => {
-    console.log('제출!!');
-    console.log(data);
+  const onSubmit = async (data: BookingFormData) => {
+    try {
+      const booking = await createBooking(data);
+      navigate('/booking/confirmation', { state: { booking } });
+    } catch (error) {
+      console.error('Failed to create booking', error);
+    }
   };
 
   const onInvalid = (errors: FieldErrors<BookingFormData>) => {
-    console.log('폼 제출시 필드값 검증 에러', errors);
+    console.log('Invalid booking form submission', errors);
   };
 
   const selectStartTime = (selected: string) => {
