@@ -8,7 +8,6 @@ import { buildDurationMap, calculateTotalDuration } from '@/utils/dayPickerUtils
 import { getTimeSlotViewState } from '@/utils/dayPickerUtils';
 import { BOOKING_SERVICES } from '@/constants/bookingData';
 import TimeSlot from './TimeSlot/TimeSlot';
-import { useState } from 'react';
 
 function TimeSelection() {
   const { selected, selectStartTime } = useBookingContext();

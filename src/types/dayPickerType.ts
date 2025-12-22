@@ -1,6 +1,6 @@
 export interface DayState {
   date: string;
-  state: 'open' | 'full' | 'closed';
+  state: 'open' | 'unavailable' | 'closed';
 }
 
 export interface DayStates {
