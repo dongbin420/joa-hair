@@ -1,7 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { BookingFormData } from '@/types/bookingType';
+import { FieldErrors } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { createBooking } from '@/apis/bookingApi';
+import type { BookingFormData } from '@/types/bookingType';
 
 const useBookingForm = () => {
+  const navigate = useNavigate();
   const methods = useForm<BookingFormData>({
     defaultValues: {
       serviceIds: [],
@@ -12,9 +16,13 @@ const useBookingForm = () => {
         lastName: '',
         email: '',
         phone: '',
+        emailVerificationCode: '',
+        emailVerified: false,
         note: '',
       },
     },
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
   const addService = (service: string) => {
@@ -39,16 +47,24 @@ const useBookingForm = () => {
     );
   };
 
-  const onSubmit = (data: BookingFormData) => {
-    console.log('제출!!');
-    console.log(data);
+  const onSubmit = async (data: BookingFormData) => {
+    try {
+      const booking = await createBooking(data);
+      navigate('/booking/confirmation', { state: { booking } });
+    } catch (error) {
+      console.error('Failed to create booking', error);
+    }
+  };
+
+  const onInvalid = (errors: FieldErrors<BookingFormData>) => {
+    console.log('Invalid booking form submission', errors);
   };
 
   const selectStartTime = (selected: string) => {
     methods.setValue('startTime', selected, { shouldValidate: true });
   };
 
-  return { methods, onSubmit, addService, removeService, selectStartTime };
+  return { methods, onSubmit, addService, removeService, selectStartTime, onInvalid };
 };
 
 export default useBookingForm;

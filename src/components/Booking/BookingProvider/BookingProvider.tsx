@@ -4,9 +4,11 @@ import useBookingForm from '@/hooks/useBookingForm';
 import { FormProvider, SubmitHandler } from 'react-hook-form';
 import { BookingFormData } from '@/types/bookingType';
 import { selectionConfig, TOTAL_STEPS } from './../Booking.config';
+import { FieldErrors } from 'react-hook-form';
 
 interface BookingContextValue {
   onSubmit: SubmitHandler<BookingFormData>;
+  onInvalid: (errors: FieldErrors<BookingFormData>) => void;
   addService: (serviceId: string) => void;
   removeService: (serviceId: string) => void;
   handleNextStep: (active: number) => void;
@@ -29,7 +31,8 @@ function BookingProvider({ children }: PropsWithChildren) {
   const [selected, setSelected] = useState<Date | undefined>(undefined);
   const [showTime, setShowTime] = useState(false);
   const [isAdvancing, setIsAdvancing] = useState(false); // 중복 클릭 방지(trigger 비동기)
-  const { methods, onSubmit, addService, removeService, selectStartTime } = useBookingForm();
+  const { methods, onSubmit, addService, removeService, selectStartTime, onInvalid } =
+    useBookingForm();
 
   const handleNextStep = async (active: number) => {
     if (isAdvancing) return;
@@ -59,6 +62,7 @@ function BookingProvider({ children }: PropsWithChildren) {
       <BookingContext.Provider
         value={{
           onSubmit,
+          onInvalid,
           addService,
           removeService,
           handleNextStep,

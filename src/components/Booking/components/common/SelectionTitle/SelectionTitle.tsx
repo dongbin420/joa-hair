@@ -26,7 +26,7 @@ function SelectionTitle({
       <S.SelectionTitleTextWrapper>
         <S.SelectionTitle>{title}</S.SelectionTitle>
         {showSelectedServices && <S.SelectedBrief>{services.join(', ')}</S.SelectedBrief>}
-        {showSelectedDateAndTime && (
+        {showSelectedDateAndTime && date && startTime && (
           <S.SelectedBrief>
             {date.replaceAll('-', '/')} {startTime}
           </S.SelectedBrief>
