@@ -7,16 +7,27 @@ import Selection from '../components/common/Selection/Selection';
 import SelectionTitle from '../components/common/SelectionTitle/SelectionTitle';
 import InputContent from '../components/common/InputContent/InputContent';
 import ServiceAccordion from '../components/ServiceSelection/ServiceAccordion/ServiceAccordion';
+import BookingSummary from '../components/BookingSummary/BookingSummary';
 import NextButton from '../components/common/NextButton/NextButton';
 import BackButton from '../components/common/BackButton/BackButton';
 import DateSelection from '../components/DateSelection/DateSelection';
 
 function BookingInner() {
   const { handleSubmit } = useFormContext<BookingFormData>();
-  const { onSubmit } = useBookingContext();
+  const { onSubmit, onInvalid } = useBookingContext();
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
 
   return (
-    <S.BookingContainer onSubmit={handleSubmit(onSubmit)}>
+    <S.BookingContainer
+      noValidate
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
+      onKeyDown={handleKeyDown}
+    >
       {selectionConfig.map(({ step, title, showSelectedServices, showSelectedDateAndTime }) => (
         <Selection key={step}>
           <SelectionTitle
@@ -43,7 +54,7 @@ function BookingInner() {
             )}
             {step === 3 && (
               <>
-                bye
+                <BookingSummary />
                 <S.StepButtonContainer>
                   <BackButton />
                 </S.StepButtonContainer>

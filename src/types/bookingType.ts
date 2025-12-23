@@ -7,6 +7,24 @@ export interface BookingFormData {
     lastName: string;
     email: string;
     phone: string;
+    emailVerificationCode: string;
+    emailVerified: boolean;
+    note?: string;
+  };
+}
+
+export interface BookingResponse {
+  id: string;
+  status: 'confirmed';
+  createdAt: string;
+  serviceIds: string[];
+  date: string;
+  startTime: string;
+  customer: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
     note?: string;
   };
 }

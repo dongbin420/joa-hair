@@ -7,6 +7,7 @@ import ServicesPage from '@/pages/ServicesPage/ServicesPage';
 import GalleryPage from '@/pages/GalleryPage/GalleryPage';
 import ContactPage from '@/pages/ContactPage/ContactPage';
 import BookingPage from '@/pages/BookingPage/BookingPage';
+import BookingConfirmationPage from '@/pages/BookingConfirmationPage/BookingConfirmationPage';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'booking',
         element: <BookingPage />,
+      },
+      {
+        path: 'booking/confirmation',
+        element: <BookingConfirmationPage />,
       },
     ],
   },
