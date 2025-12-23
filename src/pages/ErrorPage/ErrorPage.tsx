@@ -2,14 +2,17 @@ import * as S from './ErrorPage.styles';
 import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { useStickyHeader } from '@/hooks/useStickyHeader';
 
 function ErrorPage() {
   const error = useRouteError();
+  const isSticky = useStickyHeader();
 
   if (isRouteErrorResponse(error)) {
     return (
       <>
-        <Header />
+        <Header isSticky={false} />
+        {isSticky ? <Header isSticky={isSticky} /> : null}
         <S.ErrorPageContainer>
           <h1>Oops!</h1>
           <h2>{error.status}</h2>
@@ -23,7 +26,8 @@ function ErrorPage() {
   } else {
     return (
       <>
-        <Header />
+        <Header isSticky={false} />
+        {isSticky ? <Header isSticky={isSticky} /> : null}
         <S.ErrorPageContainer>
           <h1>Oops!</h1>
           <p>Sorry, an unexpected error has occurred.</p>
