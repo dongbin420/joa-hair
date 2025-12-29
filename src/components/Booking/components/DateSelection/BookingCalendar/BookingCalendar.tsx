@@ -42,13 +42,11 @@ function BookingCalendar() {
   );
 
   // 바꾼거
-  const enabled = (selectedServiceIds?.length ?? 0) > 0 && totalMinutes > 0;
   const {
     data: dayStates,
     status,
     error,
   } = useFetchDayStates(startParam, endParam, String(totalMinutes), selectedServiceIds ?? [], {
-    enabled,
     placeholderData: { days: [] },
   });
 
@@ -119,13 +117,6 @@ function BookingCalendar() {
     // 날짜 바꿀 때만 리스트 닫기
     setShowTime(false);
   }, [selected, setValue, setShowTime, activeStep]);
-
-  // const hasData = status === 'success' && Array.isArray(dayStates?.days);
-
-  // if (!hasData) {
-  //   // 필요하면 로더/스켈레톤을 넣으세요.
-  //   return null;
-  // }
 
   return (
     <>
