@@ -41,21 +41,11 @@ function BookingCalendar() {
     [selectedServiceIds, durationMap],
   );
 
-  // 바꾼거
   const {
     data: dayStates,
     status,
     error,
-  } = useFetchDayStates(startParam, endParam, String(totalMinutes), selectedServiceIds ?? [], {
-    placeholderData: { days: [] },
-  });
-
-  // 이전
-  // const {
-  //   data: dayStates,
-  //   status,
-  //   error,
-  // } = useFetchDayStates(startParam, endParam, String(totalMinutes), selectedServiceIds ?? []);
+  } = useFetchDayStates(startParam, endParam, String(totalMinutes), selectedServiceIds ?? []);
   const prevSelectedRef = useRef<Date | undefined>(undefined);
 
   console.log(dayStates);
@@ -82,7 +72,7 @@ function BookingCalendar() {
   const isDisabled = useCallback(
     (date: Date) => {
       if (status !== 'success' || !dayStates) return true;
-      const state = dayStates.days.find((d) => d.date === toYmd(date))?.state;
+      const state = dayStates?.days?.find((d) => d.date === toYmd(date))?.state;
       return state === 'closed' || state === 'unavailable';
     },
     [dayStates, status],
