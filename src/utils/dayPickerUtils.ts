@@ -46,3 +46,6 @@ export const getTimeSlotViewState = (slot: TimeSlotCell) => {
 
   return 'hidden';
 };
+
+export const startOfDay = (date: Date) =>
+  new Date(date.getFullYear(), date.getMonth(), date.getDate());

@@ -31,6 +31,7 @@ module.exports = {
     publicPath: '/',
     clean: true,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {

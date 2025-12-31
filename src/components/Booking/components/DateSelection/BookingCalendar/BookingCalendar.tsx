@@ -6,6 +6,7 @@ import {
   calculateTotalDuration,
   getEndDateOfMonth,
   toYmd,
+  startOfDay,
 } from '@/utils/dayPickerUtils';
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { BOOKING_SERVICES, MONTH_RANGE } from '@/constants/bookingData';
@@ -19,15 +20,15 @@ import { BookingFormData } from '@/types/bookingType';
 function BookingCalendar() {
   const { register, setValue, watch } = useFormContext<BookingFormData>();
   const { selected, setSelected, setShowTime, activeStep } = useBookingContext();
-  const [today] = useState(() => new Date());
-  const [visibleMonth, setVisibleMonth] = useState(() => new Date());
+  const [today] = useState(() => startOfDay(new Date()));
+  const [visibleMonth, setVisibleMonth] = useState(() => startOfDay(new Date()));
   const endMonth = useMemo(() => addMonths(today, MONTH_RANGE), [today]);
   const rangeStartDate = useMemo(
     () =>
       visibleMonth.getFullYear() === today.getFullYear() &&
       visibleMonth.getMonth() === today.getMonth()
         ? today
-        : visibleMonth,
+        : startOfDay(visibleMonth),
     [visibleMonth, today],
   );
 
@@ -56,7 +57,7 @@ function BookingCalendar() {
   }
 
   const handleSelect = (day: Date | undefined) => {
-    setSelected(day);
+    setSelected(day ? startOfDay(day) : undefined);
     // setShowTime(false);
   };
 
@@ -120,7 +121,7 @@ function BookingCalendar() {
         onSelect={handleSelect}
         disabled={[{ before: today }, isDisabled]}
         onMonthChange={(month) => {
-          setVisibleMonth(month);
+          setVisibleMonth(startOfDay(month));
         }}
         modifiers={{ open: open, unavailable: unavailable }}
         modifiersClassNames={{
