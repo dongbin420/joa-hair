@@ -1,12 +1,20 @@
 import { http } from './http';
 import { DayStates, TimeSlotResponse } from '@/types/dayPickerType';
 
-export const fetchDayStates = (
+export const fetchDayStates = async (
   startDate: string,
   endDate: string,
   durationMinutes: string,
   serviceIds: string[] = [],
 ) => {
+  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage('MOCK_ACTIVATE');
+
+    await new Promise((resolve) => {
+      setTimeout(resolve, 10);
+    });
+  }
+
   const params = new URLSearchParams();
 
   params.set('start', startDate);
