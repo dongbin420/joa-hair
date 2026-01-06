@@ -23,7 +23,7 @@ function TimeSelection() {
   } = useFetchTimeSlot(toYmd(selected!), selectedService, String(totalMinutes));
 
   const visibleSlots =
-    timeSlots?.timeCells.filter((slot) => getTimeSlotViewState(slot) !== 'hidden') ?? [];
+    timeSlots?.timeCells?.filter((slot) => getTimeSlotViewState(slot) !== 'hidden') ?? [];
 
   const handleSlotClick = async (startTime: string) => {
     selectStartTime(startTime);
