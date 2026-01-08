@@ -4,6 +4,7 @@ import type { RuleSetRule } from 'webpack';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
   addons: [
     '@storybook/addon-webpack5-compiler-babel',
     '@storybook/addon-onboarding',
@@ -12,13 +13,14 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
   ],
+
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+
+  docs: {},
+
   staticDirs: ['../public'],
 
   webpackFinal: async (config, { configType }) => {
@@ -46,6 +48,10 @@ const config: StorybookConfig = {
 
     return config;
   },
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
 
 export default config;
