@@ -14,8 +14,6 @@ export const useFetchDayStates = (
       const response = await fetchDayStates(startDate, endDate, durationMinutes, serviceIds);
       return response.data;
     },
-    retry: (count) => count < 1,
-    retryDelay: 150,
     gcTime: 0,
 
     // staleTime을 기본값 0으로 한 이유는 달 이동간 새로운 데이터 페칭을 위해서
