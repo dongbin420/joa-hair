@@ -11,7 +11,7 @@ export const fetchDayStates = async (
     navigator.serviceWorker.controller.postMessage('MOCK_ACTIVATE');
 
     await new Promise((resolve) => {
-      setTimeout(resolve, 10);
+      setTimeout(resolve, 100);
     });
   }
 
@@ -28,7 +28,19 @@ export const fetchDayStates = async (
   return http.get<DayStates>(`/calendar/days?${params.toString()}`);
 };
 
-export const fetchTimeSlot = (date: string, serviceIds: string[], durationMinutes: string) => {
+export const fetchTimeSlot = async (
+  date: string,
+  serviceIds: string[],
+  durationMinutes: string,
+) => {
+  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage('MOCK_ACTIVATE');
+
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
+  }
+
   const params = new URLSearchParams();
 
   params.set('date', date);
